@@ -102,7 +102,8 @@ CREATE TABLE wines(
   id SERIAL PRIMARY KEY,
   type VARCHAR(255) DEFAULT 'type',
   price VARCHAR(255) DEFAULT 'price',
-  varietal VARCHAR(255) DEFAULT 'varietal'
+  varietal VARCHAR(255) DEFAULT 'varietal',
+  description VARCHAR(255) DEFAULT 'description'
 );
 `);
 
