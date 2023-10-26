@@ -39,7 +39,7 @@ const getAllUsers = async() => {
     try {
         const { rows } = await db.query(`
         SELECT *
-        FROM users;`, []);
+        FROM users;`);
         return rows;
     } catch (error) {
         throw error;
