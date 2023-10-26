@@ -1,8 +1,8 @@
 const express = require('express')
 const winesRouter = express.Router();
 
-
-const createWine = require('../db');
+const { createWine,
+        getAllWines } = require('../db');
 
 const jwt = require('jsonwebtoken')
 
@@ -15,3 +15,5 @@ res.send(wines);
     throw error
 }
 });
+
+module.exports = winesRouter;
