@@ -1,15 +1,13 @@
 const db = require('./client')
 
-
 const createWine = async({ type, price, varietal, description }) => {
 try {
-const { rows: [wine ] } = await db.query(`
-INSERT INTO wines(type, price, varietal, description),
+const { rows } = await db.query(`
+INSERT INTO wines(type, price, varietal, description)
 VALUES($1, $2, $3, $4)
-RETURNING *`, []);
+RETURNING *`, [type, price, varietal, description]);
 
-
-return wine;
+return rows;
 } catch (err) {
 throw err;
 }
@@ -18,8 +16,7 @@ throw err;
 const getAllWines = async() => {
     try {
         const { rows } = await db.query(`
-        SELECT *
-        FROM wines;`, []);
+        SELECT * FROM wines;`);
         return rows;
     } catch (error) {
         throw error;
