@@ -54,9 +54,6 @@ apiRouter.use((err, req, res, next) => {
     res.status(500).send(err)
   })
 
-module.exports = {
-  apiRouter,
-  getAllWines,
-}
+module.exports = apiRouter
 
 // Testing branch change
