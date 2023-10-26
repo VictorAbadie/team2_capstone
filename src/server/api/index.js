@@ -5,6 +5,18 @@ const jwt = require('jsonwebtoken');
 const volleyball = require('volleyball')
 apiRouter.use(volleyball)
 
+const BASE_URL = 'http://localhost:3000/wines'
+
+const getAllWines = async () => {
+  try {
+      const response = await fetch(`${BASE_URL}/api/wines`);
+      const allWines = await response.json();
+      return allWines;
+  } catch (err) {
+      console.error('Cannot Get All Wines!', err);
+  }
+};
+
 // TO BE COMPLETED - set `req.user` if possible, using token sent in the request header
 apiRouter.use(async (req, res, next) => {
   const auth = req.header('Authorization');
@@ -35,10 +47,16 @@ apiRouter.use(async (req, res, next) => {
 const usersRouter = require('./users');
 apiRouter.use('/users', usersRouter);
 
+const winesRouter = require('./wines');
+apiRouter.use('/wines', winesRouter);
+
 apiRouter.use((err, req, res, next) => {
     res.status(500).send(err)
   })
 
-module.exports = apiRouter;
+module.exports = {
+  apiRouter,
+  getAllWines,
+}
 
 // Testing branch change
