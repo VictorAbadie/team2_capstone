@@ -17,4 +17,31 @@ res.send(wines);
 }
 });
 
+winesRouter.post('/', async (req, res, next) => {
+  const { type, varietal, price = "" } = req.body;
+
+  const postWine = {};
+
+  try {
+    postWine.type = type;
+    postWine.varietal = varietal;
+    postWine.price = price;
+
+    const wine = await createWine(postWine);
+
+    if (wine) {
+      res.send(wine);
+    } else {
+      next({
+        name: 'WineCreationError',
+        message: 'There was an error creating your wine post. Please try again.'
+      })
+    }
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+
+
 module.exports = winesRouter;
