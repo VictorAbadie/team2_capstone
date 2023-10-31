@@ -37,41 +37,49 @@ const wines = [
 {
 type: 'red',
 price: '$25',
-varietal: 'Cabernet Franc'
+varietal: 'Cabernet Franc',
+description: 'string'
 },
 {
 type: 'red',
 price: '$25',
-varietal: 'Cabernet Sauvignon'
+varietal: 'Cabernet Sauvignon',
+description: 'string'
 },
 {
 type: 'red',
 price: '$20',
 varietal: 'Gamay Noir',
+description: 'string'
 },
 {
 type: 'rose',
 price: '$20',
 varietal: 'Pinot Noir',
+description: 'string'
 },
 {
 type: 'rose',
 price: '$20',
 varietal: 'Cabernet Franc',
+description: 'string'
 },
 { type: 'white',
 price: '$15',
 varietal: 'Chardonnay',
+description: 'string'
 },
 {
 type: 'white',
 price: '$15',
-varietal: 'Pinot Gris'
+varietal: 'Pinot Gris',
+description: 'string'
 },
 {
 type: 'white',
 price: '$15',
-varietal: 'Riesling'
+varietal: 'Riesling',
+description: 'string'
 },
 ]
 
@@ -80,6 +88,7 @@ const dropTables = async () => {
 try {
 await db.query(`
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS wines;
 `)
 }
 catch(err) {
@@ -116,14 +125,29 @@ throw err;
 const insertUsers = async () => {
 try {
 for (const user of users) {
-await createUser({name: user.name, email: user.email, password: user.password});
+await createUser({name: user.name,
+                  email: user.email,
+                  password: user.password});
 }
-console.log('Seed data inserted successfully.');
+console.log('Users data inserted successfully.');
 } catch (error) {
-console.error('Error inserting seed data:', error);
+console.error('Error inserting users data:', error);
 }
 };
 
+const insertWines = async () => {
+  try {
+  for (const wine of wines) {
+  await createWine({type: wine.type,
+                    price: wine.price,
+                    varietal: wine.varietal,
+                    description: wine.description});
+  }
+  console.log('Wines data inserted successfully.');
+  } catch (error) {
+  console.error('Error inserting wines data:', error);
+  }
+  };
 
 const seedDatabse = async () => {
 try {
@@ -131,6 +155,7 @@ db.connect();
 await dropTables();
 await createTables();
 await insertUsers();
+await insertWines();
 }
 catch (err) {
 throw err;

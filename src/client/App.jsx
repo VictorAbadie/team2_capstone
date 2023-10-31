@@ -1,17 +1,22 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
+import NavBar from './components/NavBar';
 import Login from './components/Login';
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  const [token, setToken] = useState(null);
   return (
-    <div className='App'>
-        <h1>Boilerplate</h1>
-        <img id='comp-img' src='./computer.png'></img>
-        <p>Replace the starter code in this template with something cool</p>
-        <Login />
-    </div>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/wines" element={<Wines />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile token={token}/>} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
