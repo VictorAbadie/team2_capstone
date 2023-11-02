@@ -26,9 +26,10 @@ const handleSubmit = async (e) => {
             token
         );
         return updatedWine;
-        
-    }
-};
+    } catch (error) {
+        console.error(error, error.message);
+      }
+    };
 
 return (
     <>
