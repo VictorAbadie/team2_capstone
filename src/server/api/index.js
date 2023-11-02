@@ -7,42 +7,51 @@ apiRouter.use(volleyball)
 
 const BASE_URL = 'http://localhost:3000/wines'
 
-const getAllWines = async () => {
-  try {
-      const response = await fetch(`${BASE_URL}/api/wines`);
-      const allWines = await response.json();
-      return allWines;
-  } catch (err) {
-      console.error('Cannot Get All Wines!', err);
-  }
-};
 
-// TO BE COMPLETED - set `req.user` if possible, using token sent in the request header
+//set `req.user` if possible, using token sent in the request header
 apiRouter.use(async (req, res, next) => {
+  const prefix = 'Bearer';
   const auth = req.header('Authorization');
   
   if (!auth) { 
     next();
   } 
-  else if (auth.startsWith('REPLACE_ME')) {
-    // TODO - Get JUST the token out of 'auth'
-    const token = 'REPLACE_ME';
+  else if (auth.startsWith(prefix)) {
+  
+//Get JUST the token out of 'auth'
+      const token = auth.slice(prefix.length);
     
-    try {
-      const parsedToken = 'REPLACE_ME';
-      // TODO - Call 'jwt.verify()' to see if the token is valid. If it is, use it to get the user's 'id'. Look up the user with their 'id' and set 'req.user'
-
-    } catch (error) {
-      next(error);
+//Call 'jwt.verify()' to see if the token is valid. If it is, use it to get the user's 'id'. Look up the user with their 'id' and set 'req.user'
+      try {
+        const { id } = jwt.verify(token, JWT_SECRET);
+  
+        if (id) {
+          req.user = await getUserById(id);
+          next();
+        } else {
+          next({
+            name: 'AuthorizationHeaderError',
+            message: 'Authorization token malformed',
+          });
+        }
+      } catch ({ name, message }) {
+        next({ name, message });
+      }
+    } else {
+      next({
+        name: 'AuthorizationHeaderError',
+        message: `Authorization token must start with ${prefix}`,
+      });
     }
-  } 
-  else {
-    next({
-      name: 'AuthorizationHeaderError',
-      message: `Authorization token must start with 'Bearer'`
-    });
-  }
-});
+  });
+  
+  apiRouter.use((req, res, next) => {
+    if (req.user) {
+      console.log('User is set:', req.user);
+    }
+  
+    next();
+  });
 
 const usersRouter = require('./users');
 apiRouter.use('/users', usersRouter);
@@ -55,5 +64,3 @@ apiRouter.use((err, req, res, next) => {
   })
 
 module.exports = apiRouter
-
-// Testing branch change

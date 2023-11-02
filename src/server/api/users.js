@@ -5,7 +5,8 @@ const {
 createUser,
 getUser,
 getAllUsers,
-getUserByEmail
+getUserByEmail,
+getUserById
 } = require('../db');
 
 const jwt = require('jsonwebtoken')
@@ -19,6 +20,16 @@ res.send(users);
 next({name, message})
 }
 });
+
+// Get single user by ID
+usersRouter.get('/:id', async (req, res, next) => {
+    try {
+        const user = await getUserById(req.params.id);
+        res.send(user);
+    } catch (error) {
+        next(error);
+    }
+  });
 
 usersRouter.post('/login', async(req, res, next) => {
 const { email, password } = req.body;
