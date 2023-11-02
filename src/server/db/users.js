@@ -62,9 +62,32 @@ const getUserByEmail = async(email) => {
     }
 }
 
+// Get user by ID
+async function getUserById(id) {
+    try {
+      const { rows: [ users ]  } = await db.query(`
+        SELECT *
+        FROM users
+        WHERE id=$1;
+      `, [id]);
+  
+      if (!users) {
+        throw {
+          name: "WineNotFoundError",
+          message: "Could not find a wine with that wineId"
+        };
+      }
+  
+      return users;
+    } catch (error) {
+      throw error;
+    }
+  }
+
 module.exports = {
     createUser,
     getUser,
     getAllUsers,
-    getUserByEmail
+    getUserByEmail,
+    getUserById
 };
