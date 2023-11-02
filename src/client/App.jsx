@@ -14,15 +14,16 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/wines" element={<Wines />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile token={token}/>} />
+          {/* <Route path="/home" element={<Home />} /> */}
+          {/* <Route path="/wines" element={<Wines />} /> */}
+          <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          {/* <Route path="/profile" element={<Profile token={token}/>} /> */}
         </Routes>
       </BrowserRouter>
+      
     </>
   );
 }
