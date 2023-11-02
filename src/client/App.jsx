@@ -1,21 +1,24 @@
 import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from './components/NavBar';
-import Login from './components/Login';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 
 function App() {
   const [token, setToken] = useState(null);
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/wines" element={<Wines />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile token={token}/>} />
+          {/* <Route path="/home" element={<Home />} /> */}
+          {/* <Route path="/wines" element={<Wines />} /> */}
+          <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          {/* <Route path="/profile" element={<Profile token={token}/>} /> */}
         </Routes>
       </BrowserRouter>
+      
     </>
   );
 }
