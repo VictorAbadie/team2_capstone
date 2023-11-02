@@ -1,6 +1,8 @@
 const db = require('./client')
 const bcrypt = require('bcrypt');
 const SALT_COUNT = 10;
+// import { Article } from '@mui/icons-material';
+// import { useEffect, useState } from 'react';
 
 const createUser = async({ name='first last', email, password }) => {
     const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
@@ -62,9 +64,30 @@ const getUserByEmail = async(email) => {
     }
 }
 
+// i think we can forget about this user function as its not being used but i dont want to delete it yet if we need it later
+
+// Users function below is for authentication 
+// const Users = () => {
+//     const [users, setUsers] = useState();
+
+//     return (
+//         <article>
+//             <h2>Users List</h2>
+//             {users?.length
+//              ? (
+//                 <ul>
+//                     {users.map((user, i) => <li key={i}>{user?.username}</li>)}
+//                 </ul>
+//              ) : <p>No users to display</p>
+//             }
+//         </article> 
+//     );
+// };
+
 module.exports = {
     createUser,
     getUser,
     getAllUsers,
-    getUserByEmail
+    getUserByEmail,
+    // Users
 };
