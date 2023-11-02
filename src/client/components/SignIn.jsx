@@ -79,6 +79,7 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
+            {/* Remember Me is not functional yet, strech goal. */}
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -93,6 +94,7 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
+                {/* Forgot Password is not functional yet, stretch goal. */}
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
