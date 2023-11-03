@@ -1,5 +1,7 @@
 const express = require('express');
 const winesRouter = express.Router();
+const { requireUser } = require('./util');
+
 
 const { createWine,
         getAllWines,
@@ -35,7 +37,7 @@ winesRouter.get('/:id', async (req, res, next) => {
 
 
 // POST route for new wine in DB
-winesRouter.post('/', async (req, res, next) => {
+winesRouter.post('/', requireUser, async (req, res, next) => {
   const { type, varietal, price = "" } = req.body;
 
   const postWine = {};
@@ -61,7 +63,7 @@ winesRouter.post('/', async (req, res, next) => {
 });
 
 // PATCH route for exisiting wine in DB
-winesRouter.patch('/:id', async (req, res, next) => {
+winesRouter.patch('/:id', requireUser, async (req, res, next) => {
   const { id } = req.params;
   const { type, price, varietal, description } = req.body;
 
@@ -101,7 +103,7 @@ console.log(originalWine.id, id)
 });
 
 // DELETE route for existing wine in the DB
-winesRouter.delete('/:id', async (req, res, next) => {
+winesRouter.delete('/:id', requireUser, async (req, res, next) => {
   try {
       const wine = await deleteWine(req.params.id);
       res.send(wine);
