@@ -8,7 +8,6 @@ import Register from './components/Register';
 import './Register.css'
 // There is some prebuilt css in the Register.css file. Im going to go through and psuedo code the shit outta the Register css and jsx file to try and make stuff easier to either integrate into a later style sheet or to call onto class names.
 
-import SignIn from './components/SignIn';
 import CreateWine from './components/CreateWine';
 import EditWine from './components/EditWine';
 import DetailedWine from './components/DetailedWine';
