@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from './components/NavBar';
-
 import SignIn from './components/SignIn';
 import Register from './components/Register';
 import './Register.css'
@@ -11,8 +10,6 @@ import './Register.css'
 import CreateWine from './components/CreateWine';
 import EditWine from './components/EditWine';
 import DetailedWine from './components/DetailedWine';
-
-
 
 function App() {
   const [token, setToken] = useState(null);
@@ -24,16 +21,11 @@ function App() {
           {/* <Route path="/home" element={<Home />} /> */}
           {/* <Route path="/wines" element={<Wines />} /> */}
           <Route path="/SignIn" element={<SignIn />} />
-
           <Route path='/SignUp' element={<Register/> } />
-
-
-        
           <Route path="/CreateWine" element={<CreateWine />} />
           <Route path="/DeleteWine" element={<DeleteWine />} />
           <Route path="/DetailedWine" element={<DetailedWine />} />
           <Route path="/EditWine" element={<EditWine />} />
-
           {/* <Route path="/profile" element={<Profile token={token}/>} /> */}
         </Routes>
       </BrowserRouter>
