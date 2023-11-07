@@ -1,35 +1,43 @@
 // NOT TESTED YET//
 
 import { useState } from "react";
-import { updateWine } from "../";
 
 //uses the token to verify admin
-const EditWine = ({token}) => {
-
+const EditWine = async() => {
+    e.preventDefault();
 //these track the input for each field
 const [type, setType] = useState("");
 const [price, setPrice] = useState("");
 const [varietal, setVarietal] = useState("");
 const [description, setDescription] = useState("");
 const [success, setSuccess] = useState(false);
+// const [authenticated, setAuthenticated] = useState(false);
 
-const handleSubmit = async (e) => {
-    e.preventDefault();
     try {
-        const updatedWine = await updateWine(
-            {
-                type,
-                price,
-                varietal,
-                description,
-            },
-            token
-        );
-        return updatedWine;
+        const response = await fetch('http://localhost:3000/api/wines', {
+         method:'PATCH',
+         headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify({
+            type,
+            price,
+            varietal,
+            description
+        })
+    });
+    const result = await response.json();
+    setSuccess(result.success);
+        console.log(newWine);
+        setType("");
+        setPrice("");
+        setVarietal("");
+        setDescription("");
+        setSuccess(true);
+
     } catch (error) {
         console.error(error, error.message);
       }
-    };
 
 return (
     <>
