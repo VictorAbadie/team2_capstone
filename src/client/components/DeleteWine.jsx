@@ -1,14 +1,26 @@
 // NOT TESTED YET//
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const DeleteWine() => {
-    async function handleDelete() {
-        const navigate = useNavigate();
-        const wineId = useParams();
-        const token = sessionStorage.getItem("token");
-      try {
-        const result = await DeleteWine(wineId);
+const DeleteWine = async() => {
+    e.preventDefault();
+    const navigate = useNavigate();
+    const token = sessionStorage.getItem("token");
+
+    try {
+    const response = await fetch('http://localhost:3000/api/wines', {
+     method:'DELETE',
+     headers: {
+        'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify({
+        type,
+        price,
+        varietal,
+        description
+    })
+});
+        const result = await response.json();
         console.log(result);
         if (token) {
             navigate("/")

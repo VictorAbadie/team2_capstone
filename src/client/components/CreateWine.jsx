@@ -16,30 +16,31 @@ const CreateWine = () => {
     // const [authenticated, setAuthenticated] = useState(false);
     const [success, setSuccess] = useState(false);
 
-//handleWine is the function which creates a new wine object
-const handleWine = async (e) => {
-    e.preventDefault();
-    const token = sessionStorage.getItem("token");
+    const newWine = async() => {
+        e.preventDefault();
+    // const token = sessionStorage.getItem("token");
     try {
-        const wineObject = {
-            type: type,
-            price: price,
-            varietal: varietal,
-            description: description,
-        };
-    
-    const newWine = await createWine(wineObject, token);
-    console.log(newWine);
-    if (newWine.success) {
+        const response = await fetch('http://localhost:3000/api/wines', {
+         method:'POST',
+         headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify({
+            type,
+            price,
+            varietal,
+            description
+        })
+    });
+    const result = await response.json();
+    setSuccess(result.success);
+        console.log(newWine);
         setType("");
         setPrice("");
         setVarietal("");
         setDescription("");
         setSuccess(true);
-    } else {
-        alert("Error creating wine!");
-    }
-    return newWine;
+
     } catch (error) {
         console.error(error, error.message);
       }
@@ -102,7 +103,7 @@ const handleWine = async (e) => {
                 </label>
                 <button classname="button"
                         id="create-button"
-                        onClick={handleWine}>
+                        onClick={CreateWine}>
                         Create New Wine!
                 </button>
             </form>
