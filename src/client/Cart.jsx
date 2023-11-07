@@ -106,5 +106,5 @@ export function cartProvider({children}) {
     )
 
 }
-
+// Export to App.jsx
 export default cartProvider;
