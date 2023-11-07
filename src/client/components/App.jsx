@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from './components/NavBar';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-import cartProvider from './Cart';
+import cartProvider from './components/Cart'
 function App() {
   const [token, setToken] = useState(null);
   return (
