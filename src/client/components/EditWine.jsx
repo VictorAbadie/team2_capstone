@@ -1,7 +1,7 @@
 // NOT TESTED YET//
 
 import { useState } from "react";
-import { updateWine } from "../";
+// import { updateWine } from "../";
 
 //uses the token to verify admin
 const EditWine = ({token}) => {
