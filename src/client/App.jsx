@@ -3,11 +3,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from './components/NavBar';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-
+import cartProvider from './Cart';
 function App() {
   const [token, setToken] = useState(null);
   return (
     <>
+    <cartProvider>
       <BrowserRouter>
         {/* <Navbar /> */}
         <Routes>
@@ -18,7 +19,7 @@ function App() {
           {/* <Route path="/profile" element={<Profile token={token}/>} /> */}
         </Routes>
       </BrowserRouter>
-      
+      </cartProvider>
     </>
   );
 }
