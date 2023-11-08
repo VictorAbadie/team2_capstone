@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import NavBar from './components/NavBar';
-import Login from './components/Login';
-import Register from './components/Register';
+// This import is necessary because it has the sytle sheets that we need for bootstrap components
+// import 'bootstrap/dist/css/bootstrap.min.css'
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Home from './pages/Home'
 import './Register.css'
 // There is some prebuilt css in the Register.css file. Im going to go through and psuedo code the shit outta the Register css and jsx file to try and make stuff easier to either integrate into a later style sheet or to call onto class names.
 
@@ -15,9 +18,11 @@ import DetailedWine from './components/DetailedWine';
 function App() {
   const [token, setToken] = useState(null);
   return (
-    <>
+    <Container>
+      {/* <NavBar></NavBar> */}
       <BrowserRouter>
-        {/* <Navbar /> */}
+  
+ 
         <Routes>
           {/* Public Routes */}
           {/* <Route path="/home" element={<Home />} /> */}
@@ -36,7 +41,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       
-    </>
+    </Container>
   );
 }
 
