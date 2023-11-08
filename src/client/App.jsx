@@ -18,7 +18,7 @@ import DetailedWine from './components/DetailedWine';
 function App() {
   const [token, setToken] = useState(null);
   return (
-    <Container>
+    <>
       {/* <NavBar></NavBar> */}
       <BrowserRouter>
   
@@ -41,7 +41,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       
-    </Container>
+    </>
   );
 }
 
