@@ -1,8 +1,7 @@
 // NOT TESTED YET//
 
 import { useState } from "react";
-
-// b090c8862f60e1cb3057d9458ba8cf8f106adbb6
+// import { updateWine } from "../";
 
 //uses the token to verify admin
 const EditWine = async() => {

@@ -1,6 +1,11 @@
 // NOT TESTED YET//
 
 import { useState } from "react";
+// import { useNavigate, useParams } from "react-router-dom";
+// import { createWine } from "../../server/db";
+
+//Needed to comment this out for pages to render^^ 
+
 
 //this componenent allows an admin to add a new wine to the site
 const CreateWine = () => {
