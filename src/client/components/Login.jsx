@@ -103,7 +103,7 @@ const Login = () => {
                             value={pwd}
                             required
                         />
-                        <button>Sign In</button>
+                        <button className="button">Sign In</button>
                     </form>
                     <p>
                         Dont have an account?<br />

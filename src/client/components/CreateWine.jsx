@@ -109,8 +109,7 @@ const CreateWine = () => {
                         />
                 </label>
                 
-                <button classname="button"
-                        id="create-button"
+                <button className="button"
                         onClick={CreateWine}>
                         Create New Wine!
                 </button>

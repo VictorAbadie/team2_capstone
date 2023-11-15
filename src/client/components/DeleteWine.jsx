@@ -31,8 +31,7 @@ const DeleteWine = async() => {
 
     return (
         <>
-        <button className="button"
-                id="delete-button" 
+        <button className="button" 
                 onClick={handleDelete}>
           Delete Wine
         </button>
