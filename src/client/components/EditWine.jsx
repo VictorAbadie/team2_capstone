@@ -11,6 +11,7 @@ const [type, setType] = useState("");
 const [price, setPrice] = useState("");
 const [varietal, setVarietal] = useState("");
 const [description, setDescription] = useState("");
+const [img, setImg] = useState(null);
 const [success, setSuccess] = useState(false);
 // const [authenticated, setAuthenticated] = useState(false);
 
@@ -24,7 +25,8 @@ const [success, setSuccess] = useState(false);
             type,
             price,
             varietal,
-            description
+            description,
+            img
         })
     });
     const result = await response.json();
@@ -34,6 +36,7 @@ const [success, setSuccess] = useState(false);
         setPrice("");
         setVarietal("");
         setDescription("");
+        setImg("");
         setSuccess(true);
 
     } catch (error) {
@@ -43,16 +46,7 @@ const [success, setSuccess] = useState(false);
 return (
     <>
     {success && (
-        <p
-          style={{
-            margin: "2rem auto",
-            color: "white",
-            fontSize: "3rem",
-            backgroundColor: "green",
-          }}
-        >
-          Wine Updated!
-        </p>
+        <p> Wine Updated! </p>
         )}
             <form classname="styleForm">
                 <label htmlFor="wineType">
@@ -65,6 +59,7 @@ return (
                         onChange={(e) => setType(e.target.value)}
                         />
                 </label>
+
                 <label htmlFor="winePrice">
                     <input 
                         id="price"
@@ -75,6 +70,7 @@ return (
                         onChange={(e) => setPrice(e.target.value)}
                         />
                 </label>
+
                 <label htmlFor="wineVarietal">
                     <input 
                         id="varietal"
@@ -85,6 +81,7 @@ return (
                         onChange={(e) => setVarietal(e.target.value)}
                         />
                 </label>
+
                 <label htmlFor="wineDescription">
                     <input 
                         id="description"
@@ -95,6 +92,18 @@ return (
                         onChange={(e) => setDescription(e.target.value)}
                         />
                 </label>
+
+                <label htmlFor="wineImg">
+                    <input 
+                        id="img"
+                        type="jpg"
+                        name="img"
+                        placeholder="img"
+                        required
+                        onChange={(e) => setImg(e.target.value)}
+                        />
+                </label>
+
                 <button classname="button"
                         id="create-button"
                         onClick={handleSubmit}>

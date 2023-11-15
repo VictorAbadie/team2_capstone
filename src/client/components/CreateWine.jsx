@@ -13,7 +13,7 @@ const CreateWine = () => {
     const [price, setPrice] = useState("");
     const [varietal, setVarietal] = useState("");
     const [description, setDescription] = useState("");
-    // const [authenticated, setAuthenticated] = useState(false);
+    const [img, setImg] = useState(null);
     const [success, setSuccess] = useState(false);
 
     const newWine = async() => {
@@ -29,7 +29,8 @@ const CreateWine = () => {
             type,
             price,
             varietal,
-            description
+            description,
+            img
         })
     });
     const result = await response.json();
@@ -39,6 +40,7 @@ const CreateWine = () => {
         setPrice("");
         setVarietal("");
         setDescription("");
+        setImg("")
         setSuccess(true);
 
     } catch (error) {
@@ -49,16 +51,7 @@ const CreateWine = () => {
     return (
     <>
         {success && (
-        <p
-          style={{
-            margin: "2rem auto",
-            color: "white",
-            fontSize: "3rem",
-            backgroundColor: "green",
-          }}
-        >
-          Wine Created!
-        </p>
+        <p> Wine Created! </p>
         )}
             <form classname="styleForm">
                 <label htmlFor="wineType">
@@ -71,6 +64,7 @@ const CreateWine = () => {
                         onChange={(e) => setType(e.target.value)}
                         />
                 </label>
+
                 <label htmlFor="winePrice">
                     <input 
                         id="price"
@@ -81,6 +75,7 @@ const CreateWine = () => {
                         onChange={(e) => setPrice(e.target.value)}
                         />
                 </label>
+
                 <label htmlFor="wineVarietal">
                     <input 
                         id="varietal"
@@ -91,6 +86,7 @@ const CreateWine = () => {
                         onChange={(e) => setVarietal(e.target.value)}
                         />
                 </label>
+
                 <label htmlFor="wineDescription">
                     <input 
                         id="description"
@@ -101,6 +97,18 @@ const CreateWine = () => {
                         onChange={(e) => setDescription(e.target.value)}
                         />
                 </label>
+
+                <label htmlFor="wineImg">
+                    <input 
+                        id="img"
+                        type="jpg"
+                        name="img"
+                        placeholder="img"
+                        required
+                        onChange={(e) => setImg(e.target.value)}
+                        />
+                </label>
+                
                 <button classname="button"
                         id="create-button"
                         onClick={CreateWine}>

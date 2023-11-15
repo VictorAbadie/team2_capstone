@@ -7,13 +7,12 @@ import CreateWine from './components/CreateWine';
 import EditWine from './components/EditWine';
 import DetailedWine from './components/DetailedWine';
 
-
 function App() {
   const [token, setToken] = useState(null);
   return (
     <>
       <BrowserRouter>
-        {/* <Navbar /> */}
+        < NavBar />
         <Routes>
           {/* Public Routes */}
           {/* <Route path="/home" element={<Home />} /> */}
