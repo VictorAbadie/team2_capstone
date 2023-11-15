@@ -1,11 +1,9 @@
 const express = require('express');
 const apiRouter = express.Router();
 const jwt = require('jsonwebtoken');
-
 const volleyball = require('volleyball')
 apiRouter.use(volleyball)
-
-const BASE_URL = 'http://localhost:3000/wines'
+const {JWT_SECRET} = process.env;
 
 
 //set `req.user` if possible, using token sent in the request header
