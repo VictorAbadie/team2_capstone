@@ -8,17 +8,18 @@
 
 // ALL THE PSUEDO CODE IS GOING TO BE FOR THE LINE DIRECTLY BELOW UNLESS SPECIFIED FOR SOMETHING ELSE
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, React } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import axios from './api/axios';
+import { Link } from "react-router-dom";
+import axios from '../context/axios';
 
 
 // The 2 lines below are for making Case Sensitive Usernames and Passwords
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
-const REGISTER_URL = '/signup';
+const REGISTER_URL = 'http://localhost:3000/api/users/SignUp';
 
 const Register = () => {
     const userRef = useRef();
@@ -65,6 +66,8 @@ const Register = () => {
             setErrMsg("Invalid Entry");
             return;
         }
+        console.log(user, pwd);
+        setSuccess(true);
         try {
             const response = await axios.post(REGISTER_URL,
                 JSON.stringify({ user, pwd }),
@@ -73,6 +76,7 @@ const Register = () => {
                     withCredentials: true
                 }
             );
+             // TODO: remove console.logs before deployment
             console.log(response?.data);
             console.log(response?.accessToken);
             console.log(JSON.stringify(response))
@@ -206,4 +210,4 @@ const Register = () => {
     )
 }
 
-export default Register
+// export default Register

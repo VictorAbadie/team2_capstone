@@ -109,7 +109,7 @@ const Login = () => {
                         Dont have an account?<br />
                         <span className="line">
                             {/*put router link here*/}
-                            <a href="./signup">Sign Up</a>
+                            <a href="./register">Sign Up</a>
                         </span>
                     </p>
                 </section>
@@ -118,4 +118,4 @@ const Login = () => {
     )
 }
 
-export default Login
+// export default Login
