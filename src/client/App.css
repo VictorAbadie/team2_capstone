@@ -11,7 +11,7 @@
 }
 
 body {
-  background-color: rgb(250, 249, 209);
+  background-color: rgb(19, 19, 18);
 }
 
 /* navbar styling */
@@ -35,10 +35,11 @@ nav {
 .button {
   background-color:rgb(20, 71, 54);
   color: white;
+  align-content: center;
   padding-left: 20px;
   padding-right: 20px;
-  height: 30px;
-  margin: 10px;
+  height: 50px;
+  margin: 25px;
 }
 
 .button:hover {
@@ -49,3 +50,8 @@ nav {
 /* form styling */
 
 .styleForm {}
+
+.winePhoto {
+  height: 200px;
+  width 300px;
+}

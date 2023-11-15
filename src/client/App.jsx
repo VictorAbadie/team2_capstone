@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import NavBar from './components/NavBar';
+import Home from './components/Home';
+import NavBar from './components/NavBar'
 import Login from './components/Login';
 import Register from './components/Register';
 import './Register.css'
@@ -9,29 +10,27 @@ import './Register.css'
 import { AuthProvider } from './context/AuthProvider';
 import RequireAuth from './components/RequireAuth';
 import CreateWine from './components/CreateWine';
-import EditWine from './components/EditWine';
-import DetailedWine from './components/DetailedWine';
+// import EditWine from './components/EditWine';
+// import DetailedWine from './components/DetailedWine';
 
 function App() {
   const [token, setToken] = useState(null);
   return (
     <>
       <BrowserRouter>
-        {/* <Navbar /> */}
+        < NavBar />
         <Routes>
           {/* Public Routes */}
-          {/* <Route path="/home" element={<Home />} /> */}
-          {/* <Route path="/wines" element={<Wines />} /> */}
+          <Route path="/" element={<Home />} />
           <Route path="/SignIn" element={<Login />} />
           <Route path='/SignUp' element={<Register/> } />
-          {/* <Route path="/profile" element={<Profile token={token}/>} /> */}
 
           {/* Protected Routes */}
           <Route element={<RequireAuth />}>
           <Route path="/CreateWine" element={<CreateWine />} />
           {/* <Route path="/DeleteWine" element={<DeleteWine />} /> */}
-          <Route path="/DetailedWine" element={<DetailedWine />} />
-          <Route path="/EditWine" element={<EditWine />} />
+          {/* <Route path="/DetailedWine" element={<DetailedWine />} />
+          <Route path="/EditWine" element={<EditWine />} /> */}
           </Route>
         </Routes>
       </BrowserRouter>

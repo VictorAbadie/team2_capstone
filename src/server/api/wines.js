@@ -38,7 +38,7 @@ winesRouter.get('/:id', async (req, res, next) => {
 
 // POST route for new wine in DB
 winesRouter.post('/', requireUser, async (req, res, next) => {
-  const { type, varietal, price = "" } = req.body;
+  const { type, varietal, price, description, img = "" } = req.body;
 
   const postWine = {};
 
@@ -46,6 +46,8 @@ winesRouter.post('/', requireUser, async (req, res, next) => {
     postWine.type = type;
     postWine.varietal = varietal;
     postWine.price = price;
+    postWine.description = description;
+    postWine.img = img;
 
     const wine = await createWine(postWine);
 
@@ -65,7 +67,7 @@ winesRouter.post('/', requireUser, async (req, res, next) => {
 // PATCH route for exisiting wine in DB
 winesRouter.patch('/:id', requireUser, async (req, res, next) => {
   const { id } = req.params;
-  const { type, price, varietal, description } = req.body;
+  const { type, price, varietal, description, img } = req.body;
 
   const updateFields = {};
 
@@ -83,6 +85,10 @@ winesRouter.patch('/:id', requireUser, async (req, res, next) => {
 
   if (description) {
     updateFields.description = description;
+  }
+
+  if (img) {
+    updateFields.img = img;
   }
 
   try {

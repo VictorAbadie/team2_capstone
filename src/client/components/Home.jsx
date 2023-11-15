@@ -1,41 +1,46 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+// import AllWines from './AllWines';
 
-const Home = ({ token }) => {
-  // state to keep all posts, useful to render all posts
+const Home = () => {  
+  const [wines, setWines] = useState([]);
+  const [error, setError] = useState(null);
+console.log(wines)
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function getAllWines() {
-      const APIResponse = await fetchAllWines();
-      console.log(APIResponse);
-      if (APIResponse.success) {
-        setWines(APIResponse.data.wines);
-      } else {
-        setError(APIResponse.error.message);
+
+    async function fetchAllWines() {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/wines`
+        );
+      const result = await response.json();
+        setWines(result);
+      } catch (error) {
+          setError(error);
       }
     }
-    getAllWines();
+    fetchAllWines();
   }, []);
 
   return (
     <>
-      {/*conditionally render the errors only if there are errors in state*/}
-      {error && <p className="error-notification">{error.message}</p>}
-      {/*conditionally render the posts only if there are posts in state*/}
+        <div id="all-wines-container" key={wines.id}>
+          {!error &&
+              wines.map((wine) => {
+                return <>
+                  <p >{wine.varietal}</p>
+                  <p >{wine.price}</p>
+                  <img src={wine.img}></img>
+                  <button id="details-button"> See Details </button>
+                </>
+  })}
 
-      <div id="searchbar-container">
-        <label htmlFor="searchbar">
-          Search Posts:{" "}
-          <input
-            type="text"
-            placeholder="search"
-            onChange={(e) => setSearchParam(e.target.value.toLowerCase())}
-          />
-        </label>
-      </div>
-    </>
-  );
-};
 
-export default Home;
+        </div>
+  </>
+
+  )}
+  
+export default Home
