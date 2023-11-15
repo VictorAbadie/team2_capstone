@@ -17,7 +17,8 @@ const DeleteWine = async() => {
         type,
         price,
         varietal,
-        description
+        description,
+        img
     })
 });
         const result = await response.json();
@@ -27,7 +28,6 @@ const DeleteWine = async() => {
       }} catch (error) {
         console.error(error);
       }
-    };
 
     return (
         <>

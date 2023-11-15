@@ -3,12 +3,12 @@ const db = require('./client')
 
 
 // Create a new wine in the DB
-const createWine = async({ type, price, varietal, description }) => {
+const createWine = async({ type, price, varietal, description, img }) => {
 try {
 const { rows } = await db.query(`
-INSERT INTO wines(type, price, varietal, description)
-VALUES($1, $2, $3, $4)
-RETURNING *`, [type, price, varietal, description]);
+INSERT INTO wines(type, price, varietal, description, img)
+VALUES($1, $2, $3, $4, $5)
+RETURNING *`, [type, price, varietal, description, img]);
 
 return rows;
 } catch (err) {

@@ -38,49 +38,65 @@ const wines = [
 type: 'red',
 price: '$25',
 varietal: 'Cabernet Franc',
-description: 'string'
+description: 'string',
+img: 'src/client/photos/red_wine.jpg'
 },
+
 {
 type: 'red',
 price: '$25',
 varietal: 'Cabernet Sauvignon',
-description: 'string'
+description: 'string',
+img: 'src/client/photos/red_wine.jpg'
 },
+
 {
 type: 'red',
 price: '$20',
 varietal: 'Gamay Noir',
-description: 'string'
+description: 'string',
+img: 'src/client/photos/red_wine.jpg'
 },
+
 {
 type: 'rose',
 price: '$20',
 varietal: 'Pinot Noir',
-description: 'string'
+description: 'string',
+img: 'src/client/photos/rose_wine.jpg'
 },
+
 {
 type: 'rose',
 price: '$20',
 varietal: 'Cabernet Franc',
-description: 'string'
+description: 'string',
+img: 'src/client/photos/rose_wine.jpg'
 },
+
 { type: 'white',
 price: '$15',
 varietal: 'Chardonnay',
-description: 'string'
+description: 'string',
+img: 'src/client/photos/white_wine.jpg'
 },
+
 {
 type: 'white',
 price: '$15',
 varietal: 'Pinot Gris',
-description: 'string'
+description: 'string',
+img: 'src/client/photos/white_wine.jpg'
 },
+
 {
 type: 'white',
 price: '$15',
 varietal: 'Riesling',
-description: 'string'
+description: 'string',
+img: 'src/client/photos/white_wine.jpg'
 },
+
 ]
 
 
@@ -112,7 +128,8 @@ CREATE TABLE wines(
   type VARCHAR(255) DEFAULT 'type',
   price VARCHAR(255) DEFAULT 'price',
   varietal VARCHAR(255) DEFAULT 'varietal',
-  description VARCHAR(255) DEFAULT 'description'
+  description VARCHAR(255) DEFAULT 'description',
+  img VARCHAR(255) DEFAULT 'img'
 );
 `);
 
@@ -141,7 +158,9 @@ const insertWines = async () => {
   await createWine({type: wine.type,
                     price: wine.price,
                     varietal: wine.varietal,
-                    description: wine.description});
+                    description: wine.description,
+                    img: wine.img
+                  });
   }
   console.log('Wines data inserted successfully.');
   } catch (error) {
