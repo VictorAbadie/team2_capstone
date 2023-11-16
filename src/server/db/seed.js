@@ -36,49 +36,90 @@ password: 'password123',
 const wines = [
 {
 type: 'red',
-price: '$25',
+price: '$45',
 varietal: 'Cabernet Franc',
 description: 'string',
-img: 'src/client/photos/red_wine.jpg'
+img: 'src/client/photos/red_cabfranc.jpg'
 },
 
 {
 type: 'red',
-price: '$25',
+price: '$60',
+varietal: 'Syrah',
+description: 'string',
+img: 'src/client/photos/red_syrah.jpg'
+},
+
+{
+type: 'red',
+price: '$45',
+varietal: 'Malbec',
+description: 'string',
+img: 'src/client/photos/red_malbec.jpg'
+},
+
+{
+type: 'red',
+price: '$75',
 varietal: 'Cabernet Sauvignon',
 description: 'string',
-img: 'src/client/photos/red_wine.jpg'
+img: 'src/client/photos/red_cabsauv.jpg'
 },
 
 {
 type: 'red',
-price: '$20',
+price: '$30',
 varietal: 'Gamay Noir',
 description: 'string',
-img: 'src/client/photos/red_wine.jpg'
+img: 'src/client/photos/red_gamay.jpg'
+},
+
+{
+type: 'rose',
+price: '$25',
+varietal: 'Pinot Noir Rosé',
+description: 'string',
+img: 'src/client/photos/rose_pinotnoir.jpg'
+},
+
+{
+type: 'rose',
+price: '$25',
+varietal: 'Cabernet Franc Rosé',
+description: 'string',
+img: 'src/client/photos/rose_cabfranc.jpg'
 },
 
 {
 type: 'rose',
 price: '$20',
-varietal: 'Pinot Noir',
+varietal: 'Pinot Gris Rosé',
 description: 'string',
-img: 'src/client/photos/rose_wine.jpg'
+img: 'src/client/photos/rose_pinotgris.jpg'
 },
 
 {
-type: 'rose',
-price: '$20',
-varietal: 'Cabernet Franc',
-description: 'string',
-img: 'src/client/photos/rose_wine.jpg'
-},
-
-{ type: 'white',
-price: '$15',
+type: 'white',
+price: '$25',
 varietal: 'Chardonnay',
 description: 'string',
-img: 'src/client/photos/white_wine.jpg'
+img: 'src/client/photos/white_chardonnay.jpg'
+},
+
+{
+type: 'white',
+price: '$25',
+varietal: 'Gewürztraminer',
+description: 'string',
+img: 'src/client/photos/white_gewurz.jpg'
+},
+
+{
+type: 'white',
+price: '$25',
+varietal: 'Pinot Blanc',
+description: 'string',
+img: 'src/client/photos/white_pinotblanc.jpg'
 },
 
 {
@@ -86,16 +127,40 @@ type: 'white',
 price: '$15',
 varietal: 'Pinot Gris',
 description: 'string',
-img: 'src/client/photos/white_wine.jpg'
+img: 'src/client/photos/white_pinotgris.jpg'
+},
+
+{
+type: 'white',
+price: '$25',
+varietal: 'Grüner Veltliner',
+description: 'string',
+img: 'src/client/photos/white_gruner.jpg'
 },
 
 {
 type: 'white',
 price: '$15',
-varietal: 'Riesling',
+varietal: 'Dry Riesling',
 description: 'string',
-img: 'src/client/photos/white_wine.jpg'
+img: 'src/client/photos/white_dryriesling.jpg'
 },
+
+{
+type: 'sparkling',
+price: '$55',
+varietal: 'Blanc de Blanc',
+description: 'string',
+img: 'src/client/photos/spk_chardonnay.jpg'
+},
+
+{
+type: 'sparkling',
+price: '$55',
+varietal: 'Blanc de Noir',
+description: 'string',
+img: 'src/client/photos/spk_pinotnoir.jpg'
+}
 
 ]
 

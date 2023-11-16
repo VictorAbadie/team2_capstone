@@ -26,18 +26,18 @@ console.log(wines)
 
   return (
     <>
-        <div id="all-wines-container" key={wines.id}>
+        <div id="allWinesCard" key={wines.id}>
           {!error &&
               wines.map((wine) => {
                 return <>
-                  <p >{wine.varietal}</p>
-                  <p >{wine.price}</p>
-                  <img src={wine.img}></img>
-                  <button id="details-button"> See Details </button>
+                  <div className="wineCard">
+                    <p className="wineFacts">{wine.varietal}</p>
+                    <p className="wineFacts">{wine.price}</p>
+                    <img id="img" src={wine.img}></img>
+                    <button className="button"> See Details </button>
+                  </div>
                 </>
   })}
-
-
         </div>
   </>
 

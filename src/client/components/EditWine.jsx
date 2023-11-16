@@ -104,8 +104,7 @@ return (
                         />
                 </label>
 
-                <button classname="button"
-                        id="create-button"
+                <button className="button"
                         onClick={handleSubmit}>
                         Update Wine!
                 </button>
