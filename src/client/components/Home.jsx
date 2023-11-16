@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import AllWines from './AllWines';
 
 const Home = () => {  
   const [wines, setWines] = useState([]);
   const [error, setError] = useState(null);
-console.log(wines)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,7 +32,9 @@ console.log(wines)
                     <p className="wineFacts">{wine.varietal}</p>
                     <p className="wineFacts">{wine.price}</p>
                     <img id="img" src={wine.img}></img>
-                    <button className="button"> See Details </button>
+                    <button
+                      className="button"
+                      onClick={() => { navigate(`/${wine.id}`); }}> See Details </button>
                   </div>
                 </>
   })}

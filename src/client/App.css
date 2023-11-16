@@ -37,6 +37,14 @@ body {
   margin: 25px;
 }
 
+.detailsCard {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  color: white;
+  border: 2px solid white;
+}
+
 #img {
   display: flex;
   margin: 25px;
