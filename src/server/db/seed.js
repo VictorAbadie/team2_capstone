@@ -38,7 +38,7 @@ const wines = [
 type: 'red',
 price: '$45',
 varietal: 'Cabernet Franc',
-description: 'string',
+description: ' Strong herbaceous aromas, with flavors of raspberry, strawberry, and red plum, along with a peppery finish.',
 img: 'src/client/photos/red_cabfranc.jpg'
 },
 
@@ -46,7 +46,7 @@ img: 'src/client/photos/red_cabfranc.jpg'
 type: 'red',
 price: '$60',
 varietal: 'Syrah',
-description: 'string',
+description: 'Dry, full-bodied, opaque wine, with brisk acidity and notes of bacon, red fruits and violets.',
 img: 'src/client/photos/red_syrah.jpg'
 },
 
@@ -54,7 +54,7 @@ img: 'src/client/photos/red_syrah.jpg'
 type: 'red',
 price: '$45',
 varietal: 'Malbec',
-description: 'string',
+description: 'Jammy, with medium tannins and medium acidity. It has notes of coffee, leather, black pepper, vanilla, and tobacco.',
 img: 'src/client/photos/red_malbec.jpg'
 },
 
@@ -62,7 +62,7 @@ img: 'src/client/photos/red_malbec.jpg'
 type: 'red',
 price: '$75',
 varietal: 'Cabernet Sauvignon',
-description: 'string',
+description: 'Full-bodied and dark, this wine showcases firm tannin and flavors of ceder, baking spices and leather.',
 img: 'src/client/photos/red_cabsauv.jpg'
 },
 
@@ -70,7 +70,7 @@ img: 'src/client/photos/red_cabsauv.jpg'
 type: 'red',
 price: '$30',
 varietal: 'Gamay Noir',
-description: 'string',
+description: 'Vibrant, with notes of cranberry, raspberry and black current and tingling acidity. ',
 img: 'src/client/photos/red_gamay.jpg'
 },
 
@@ -78,7 +78,7 @@ img: 'src/client/photos/red_gamay.jpg'
 type: 'rose',
 price: '$25',
 varietal: 'Pinot Noir Rosé',
-description: 'string',
+description: 'Fresh and delicate with hints of strawberry, lemon cream and rose petal.',
 img: 'src/client/photos/rose_pinotnoir.jpg'
 },
 
@@ -86,7 +86,7 @@ img: 'src/client/photos/rose_pinotnoir.jpg'
 type: 'rose',
 price: '$25',
 varietal: 'Cabernet Franc Rosé',
-description: 'string',
+description: 'Floral backbone of tea rose and heliotrope, followed by notes of marzipan and fresh fruit.',
 img: 'src/client/photos/rose_cabfranc.jpg'
 },
 
@@ -94,7 +94,7 @@ img: 'src/client/photos/rose_cabfranc.jpg'
 type: 'rose',
 price: '$20',
 varietal: 'Pinot Gris Rosé',
-description: 'string',
+description: 'Savory and clean with refreshing minerality and flavors of tea, peach and grapefruit.',
 img: 'src/client/photos/rose_pinotgris.jpg'
 },
 
@@ -102,7 +102,7 @@ img: 'src/client/photos/rose_pinotgris.jpg'
 type: 'white',
 price: '$25',
 varietal: 'Chardonnay',
-description: 'string',
+description: 'Dry and full-bodied with moderate acidity. Oak-aging lends notes of vanilla and cinnamon, amongst papaya and pineapple.',
 img: 'src/client/photos/white_chardonnay.jpg'
 },
 
@@ -110,7 +110,7 @@ img: 'src/client/photos/white_chardonnay.jpg'
 type: 'white',
 price: '$25',
 varietal: 'Gewürztraminer',
-description: 'string',
+description: 'Intense floral aromatics mingling with notes of lychee, rose and candied orange peel.',
 img: 'src/client/photos/white_gewurz.jpg'
 },
 
@@ -118,7 +118,7 @@ img: 'src/client/photos/white_gewurz.jpg'
 type: 'white',
 price: '$25',
 varietal: 'Pinot Blanc',
-description: 'string',
+description: 'Soft and fresh with aromas of white flowers, green apple and a hint of spice.',
 img: 'src/client/photos/white_pinotblanc.jpg'
 },
 
@@ -126,7 +126,7 @@ img: 'src/client/photos/white_pinotblanc.jpg'
 type: 'white',
 price: '$15',
 varietal: 'Pinot Gris',
-description: 'string',
+description: 'A nose redolent of ripe pear and peach. Moderate acidity showcasing honey and clove.',
 img: 'src/client/photos/white_pinotgris.jpg'
 },
 
@@ -134,7 +134,7 @@ img: 'src/client/photos/white_pinotgris.jpg'
 type: 'white',
 price: '$25',
 varietal: 'Grüner Veltliner',
-description: 'string',
+description: 'Flavors featuring grapefruit and necterine followed by iris, radish and ginger.',
 img: 'src/client/photos/white_gruner.jpg'
 },
 
@@ -142,7 +142,7 @@ img: 'src/client/photos/white_gruner.jpg'
 type: 'white',
 price: '$15',
 varietal: 'Dry Riesling',
-description: 'string',
+description: 'Acid-forward and refreshing. Notes of apple, lemon and baking spice.',
 img: 'src/client/photos/white_dryriesling.jpg'
 },
 
@@ -150,7 +150,7 @@ img: 'src/client/photos/white_dryriesling.jpg'
 type: 'sparkling',
 price: '$55',
 varietal: 'Blanc de Blanc',
-description: 'string',
+description: 'Brioche and lemon cream carried by a tight mousse and vibrant acidity.',
 img: 'src/client/photos/spk_chardonnay.jpg'
 },
 
@@ -158,7 +158,7 @@ img: 'src/client/photos/spk_chardonnay.jpg'
 type: 'sparkling',
 price: '$55',
 varietal: 'Blanc de Noir',
-description: 'string',
+description: 'Full-bodied and fruity. Clean red fruit followed by honey and apple.',
 img: 'src/client/photos/spk_pinotnoir.jpg'
 }
 

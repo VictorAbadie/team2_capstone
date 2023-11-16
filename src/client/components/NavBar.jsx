@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Login from './Login';
-import Register from './Register';
+// import LogIn from './SignInForm';
+// import SignUpForm from './SignUpForm';
 // import Cart from './components/Cart';
 import { useState, useEffect } from 'react';
 
