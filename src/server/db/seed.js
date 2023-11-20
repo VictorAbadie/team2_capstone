@@ -63,7 +63,7 @@ type: 'red',
 price: '$75',
 varietal: 'Cabernet Sauvignon',
 description: 'Full-bodied and dark, this wine showcases firm tannin and flavors of ceder, baking spices and leather.',
-img: 'src/client/photos/red_cabsauv.jpg'
+img: 'src/client/photos/red_cabsauv.jpeg'
 },
 
 {
@@ -71,7 +71,7 @@ type: 'red',
 price: '$30',
 varietal: 'Gamay Noir',
 description: 'Vibrant, with notes of cranberry, raspberry and black current and tingling acidity. ',
-img: 'src/client/photos/red_gamay.jpg'
+img: 'src/client/photos/red_gamay.jpeg'
 },
 
 {
@@ -79,7 +79,7 @@ type: 'rose',
 price: '$25',
 varietal: 'Pinot Noir Rosé',
 description: 'Fresh and delicate with hints of strawberry, lemon cream and rose petal.',
-img: 'src/client/photos/rose_pinotnoir.jpg'
+img: 'src/client/photos/rose_pinotnoir.jpeg'
 },
 
 {
@@ -103,7 +103,7 @@ type: 'white',
 price: '$25',
 varietal: 'Chardonnay',
 description: 'Dry and full-bodied with moderate acidity. Oak-aging lends notes of vanilla and cinnamon, amongst papaya and pineapple.',
-img: 'src/client/photos/white_chardonnay.jpg'
+img: 'src/client/photos/white_chardonnay.jpeg'
 },
 
 {
@@ -111,7 +111,7 @@ type: 'white',
 price: '$25',
 varietal: 'Gewürztraminer',
 description: 'Intense floral aromatics mingling with notes of lychee, rose and candied orange peel.',
-img: 'src/client/photos/white_gewurz.jpg'
+img: 'src/client/photos/white_gewurz.jpeg'
 },
 
 {
@@ -135,7 +135,7 @@ type: 'white',
 price: '$25',
 varietal: 'Grüner Veltliner',
 description: 'Flavors featuring grapefruit and necterine followed by iris, radish and ginger.',
-img: 'src/client/photos/white_gruner.jpg'
+img: 'src/client/photos/white_gruner.jpeg'
 },
 
 {
@@ -151,7 +151,7 @@ type: 'sparkling',
 price: '$55',
 varietal: 'Blanc de Blanc',
 description: 'Brioche and lemon cream carried by a tight mousse and vibrant acidity.',
-img: 'src/client/photos/spk_chardonnay.jpg'
+img: 'src/client/photos/spk_chardonnay.jpeg'
 },
 
 {
@@ -159,7 +159,7 @@ type: 'sparkling',
 price: '$55',
 varietal: 'Blanc de Noir',
 description: 'Full-bodied and fruity. Clean red fruit followed by honey and apple.',
-img: 'src/client/photos/spk_pinotnoir.jpg'
+img: 'src/client/photos/spk_pinotnoir.jpeg'
 }
 
 ]
