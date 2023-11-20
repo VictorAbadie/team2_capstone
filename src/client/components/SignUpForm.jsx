@@ -7,11 +7,19 @@ const SignUpForm = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [token, setToken]= useState(null)
+  const [birthday, setBirthday] = useState("");
+  const [token, setToken]= useState(null);
+
+  const ageCheck = (e) => {
+    const currentYear = new Date().getFullYear();
+    const year = e.target.value.split('-')[0];
+    const age = currentYear - year;
+    if (age < 21) setError("You Must Be 21 to Register");
+    }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const fetchToken = async (name, email, password, token) => {
+    const fetchToken = async (name, email, password, birthday, token) => {
     try {
       const response = await fetch('http://localhost:3000/api/users/register', {
         method: "POST",
@@ -21,7 +29,8 @@ const SignUpForm = () => {
         body: JSON.stringify({
               name,
               email,
-              password
+              password,
+              birthday
         })
         
       });
@@ -31,6 +40,7 @@ const SignUpForm = () => {
         setName("");
         setEmail("");
         setPassword("");
+        setBirthday("");
         // sessionStorage.setItem("token", result.data.token)
         // console.log(result);
         return result
@@ -43,30 +53,36 @@ const SignUpForm = () => {
     } catch (error) {
       console.log(error);
     }}
-    fetchToken(name, email, password, token)
+    fetchToken(name, email, password, birthday, token)
   }
 
   return (
     <>
-      <h2 className="Sign-Up">Sign Up! please </h2>
+      <h2 className="Sign-In">
+        Register below!<br/>
+        You must be at least 21 to register.</h2>
       {/* {successMessage && <p>{successMessage}</p>} */}
       {/* {error && <p> {error }</p>} */}
 
-      <form onSubmit={handleSubmit}>
+      <form className='styleForm' onSubmit={handleSubmit}>
         <label>
-        Name: <input value={name} type="text" onChange={(e) => setName(e.target.value)} minLength={3} required/> 
+        Name: <input className='input' value={name} type="text" onChange={(e) => setName(e.target.value)} minLength={3} required/> 
         </label>
           <br/>
           <label>
-        Email: <input value={email} type="text" onChange={(e) => setEmail(e.target.value)}/>  
+        Email: <input className='input' value={email} type="text" onChange={(e) => setEmail(e.target.value)}/>  
         </label>
           <br/>
           <label>
-        Password: <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} minLength={9} required/>
+        Password: <input className='input' type="password" value={password} onChange={(e) => setPassword(e.target.value)} minLength={9} required/>
         </label>
-        <br />
-        <button type="submit">SignUp</button>
-        <p>Already have an account? <a href="./login">SignIn</a> </p>
+          <br/>
+          <label>
+        Birthday: <input className='input' value={birthday} type='text' placeholder='mm/dd/yyyy' onChange={ageCheck}/>
+          </label>
+        <button className='button' type="submit">Sign Up</button>
+        <p>Already have an account?<br/>
+        <a href="./login">Sign In</a> </p>
       </form>
     </>
   )
