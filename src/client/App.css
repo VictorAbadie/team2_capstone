@@ -7,7 +7,7 @@
 }
 
 * {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  font-family: fantasy;
 }
 
 body {
@@ -17,7 +17,7 @@ body {
 /* wine containers styling */
 
 #allWinesCard {
-  border: 5px solid blue;
+  
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -27,22 +27,25 @@ body {
 .wineCard {
   display: flex;
   box-sizing: border-box;
+  border: 2px white solid;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   color: white;
-  border: 2px solid white;
+  font-size: 16pt;
   width: 20%;
   height: 500px;
-  padding: 30px;
+  padding: 80px;
   margin: 25px;
 }
 
 .detailsCard {
   display: flex;
   box-sizing: border-box;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   color: white;
-  border: 2px solid white;
+  text-decoration: none;
 }
 
 #img {
@@ -52,19 +55,44 @@ body {
   height: 80%;
   width: 60%;
 }
-/* navbar styling */
+
+#imgDetails {
+  height: 500px;
+  width: 400px;
+  margin: 50px;
+}
+
+header {
+  border-bottom: 5px rgb(55, 130, 94) solid;
+  border-top: 5px rgb(55, 130, 94) solid;
+  width: 100%;
+  height: 280px;
+  background-image: url(src/client/photos/vineyard_drawing.jpeg);
+  line-height: 0px;
+}
+.GLW {
+  color: black;
+  font-size: 60pt;
+  text-align: center;
+  font-style: italic;
+  padding-top: 20px;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 300px;
+}
 
 nav {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 25px;
   padding: 25px;
-  
 }
 
 .nav-item {
-  color: rgb(132, 175, 154);
+  color: rgb(55, 130, 94);
   font-size: 30px;
   text-decoration: none;
   padding: 10px;
@@ -72,19 +100,19 @@ nav {
 
 .button {
   background-color:black;
-  color: rgb(132, 175, 154);
+  color: rgb(55, 130, 94);
   font-size: medium;
-  align-content: center;
-  padding-left: 10px;
+  text-align: center;
   margin-top: 20px;
-  padding-right: 10px;
+  padding-top: 6px;
   height: 40px;
   margin: 25px;
   border-radius: 10%;
 }
 
 .button:hover {
-
+  background-color: rgb(55, 130, 94);
+  color: black;
 }
 
 .img {

@@ -13,6 +13,7 @@ const [varietal, setVarietal] = useState("");
 const [description, setDescription] = useState("");
 const [img, setImg] = useState(null);
 const [success, setSuccess] = useState(false);
+const [admin, setAdmin] = useState("");
 // const token = sessionStorage.getItem("token");
 
     try {
@@ -45,7 +46,7 @@ const [success, setSuccess] = useState(false);
 
 return (
     <>
-    {success && (
+    {success && admin && (
         <p> Wine Updated! </p>
         )}
             <form classname="styleForm">
