@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
-// const jwt = require('jsonwebtoken')
-// const {JWT_SECRET = "whateveriwant"} = process.env;
+import axios from "axios";
 
 const SignUpForm = () => {
   const [name, setName] = useState("");
@@ -11,7 +9,7 @@ const SignUpForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const fetchToken = async (name, email, password, token) => {
+    // const fetchToken = async (name, email, password, token) => {
     try {
       const response = await fetch('http://localhost:3000/api/users/register', {
         method: "POST",
@@ -37,15 +35,23 @@ const SignUpForm = () => {
       } else {
         console.log(token);
       }
-      // console.log(result);
-      // sessionStorage.setItem("token", result.data.token)
-      // return result
+    
     } catch (error) {
       console.log(error);
-    }}
-    fetchToken(name, email, password, token)
+    }
+    // fetchToken(name, email, password, token) | add a } above if you want to uncomment this out 
   }
 
+// const handleSubmit = async (e) => {
+//   e.preventDefault();
+//   axios.defaults.withCredentials = true;
+//   axios.post("http://localhost:3000/api/users/register", {
+//     name: name,
+//     email: email,
+//     password: password
+// }).then((res) => console.log(res))
+// .catch((error) => console.log(error))
+// }
   return (
     <>
       <h2 className="Sign-Up">Sign Up! please </h2>

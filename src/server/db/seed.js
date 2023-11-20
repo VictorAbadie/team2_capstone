@@ -8,26 +8,37 @@ const users = [
 name: 'Emily Johnson',
 email: 'emily@example.com',
 password: 'securepass',
+role: false,
 },
 {
 name: 'Liu Wei',
 email: 'liu@example.com',
 password: 'strongpass',
+role: false,
 },
 {
 name: 'Isabella García',
 email: 'bella@example.com',
 password: 'pass1234',
+role: false,
 },
 {
 name: 'Mohammed Ahmed',
 email: 'mohammed@example.com',
 password: 'mysecretpassword',
+role: false,
 },
 {
 name: 'John Smith',
 email: 'john@example.com',
 password: 'password123',
+role: false,
+},
+{
+  name: 'Admin',
+  email: 'admin@admin.com',
+  password: 'adminadmin',
+  role: true,
 },
 // Add more user objects as needed
 ];
@@ -120,7 +131,8 @@ CREATE TABLE users(
 id SERIAL PRIMARY KEY,
 name VARCHAR(255) DEFAULT 'name',
 email VARCHAR(255) UNIQUE NOT NULL,
-password VARCHAR(255) NOT NULL
+password VARCHAR(255) NOT NULL,
+role BOOLEAN NOT NULL
 );
 
 CREATE TABLE wines(
@@ -144,7 +156,8 @@ try {
 for (const user of users) {
 await createUser({name: user.name,
                   email: user.email,
-                  password: user.password});
+                  password: user.password,
+                  role: user.role});
 }
 console.log('Users data inserted successfully.');
 } catch (error) {
