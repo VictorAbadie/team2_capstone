@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from 'react';
 import { Card, Button, Form, Row, Col} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../CartContext';
-// import Alert from 'react-bootstrap/Alert';
 
 const Home = (props) => {  
   const [wines, setWines] = useState([]);

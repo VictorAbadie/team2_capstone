@@ -3,14 +3,14 @@ const bcrypt = require('bcrypt');
 const SALT_COUNT = 10;
 // import { useEffect, useState } from 'react';
 
-const createUser = async({ name='first last', email, password, birthday }) => {
+const createUser = async({ name='first last', email, password, role, birthday }) => {
     const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
     try {
         const { rows: [user ] } = await db.query(`
         INSERT INTO users(name, email, password, role, birthday)
         VALUES($1, $2, $3, $4, $5)
         ON CONFLICT (email) DO NOTHING
-        RETURNING *`, [name, email, hashedPassword]);
+        RETURNING *`, [name, email, hashedPassword, role, birthday]);
 
         return user;
     } catch (err) {
