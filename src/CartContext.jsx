@@ -1,5 +1,6 @@
 import {createContext, useState} from 'react';
 import { productsArray, getProductData } from './ productsStore'
+import { useEffect } from 'react'
 
 // export gives our application access to this variable
 export const CartContext = createContext ({
@@ -14,6 +15,25 @@ export const CartContext = createContext ({
 export function CartProvider({children}) {
     // Make a state that is specific to our Provider
     const [cartProducts, setCartProducts] = useState([]);
+    // Cart items stored in local storage
+    const localCart = localStorage.getItem("cart")
+    // Convert local cart items from string to object
+    const localObject = JSON.parse(localCart)
+    // useEffect should check to see if there is any data in local storage
+    useEffect(() => {
+    async function getCart(localCart) {
+        if (localCart) {
+            console.log(localCart);
+            console.log(localObject);
+            // If cart data is in local storage, set it to a cartproduct
+            setCartProducts(localObject);
+            return;
+        } else {
+            return;
+        }
+    }
+    getCart(localCart);
+}, [])
 
     // All we want to store in our cart is the id of and item and the quantity of them added / deleted {id: 1 , quantity: 2} ///// cart products array would look like [ { id: 1 , quantity: 2 }, {id: 2, quantity: 3} ]
 
