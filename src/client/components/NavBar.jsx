@@ -101,6 +101,17 @@ function NavbarComponent() {
 //           <Link to="/login" className="nav-item"> Sign In </Link>
 //           <Link to="/register" className="nav-item"> Register </Link>
 //           <Link to="/Cart" className="nav-item"> Cart </Link>
+
+        <header>
+          <h1 className='GLW'>Good Luck Wines</h1>
+          <h3 className='subtitle'>if one glass of wine is good for you, imagine what a whole bottle can do!</h3>
+        </header>
+        <nav>
+          <Link to="/" className="nav-item"> Home </Link>
+          <Link to="/login" className="nav-item"> Sign In </Link>
+          <Link to="/register" className="nav-item"> Register </Link>
+          <Link to="/Cart" className="nav-item"> Cart </Link>
+
           
 //         {/* <button className="button" onClick={Logout}>Logout</button> */}
 //         </nav>

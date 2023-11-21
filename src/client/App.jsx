@@ -7,9 +7,8 @@ import { Container } from 'react-bootstrap'
 import Cancel from '../pages/Cancel';
 import Success from '../pages/Success'
 import CartProvider from '../CartContext';
-
-// import Login from './components/SignInForm';
-// import SignUpForm from './components/SignUpForm';
+import Login from './components/SignInForm';
+import SignUpForm from './components/SignUpForm';
 import CreateWine from './components/CreateWine';
 import EditWine from './components/EditWine';
 import DetailedWine from './components/DetailedWine';
@@ -24,8 +23,8 @@ function App() {
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
-          {/* <Route path="/login" element={<Login />} />
-          <Route path='/register' element={<SignUpForm/> } /> */}
+          <Route path="/login" element={<Login />} />
+          <Route path='/register' element={<SignUpForm/> } />
           {/* <Route path="/profile" element={<Profile token={token}/>} /> */}
 
           {/* Protected Routes */}

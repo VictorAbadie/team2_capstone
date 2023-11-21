@@ -25,13 +25,12 @@ const DetailedWine = () => {
 
 return (
     <>
-        <div className="singleWineContainer"> 
-            <h2 className="detailsCard">
-                <img id="img" src={singleWine.img}></img>
-                {singleWine.type}
-                {singleWine.price}
-                {singleWine.varietal}
-                {singleWine.description}
+        <div className="detailsCard">   
+                <img id="imgDetails" src={singleWine.img}></img>
+            <h2>
+                {singleWine.price}<br></br>
+                {singleWine.varietal}<br></br>
+                {singleWine.description}<br></br>
             </h2>
         </div>
     </>

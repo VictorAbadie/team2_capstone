@@ -15,6 +15,7 @@ const CreateWine = () => {
     const [description, setDescription] = useState("");
     const [img, setImg] = useState(null);
     const [success, setSuccess] = useState(false);
+    const [admin, setAdmin] = useState("");
 
     const newWine = async() => {
         e.preventDefault();
@@ -50,7 +51,7 @@ const CreateWine = () => {
 
     return (
     <>
-        {success && (
+        {success && admin && (
         <p> Wine Created! </p>
         )}
             <form classname="styleForm">
