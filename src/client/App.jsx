@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 // import NavBar from './components/NavBar';
 import Home from './components/Home'
@@ -6,7 +6,7 @@ import NavbarComponent from './components/NavBar';
 import { Container } from 'react-bootstrap'
 import Cancel from '../pages/Cancel';
 import Success from '../pages/Success'
-import CartProvider from '../CartContext';
+import CartProvider, { CartContext } from '../CartContext';
 import Login from './components/SignInForm';
 import SignUpForm from './components/SignUpForm';
 import CreateWine from './components/CreateWine';
@@ -15,6 +15,13 @@ import DetailedWine from './components/DetailedWine';
 
 function App() {
   const [token, setToken] = useState(null);
+  const [cart, setCart] = useState([])
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+
   return (
     <>
     <CartProvider>
