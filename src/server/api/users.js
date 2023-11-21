@@ -32,8 +32,8 @@ usersRouter.get("/:id", async (req, res, next) => {
 });
 
 usersRouter.post("/login", async (req, res, next) => {
-  const { email, password, birthday } = req.body;
-  if (!email || !password || !birthday) {
+  const { email, password } = req.body;
+  if (!email || !password) {
     next({
       name: "MissingCredentialsError",
       message: "Please supply an email, password and birthday",
@@ -69,7 +69,7 @@ usersRouter.post("/login", async (req, res, next) => {
 });
 
 usersRouter.post("/register", async (req, res, next) => {
-  const { name, email, password, birthday } = req.body;
+  const { name, email, password, role, birthday } = req.body;
 
   try {
     const _user = await getUserByEmail(email);

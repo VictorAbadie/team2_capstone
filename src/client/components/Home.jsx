@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import Alert from 'react-bootstrap/Alert';
 
 const Home = () => {  
   const [wines, setWines] = useState([]);

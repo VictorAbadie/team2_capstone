@@ -7,19 +7,21 @@ const SignUpForm = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  // const [role, setRole] = useState(false);
   const [birthday, setBirthday] = useState("");
-  const [token, setToken]= useState(null);
-
-  const ageCheck = (e) => {
-    const currentYear = new Date().getFullYear();
-    const year = e.target.value.split('-')[0];
-    const age = currentYear - year;
-    if (age < 21) setError("You Must Be 21 to Register");
-    }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const fetchToken = async (name, email, password, birthday, token) => {
+
+    const ageCheck = () => {}
+      const currentYear = new Date().getFullYear();
+      console.log(currentYear)
+      const year = e.target.value;
+      const age = (currentYear - year);
+    ageCheck(currentYear, year, age);
+  } 
+
+    const fetchToken = async (name, email, password birthday) => {
     try {
       const response = await fetch('http://localhost:3000/api/users/register', {
         method: "POST",
@@ -44,17 +46,14 @@ const SignUpForm = () => {
         // sessionStorage.setItem("token", result.data.token)
         // console.log(result);
         return result
-      } else {
-        console.log(token);
-      }
+      } 
       // console.log(result);
       // sessionStorage.setItem("token", result.data.token)
       // return result
     } catch (error) {
       console.log(error);
     }}
-    fetchToken(name, email, password, birthday, token)
-  }
+    fetchToken(name, email, password, birthday);
 
   return (
     <>
@@ -66,19 +65,41 @@ const SignUpForm = () => {
 
       <form className='styleForm' onSubmit={handleSubmit}>
         <label>
-        Name: <input className='input' value={name} type="text" onChange={(e) => setName(e.target.value)} minLength={3} required/> 
+        Name: <input
+              className='input'
+              value={name} type="text"
+              onChange={(e) => setName(e.target.value)}
+              minLength={3}
+              required/> 
         </label>
           <br/>
           <label>
-        Email: <input className='input' value={email} type="text" onChange={(e) => setEmail(e.target.value)}/>  
+        Email: <input
+                className='input'
+                value={email}
+                type="text"
+                onChange={(e) => setEmail(e.target.value)}
+                required/>  
         </label>
           <br/>
           <label>
-        Password: <input className='input' type="password" value={password} onChange={(e) => setPassword(e.target.value)} minLength={9} required/>
+        Password: <input
+                  className='input'
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  minLength={9}
+                  required/>
         </label>
           <br/>
           <label>
-        Birthday: <input className='input' value={birthday} type='text' placeholder='mm/dd/yyyy' onChange={ageCheck}/>
+        Birthday: <input
+                  className='input'
+                  type='date'
+                  value={birthday}
+                  placeholder='mm/dd/yyyy'
+                  onChange={(e) => setBirthday(e.target.value)}
+                  required/>
           </label>
         <button className='button' type="submit">Sign Up</button>
         <p>Already have an account?<br/>
@@ -87,4 +108,5 @@ const SignUpForm = () => {
     </>
   )
 }
-export default SignUpForm;
+
+export default SignUpForm
