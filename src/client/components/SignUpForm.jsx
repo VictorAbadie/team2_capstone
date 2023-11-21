@@ -21,7 +21,7 @@ const SignUpForm = () => {
     ageCheck(currentYear, year, age);
   } 
 
-    const fetchToken = async (name, email, password birthday) => {
+    const fetchToken = async (name, email, password, birthday) => {
     try {
       const response = await fetch('http://localhost:3000/api/users/register', {
         method: "POST",
