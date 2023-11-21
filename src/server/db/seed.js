@@ -35,6 +35,7 @@ password: 'password123',
 
 const wines = [
 {
+id: "1",
 type: 'red',
 price: '$45',
 varietal: 'Cabernet Franc',
@@ -43,6 +44,7 @@ img: 'src/client/photos/red_cabfranc.jpg'
 },
 
 {
+id: "2",
 type: 'red',
 price: '$60',
 varietal: 'Syrah',
@@ -51,6 +53,7 @@ img: 'src/client/photos/red_syrah.jpg'
 },
 
 {
+id: "3",
 type: 'red',
 price: '$45',
 varietal: 'Malbec',
@@ -59,6 +62,7 @@ img: 'src/client/photos/red_malbec.jpg'
 },
 
 {
+id: "4",
 type: 'red',
 price: '$75',
 varietal: 'Cabernet Sauvignon',
@@ -67,6 +71,7 @@ img: 'src/client/photos/red_cabsauv.jpg'
 },
 
 {
+id: "5",
 type: 'red',
 price: '$30',
 varietal: 'Gamay Noir',
@@ -75,6 +80,7 @@ img: 'src/client/photos/red_gamay.jpg'
 },
 
 {
+id: "6",
 type: 'rose',
 price: '$25',
 varietal: 'Pinot Noir Rosé',
@@ -83,6 +89,7 @@ img: 'src/client/photos/rose_pinotnoir.jpg'
 },
 
 {
+id: "7",
 type: 'rose',
 price: '$25',
 varietal: 'Cabernet Franc Rosé',
@@ -91,6 +98,7 @@ img: 'src/client/photos/rose_cabfranc.jpg'
 },
 
 {
+id: "8",
 type: 'rose',
 price: '$20',
 varietal: 'Pinot Gris Rosé',
@@ -99,6 +107,7 @@ img: 'src/client/photos/rose_pinotgris.jpg'
 },
 
 {
+id: "9",
 type: 'white',
 price: '$25',
 varietal: 'Chardonnay',
@@ -107,6 +116,7 @@ img: 'src/client/photos/white_chardonnay.jpg'
 },
 
 {
+id: "10",
 type: 'white',
 price: '$25',
 varietal: 'Gewürztraminer',
@@ -115,6 +125,7 @@ img: 'src/client/photos/white_gewurz.jpg'
 },
 
 {
+id: "11",
 type: 'white',
 price: '$25',
 varietal: 'Pinot Blanc',
@@ -123,6 +134,7 @@ img: 'src/client/photos/white_pinotblanc.jpg'
 },
 
 {
+id: "12",
 type: 'white',
 price: '$15',
 varietal: 'Pinot Gris',
@@ -131,6 +143,7 @@ img: 'src/client/photos/white_pinotgris.jpg'
 },
 
 {
+id: "13",
 type: 'white',
 price: '$25',
 varietal: 'Grüner Veltliner',
@@ -139,6 +152,7 @@ img: 'src/client/photos/white_gruner.jpg'
 },
 
 {
+id: "14",
 type: 'white',
 price: '$15',
 varietal: 'Dry Riesling',
@@ -147,6 +161,7 @@ img: 'src/client/photos/white_dryriesling.jpg'
 },
 
 {
+id: "15",
 type: 'sparkling',
 price: '$55',
 varietal: 'Blanc de Blanc',
@@ -155,6 +170,7 @@ img: 'src/client/photos/spk_chardonnay.jpg'
 },
 
 {
+id: "1",
 type: 'sparkling',
 price: '$55',
 varietal: 'Blanc de Noir',
