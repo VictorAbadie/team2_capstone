@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 const DeleteWine = async() => {
     e.preventDefault();
+    const [admin, setAdmin] = useState("");
     const navigate = useNavigate();
-    const token = sessionStorage.getItem("token");
+    // const token = sessionStorage.getItem("token");
 
     try {
     const response = await fetch('http://localhost:3000/api/wines', {
@@ -31,11 +32,12 @@ const DeleteWine = async() => {
 
     return (
         <>
-        <button className="button"
-                id="delete-button" 
+        { admin && (
+            <button className="button" 
                 onClick={handleDelete}>
-          Delete Wine
-        </button>
+                Delete Wine
+            </button>
+        )}
         </>
     )
 }

@@ -5,11 +5,21 @@ const SignUpForm = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [token, setToken]= useState(null)
+  // const [role, setRole] = useState(false);
+  const [birthday, setBirthday] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const fetchToken = async (name, email, password, token) => {
+
+    const ageCheck = () => {}
+      const currentYear = new Date().getFullYear();
+      console.log(currentYear)
+      const year = e.target.value;
+      const age = (currentYear - year);
+    ageCheck(currentYear, year, age);
+  } 
+
+    const fetchToken = async (name, email, password birthday) => {
     try {
       const response = await fetch('http://localhost:3000/api/users/register', {
         method: "POST",
@@ -19,7 +29,8 @@ const SignUpForm = () => {
         body: JSON.stringify({
               name,
               email,
-              password
+              password,
+              birthday
         })
         
       });
@@ -29,18 +40,18 @@ const SignUpForm = () => {
         setName("");
         setEmail("");
         setPassword("");
+        setBirthday("");
         // sessionStorage.setItem("token", result.data.token)
         // console.log(result);
         return result
-      } else {
-        console.log(token);
-      }
-    
+      } 
+      // console.log(result);
+      // sessionStorage.setItem("token", result.data.token)
+      // return result
     } catch (error) {
       console.log(error);
-    }
-    // fetchToken(name, email, password, token) | add a } above if you want to uncomment this out 
-  }
+    }}
+    fetchToken(name, email, password, birthday);
 
 // const handleSubmit = async (e) => {
 //   e.preventDefault();
@@ -54,27 +65,56 @@ const SignUpForm = () => {
 // }
   return (
     <>
-      <h2 className="Sign-Up">Sign Up! please </h2>
+      <h2 className="Sign-In">
+        Register below!<br/>
+        You must be at least 21 to register.</h2>
       {/* {successMessage && <p>{successMessage}</p>} */}
       {/* {error && <p> {error }</p>} */}
 
-      <form onSubmit={handleSubmit}>
+      <form className='styleForm' onSubmit={handleSubmit}>
         <label>
-        Name: <input value={name} type="text" onChange={(e) => setName(e.target.value)} minLength={3} required/> 
+        Name: <input
+              className='input'
+              value={name} type="text"
+              onChange={(e) => setName(e.target.value)}
+              minLength={3}
+              required/> 
         </label>
           <br/>
           <label>
-        Email: <input value={email} type="text" onChange={(e) => setEmail(e.target.value)}/>  
+        Email: <input
+                className='input'
+                value={email}
+                type="text"
+                onChange={(e) => setEmail(e.target.value)}
+                required/>  
         </label>
           <br/>
           <label>
-        Password: <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} minLength={9} required/>
+        Password: <input
+                  className='input'
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  minLength={9}
+                  required/>
         </label>
-        <br />
-        <button type="submit">SignUp</button>
-        <p>Already have an account? <a href="./login">SignIn</a> </p>
+          <br/>
+          <label>
+        Birthday: <input
+                  className='input'
+                  type='date'
+                  value={birthday}
+                  placeholder='mm/dd/yyyy'
+                  onChange={(e) => setBirthday(e.target.value)}
+                  required/>
+          </label>
+        <button className='button' type="submit">Sign Up</button>
+        <p>Already have an account?<br/>
+        <a href="./login">Sign In</a> </p>
       </form>
     </>
   )
 }
-export default SignUpForm;
+
+export default SignUpForm

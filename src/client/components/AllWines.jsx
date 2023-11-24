@@ -10,7 +10,6 @@
 
 //             <button
 //               className="button"
-//               id="details-button"
 //               onClick={() => {
 //               navigate(`/${wines._id}`);
 //             }}>

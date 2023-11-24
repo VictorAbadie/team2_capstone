@@ -1,12 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { Card, Button, Form, Row, Col} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
-// import AllWines from './AllWines';
+import { CartContext } from '../../CartContext';
 
-const Home = () => {  
+const Home = (props) => {  
   const [wines, setWines] = useState([]);
   const [error, setError] = useState(null);
-console.log(wines)
   const navigate = useNavigate();
+  const product = props.products;
+  const cart = useContext(CartContext)
+  const productQuantity = cart.getProductQuantity(wines.id)
+  console.log(cart.items)
 
   useEffect(() => {
 
@@ -26,21 +30,109 @@ console.log(wines)
 
   return (
     <>
-        <div id="all-wines-container" key={wines.id}>
+        <div id="allWinesCard" key={wines.id}>
           {!error &&
               wines.map((wine) => {
                 return <>
-                  <p >{wine.varietal}</p>
-                  <p >{wine.price}</p>
-                  <img src={wine.img}></img>
-                  <button id="details-button"> See Details </button>
+                  <div className="wineCard">
+                    <p className="wineFacts">{wine.varietal}</p>
+                    <p className="wineFacts">{wine.price}</p>
+                    <img id="img" src={wine.img}></img>
+                    
+                    <button
+                      className="button"
+                      onClick={() => { navigate(`/${wine.id}`); }}> See Details 
+                    </button>
+
+                    <button
+                      className="button"
+                      onClick={() => cart.addOneToCart(wine.id)}> ( + ) In Cart: {productQuantity}
+                    </button>
+
+                    <button
+                      className="button"
+                      onClick={() => cart.removeOneFromCart(wine.id)}> Remove from Cart 
+                    </button>
+                      
+                      
+                  </div>
+                  
                 </>
   })}
-
-
         </div>
   </>
 
-  )}
-  
+  )
+
+
+//   return (
+//     // Everything lives within this card
+//     <Card>
+//         {/* And this card */}
+//         <Card.Body>
+//             {/* Gives us nicely styled card for our title */}
+//             <Card.Title> {wines.varietal} </Card.Title>
+//             <Card.Text>${wines.price}</Card.Text>
+//             {productQuantity > 0 ?
+//             <>
+//             <Form as={Row}>
+//             <Form.Label column="true" sm="6">In Cart: {productQuantity}</Form.Label>
+//             <Col sm="6">
+//                 <Button sm="6" onClick={() => cart.removeOneFromCart(wine.id)} className="mx-2">-</Button>
+//                 <Button sm="6" onClick={() => cart.addOneToCart(wine.id)} className="mx-2">+</Button>
+//             </Col>
+//             </Form>
+//             <Button variant="danger" onClick={() => cart.deleteFromCart(wines.id)}  className="my-2">Remove from Cart</Button>
+//             </>
+//             :
+//             <Button variant="primary" onClick={() => cart.addOneToCart(wines.id)}>Add to Cart</Button>
+
+//             }
+
+            
+//         </Card.Body>
+
+//     </Card>
+// )
+}
+
+
+
+
+
 export default Home
+
+
+// import {Row, Col} from 'react-bootstrap';
+// // This gives us access to the productsArray in our productsStore.js
+// import { productsArray } from '../../ productsStore'; 
+// import ProductCard from './ProductCard';
+
+
+
+
+// function Home() {
+//     return (
+//         <>
+//         {/* align="center is adjusting the header of the store to the center of the page and the className="p-3" is responsible for the padding between the header and the items */}
+//         <h1 align="center" className="p-3">Good Luck Wines</h1>
+//         {/* We're using rows and colums to align the products on our site. on xs screens, it'll show one column / row and on larger screens, 3 */}
+//         <Row xs={1} md={3} className="g-4">
+//             {/*Allows us to go through every element in the array and then allows us to specific logic based of the element that we're at but most importantly, allows us to return react.jsx for a certain element  */}
+//             {productsArray.map((product, idx) => (
+//                 // key={idx} gives specific keys to our columns and is best react practice
+//                             <Col align="center" key={idx}>
+//                                 {/* The first "product" defines the property and the second "product" looks at the product that we're mapping over //// we are able to access the product= because in our ProductCard.js, we have the variable product = props.product  */}
+//                             <ProductCard product={product}/>
+//                         </Col>
+//             ))}
+
+
+
+
+//         </Row>
+//         </>
+//     )
+// }
+
+// export default Home;

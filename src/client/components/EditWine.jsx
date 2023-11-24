@@ -13,7 +13,8 @@ const [varietal, setVarietal] = useState("");
 const [description, setDescription] = useState("");
 const [img, setImg] = useState(null);
 const [success, setSuccess] = useState(false);
-// const [authenticated, setAuthenticated] = useState(false);
+const [admin, setAdmin] = useState("");
+// const token = sessionStorage.getItem("token");
 
     try {
         const response = await fetch('http://localhost:3000/api/wines', {
@@ -45,7 +46,7 @@ const [success, setSuccess] = useState(false);
 
 return (
     <>
-    {success && (
+    {success && admin && (
         <p> Wine Updated! </p>
         )}
             <form classname="styleForm">
@@ -104,8 +105,7 @@ return (
                         />
                 </label>
 
-                <button classname="button"
-                        id="create-button"
+                <button className="button"
                         onClick={handleSubmit}>
                         Update Wine!
                 </button>

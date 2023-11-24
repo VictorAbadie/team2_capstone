@@ -14,6 +14,20 @@ const CreateWine = () => {
     const [description, setDescription] = useState("");
     const [img, setImg] = useState(null);
     const [success, setSuccess] = useState(false);
+    const [admin, setAdmin] = useState("");
+
+    useEffect(() => {
+        // Fetch isAdmin state from localStorage or sessionStorage, or wherever it is stored
+        const token = parseInt(localStorage.getItem('token'));
+        setIsAdmin(token);
+        if (!isNaN(token) && token === 6) {
+            // Set the user as admin
+            setIsAdmin(true);
+          } else {
+            // Set the user as non-admin
+            setIsAdmin(false);
+          }
+      }, []);
 
     useEffect(() => {
         // Fetch isAdmin state from localStorage or sessionStorage, or wherever it is stored

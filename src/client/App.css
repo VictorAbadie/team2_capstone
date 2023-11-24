@@ -7,51 +7,147 @@
 }
 
 * {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: fantasy;
 }
 
 body {
-  background-color: rgb(19, 19, 18);
+  background-color: black;
 }
 
-/* navbar styling */
+/* wine containers styling */
+
+#allWinesCard {
+  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.wineCard {
+  display: flex;
+  box-sizing: border-box;
+  border: 2px white solid;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  font-size: 16pt;
+  width: 20%;
+  height: 500px;
+  padding: 80px;
+  margin: 25px;
+}
+
+.detailsCard {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+}
+
+#img {
+  display: flex;
+  margin: 25px;
+  margin-left: 60px;
+  height: 80%;
+  width: 60%;
+}
+
+#imgDetails {
+  height: 500px;
+  width: 400px;
+  margin: 50px;
+}
+
+header {
+  border-bottom: 5px rgb(55, 130, 94) solid;
+  border-top: 5px rgb(55, 130, 94) solid;
+  width: 100%;
+  height: 280px;
+  background-image: url(src/client/photos/vineyard_drawing.jpeg);
+  line-height: 0px;
+}
+.GLW {
+  color: black;
+  font-size: 60pt;
+  text-align: center;
+  font-style: italic;
+  padding-top: 20px;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 300px;
+}
 
 nav {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 25px;
   padding: 25px;
-  
 }
 
 .nav-item {
-  color: rgb(132, 175, 154);
+  color: rgb(55, 130, 94);
   font-size: 30px;
   text-decoration: none;
   padding: 10px;
 }
 
 .button {
-  background-color:rgb(20, 71, 54);
-  color: white;
-  align-content: center;
-  padding-left: 20px;
-  padding-right: 20px;
-  height: 50px;
+  background-color:black;
+  color: rgb(55, 130, 94);
+  font-size: medium;
+  text-align: center;
+  padding-top: 6px;
+  height: 40px;
   margin: 25px;
+  border-radius: 10%;
 }
 
 .button:hover {
-
+  background-color: rgb(55, 130, 94);
+  color: black;
 }
 
-
+.img {
+  height: 250px;
+  width: 350px;
+  margin: 10px;
+}
 /* form styling */
 
-.styleForm {}
+.Sign-In {
+  color: white;
+  text-align: center;
+  padding: 25px;
+}
+.styleForm {
+  color: rgb(55, 130, 94);;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 15px;
+}
 
-.winePhoto {
-  height: 200px;
-  width 300px;
+.input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 25px;
+}
+
+a {
+  display: flex;
+  color: rgb(55, 130, 94);
+  justify-content: center;
+}
+
+a:hover {
+  color: white;
 }

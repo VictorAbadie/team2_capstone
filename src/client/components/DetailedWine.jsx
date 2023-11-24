@@ -1,64 +1,40 @@
-// // NOT TESTED YET//
 
-// import {useState, useEffect } from "react";
-// import { useNavigate, useParams } from "react-router-dom";
-// import { getWineById } from "src/server/api/wines.js";
+import {useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-// export default function DetailedWine() {
-//     //grab wineId from URL
-//     const wineId = useParams();
-    
-//     //grab user token from session storage
-//     const token = sessionStorage.getItem("token");
-    
-//     //will store the wine matching the url id
-//     const [singleWine, setSingleWine] = useState([]);
-    
-//     //will store any errors
-//     const [error, setError] = useState(null);
-    
-//     //navigates back home
-//     const navigate = useNavigate();
+const DetailedWine = () => {
+    const {id} = useParams();
+    const [singleWine, setSingleWine] = useState([]);
+    const [error, setError] = useState(null);
 
-//     /*
-//     Upon page load, fetch all wines, then filter out 
-//     all wines except the one whose id matches the url,
-//     Set that wine to singleWine, and later map over it to render the 
-//     full wine
-//   */
+    useEffect(() => {
+        
+        async function getSingleWineById() {
+        try {
+            const response = await fetch(
+                `http://localhost:3000/api/wines/${id}/`
+            );
+            const result = await response.json();
+        setSingleWine(result);
+        } catch (error) {
+            setError(error);
+        }
+    }
+    getSingleWineById();
+}, [])
 
-//     useEffect(() => {
-//         async function gettingWineById(token) {
-//         const APIResponse = await getWineById(token);
-//         if (APIResponse.success) {
-//             const thisWine = APIResponse.data.wines.filter((wine) => {
-//                 return wine._id === wineId.id;
-//             })
-//         setSingleWine(thisWine);
-//         return
-//         }
-//         setError(APIResponse.error.message);
-//         console.log("error!");
-//     }
-//     gettingWineById(token);
-// }, [wineId]);
+return (
+    <>
+        <div className="detailsCard">   
+                <img id="imgDetails" src={singleWine.img}></img>
+            <h2>
+                {singleWine.price}<br></br>
+                {singleWine.varietal}<br></br>
+                {singleWine.description}<br></br>
+            </h2>
+        </div>
+    </>
+)
+}
 
-// return (
-//     <>
-//         <div>
-//             <h2 className="singleWine">{wines.type}</h2>
-//             <h2 className="singleWine">{wines.price}</h2>
-//             <h2 className="singleWine">{wines.varietal}</h2>
-//             <h2 className="singleWine">{wines.description}</h2>
-//             <h2 className="singleWine">{wines.img}</h2>
-
-//             <button className="button" 
-//             onClick={() => { navigate("/"); }}>
-//           Back to All Wines
-//             </button>
-//         </div>
-
-    
-//     </>
-// )
-// }
+export default DetailedWine
