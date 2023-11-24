@@ -1,43 +1,40 @@
-const express = require('express');
+const express = require("express");
 const winesRouter = express.Router();
-const { requireUser } = require('./util');
+const { requireUser } = require("./util");
 
+const {
+  createWine,
+  getAllWines,
+  getWineById,
+  updateWine,
+  deleteWine,
+} = require("../db");
 
-const { createWine,
-        getAllWines,
-        getWineById,
-        updateWine,
-        deleteWine
-    } = require('../db');
-
-const jwt = require('jsonwebtoken')
-
+const jwt = require("jsonwebtoken");
 
 // GET route for wines DB
-winesRouter.get('/', async( req, res, next) => {
-try {
-const wines = await getAllWines();
-console.log(wines)
-res.send(wines);
-} catch (error) {
-    throw error
-}
-});
-
-// GET route for single wine in DB by ID
-winesRouter.get('/:id', async (req, res, next) => {
+winesRouter.get("/", async (req, res, next) => {
   try {
-      const wine = await getWineById(req.params.id);
-      res.send(wine);
+    const wines = await getAllWines();
+    console.log(wines);
+    res.send(wines);
   } catch (error) {
-      next(error);
+    throw error;
   }
 });
 
-
+// GET route for single wine in DB by ID
+winesRouter.get("/:id", async (req, res, next) => {
+  try {
+    const wine = await getWineById(req.params.id);
+    res.send(wine);
+  } catch (error) {
+    next(error);
+  }
+});
 
 // POST route for new wine in DB
-winesRouter.post('/', requireUser, async (req, res, next) => {
+winesRouter.post("/", requireUser, async (req, res, next) => {
   const { type, varietal, price, description, img = "" } = req.body;
 
   const postWine = {};
@@ -55,9 +52,10 @@ winesRouter.post('/', requireUser, async (req, res, next) => {
       res.send(wine);
     } else {
       next({
-        name: 'WineCreationError',
-        message: 'There was an error creating your wine post. Please try again.'
-      })
+        name: "WineCreationError",
+        message:
+          "There was an error creating your wine post. Please try again.",
+      });
     }
   } catch ({ name, message }) {
     next({ name, message });
@@ -65,7 +63,7 @@ winesRouter.post('/', requireUser, async (req, res, next) => {
 });
 
 // PATCH route for exisiting wine in DB
-winesRouter.patch('/:id', requireUser, async (req, res, next) => {
+winesRouter.patch("/:id", requireUser, async (req, res, next) => {
   const { id } = req.params;
   const { type, price, varietal, description, img } = req.body;
 
@@ -93,15 +91,15 @@ winesRouter.patch('/:id', requireUser, async (req, res, next) => {
 
   try {
     const originalWine = await getWineById(id);
-console.log(originalWine.id, id)
+    console.log(originalWine.id, id);
     if (originalWine.id == id) {
       const updatedWine = await updateWine(id, updateFields);
-      res.send({ post: updatedWine })
+      res.send({ post: updatedWine });
     } else {
       next({
-        name: 'Error',
-        message: 'Cannot update Wine'
-      })
+        name: "Error",
+        message: "Cannot update Wine",
+      });
     }
   } catch ({ name, message }) {
     next({ name, message });
@@ -109,16 +107,13 @@ console.log(originalWine.id, id)
 });
 
 // DELETE route for existing wine in the DB
-winesRouter.delete('/:id', requireUser, async (req, res, next) => {
+winesRouter.delete("/:id", requireUser, async (req, res, next) => {
   try {
-      const wine = await deleteWine(req.params.id);
-      res.send(wine);
+    const wine = await deleteWine(req.params.id);
+    res.send(wine);
   } catch (error) {
-      next(error);
+    next(error);
   }
 });
-
-
-
 
 module.exports = winesRouter;

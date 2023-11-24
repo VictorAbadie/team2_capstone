@@ -1,12 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 // import axios from "axios";
 
-function LogIn() {
+function LogIn({token, setToken}) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  // const [token, setToken]= useState(null)
-  // const [loginStatus, setLoginStatus] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -23,6 +21,9 @@ function LogIn() {
       })
     });
     const result = await response.json();
+    setToken(result)
+    localStorage.setItem("token", result.user.id)
+    console.log(token);
     console.log(result);
     return result
     } catch (error) {
