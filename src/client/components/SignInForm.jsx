@@ -1,11 +1,9 @@
 import React, {useState} from "react";
 
-function LogIn() {
+function LogIn({token, setToken}) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [token, setToken]= useState(null);
-  const [admin, setAdmin] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,10 +17,14 @@ function LogIn() {
           name,
           email,
           password,
-          admin
+          
       })
     });
     const result = await response.json();
+    console.log(result)
+    setToken(result)
+    localStorage.setItem("token", result.user.id)
+    console.log(token);
     console.log(result);
     return result
     } catch (error) {
@@ -30,6 +32,7 @@ function LogIn() {
     }
   }
 
+  
   return (
     <>
     <h2 className="Sign-In">Please log in!</h2>
@@ -37,7 +40,7 @@ function LogIn() {
     <label>
         Name: <input className='input' value={name} type="text" onChange={(e) => setName(e.target.value)}/>  
         </label>
-          <br/>
+          <br/> 
           <label>
         Email: <input className='input' value={email} type="text" onChange={(e) => setEmail(e.target.value)}/>  
         </label>
