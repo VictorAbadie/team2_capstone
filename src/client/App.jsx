@@ -11,6 +11,7 @@ import Login from './components/SignInForm';
 import SignUpForm from './components/SignUpForm';
 import CreateWine from './components/CreateWine';
 import EditWine from './components/EditWine';
+import DeleteWine from './components/DeleteWine';
 // import DetailedWine from './components/DetailedWine';
 import SetAdminFunction from './components/isAdmin';
 
@@ -55,8 +56,6 @@ function App() {
           {/* <Route path="/profile" element={<Profile token={token}/>} /> */}
 
           {/* Protected Routes */}
-          <Route path="/CreateWine" element={<CreateWine />} />
-          {/* <Route path="/DeleteWine" element={<DeleteWine />} /> */}
           {/* <Route path="/:id" element={<DetailedWine />} /> */}
           <Route path="/EditWine" element={<EditWine />} />
           <Route path="/success" element={<Success/>} /> 
@@ -64,7 +63,7 @@ function App() {
 
           <Route path='/admin' element={<SetAdminFunction isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} />
             <Route path="/CreateWine" element={<CreateWine isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} />
-          {/* <Route path="/DeleteWine" element={<DeleteWine isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} /> */}
+          <Route path="/DeleteWine" element={<DeleteWine isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} />
           {/* <Route path="/DetailedWine" element={<DetailedWine />} /> */}
           <Route path="/EditWine" element={<EditWine isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} />
         </Routes>

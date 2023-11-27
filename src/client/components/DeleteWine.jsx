@@ -1,10 +1,10 @@
 // NOT TESTED YET//
 
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const DeleteWine = async() => {
-    e.preventDefault();
-    const [admin, setAdmin] = useState("");
+    // e.preventDefault();
     const [isAdmin, setIsAdmin] = useState(false)
     const navigate = useNavigate();
     // const token = sessionStorage.getItem("token");
@@ -46,12 +46,13 @@ const DeleteWine = async() => {
 
     return (
         <>
-        { admin && (
+        { isAdmin ? (
+            <>
             <button className="button" 
-                onClick={handleDelete}>
+                onClick={DeleteWine}>
                 Delete Wine
             </button>
-        )}
+        </>) : (<p>You must be an admin to delete wines.</p>)}
         </>
     )
 }
