@@ -2,6 +2,7 @@
 import {useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+
 const DetailedWine = () => {
     const {id} = useParams();
     const [singleWine, setSingleWine] = useState([]);

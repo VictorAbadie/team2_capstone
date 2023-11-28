@@ -8,6 +8,7 @@ const {JWT_SECRET} = process.env;
 //this folder has routes AND fetch requests from the API
 
 
+
 //set `req.user` if possible, using token sent in the request header
 apiRouter.use(async (req, res, next) => {
   const prefix = 'Bearer';
