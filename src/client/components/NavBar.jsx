@@ -65,6 +65,7 @@ function NavbarComponent() {
         </Navbar.Collapse>
     </nav>
 
+
     </Navbar>
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>

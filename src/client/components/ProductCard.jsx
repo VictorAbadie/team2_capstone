@@ -4,6 +4,7 @@
 // import { useContext } from 'react';
 
 
+
 // function ProductCard(props) { //props.product is the product that we are selling
 //     const product = props.product;
 //     // Access our cart "object". Use content of cart context

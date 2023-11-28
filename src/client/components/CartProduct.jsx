@@ -5,6 +5,7 @@ import { useContext } from "react"
 // Gives us access to the function that gives us price and title of individual ids
 import { getProductData } from "../../ productsStore";
 
+
 function CartProduct(props) {
     const cart = useContext(CartContext);
     const id = props.id;

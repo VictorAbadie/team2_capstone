@@ -9,6 +9,7 @@ const {JWT_SECRET} = process.env;
 
 
 
+
 //set `req.user` if possible, using token sent in the request header
 apiRouter.use(async (req, res, next) => {
   const prefix = 'Bearer';

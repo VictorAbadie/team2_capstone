@@ -3,6 +3,7 @@ import { Card, Button, Form, Row, Col} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../CartContext';
 
+
 const Home = (props) => {  
   const [wines, setWines] = useState([]);
   const [error, setError] = useState(null);
