@@ -136,7 +136,7 @@ const CreateWine = () => {
                             
                             <button className="button"
                                     id="create-button"
-                                    onClick={CreateWine}>
+                                    onClick={newWine}>
                                     Create New Wine!
                             </button>
                         </form> 
