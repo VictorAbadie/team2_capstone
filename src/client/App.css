@@ -25,6 +25,7 @@ body {
 }
 
 .wineCard {
+  z-index: 100;
   display: flex;
   box-sizing: border-box;
   border: 2px white solid;
@@ -34,9 +35,16 @@ body {
   color: white;
   font-size: 16pt;
   width: 20%;
-  height: 500px;
+  height: 600px;
   padding: 80px;
-  margin: 25px;
+  margin: 15px;
+}
+
+#img {
+  z-index: -1;
+  height: 300px;
+  width: 200px;
+  margin-top: 150px;
 }
 
 .detailsCard {
@@ -45,15 +53,17 @@ body {
   flex-direction: row;
   justify-content: center;
   color: white;
+  line-height: 400%;
   text-decoration: none;
+  margin-bottom: 100px;
 }
 
-#img {
-  display: flex;
-  margin: 25px;
-  margin-left: 60px;
-  height: 80%;
-  width: 60%;
+.wineDesc {
+  height: 300px;
+  width: 350px;
+  line-height: 250%;
+  font-size: 20px;
+  margin-top: 200px;
 }
 
 #imgDetails {
@@ -86,8 +96,8 @@ header {
 nav {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  margin: 25px;
+  justify-content: center;
+  margin-bottom: 40px;
   padding: 25px;
 }
 
@@ -95,7 +105,8 @@ nav {
   color: rgb(55, 130, 94);
   font-size: 30px;
   text-decoration: none;
-  padding: 10px;
+  padding-left: 80px;
+  padding-right: 80px;
 }
 
 .button {
@@ -109,6 +120,24 @@ nav {
   border-radius: 10%;
 }
 
+.wineButton {
+  background-color:black;
+  color: rgb(55, 130, 94);
+  font-size: medium;
+  text-align: center;
+  margin: 15px;
+  width: 100px;
+  padding: 5px;
+}
+
+.cartButton {
+  background-color:black;
+  color: rgb(55, 130, 94);
+  font-size: medium;
+  text-align: center;
+  margin-right: 140px;
+  margin-left: 70px;
+}
 .button:hover {
   background-color: rgb(55, 130, 94);
   color: black;
