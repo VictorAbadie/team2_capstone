@@ -18,12 +18,12 @@ import SetAdminFunction from './components/isAdmin';
 
 
 function App() {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState([]);
   const [cart, setCart] = useState([])
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+  }, [setCart]);
 
 
   const [isAdmin, setIsAdmin] = useState(false) 

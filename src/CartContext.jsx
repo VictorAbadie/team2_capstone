@@ -33,7 +33,7 @@ export function CartProvider({children}) {
         }
     }
     getCart(localCart);
-}, [])
+}, []);
 
     // All we want to store in our cart is the id of and item and the quantity of them added / deleted {id: 1 , quantity: 2} ///// cart products array would look like [ { id: 1 , quantity: 2 }, {id: 2, quantity: 3} ]
 
@@ -41,9 +41,14 @@ export function CartProvider({children}) {
         // This allows us to loop through our products by id and find their quantity, but if we ask for an ID and we do NOT get an object of data, it will not ask for the quantity. This is in an effort to prevent errors.
        const quantity = cartProducts.find(product => product.id === id)?.quantity;
 
+       localStorage.setItem("cart", JSON.stringify(cartProducts))
+
+
         if (quantity === undefined) {
             return 0; 
         }
+
+        // localStorage.setItem("cart", JSON.stringify(cartProducts))
 
         return quantity;
     }
@@ -77,6 +82,8 @@ export function CartProvider({children}) {
         )
 
             }
+// Add string version to cart
+            localStorage.setItem("cart", JSON.stringify(cartProducts))
 
     }
 
@@ -99,6 +106,8 @@ export function CartProvider({children}) {
                     )
                 )
         }
+        localStorage.setItem("cart", JSON.stringify(cartProducts))
+
     }
 
 
