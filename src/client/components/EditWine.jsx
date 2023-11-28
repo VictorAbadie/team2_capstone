@@ -14,7 +14,6 @@ const [description, setDescription] = useState("");
 const [img, setImg] = useState(null);
 const [success, setSuccess] = useState(false);
 const [isAdmin, setIsAdmin] = useState(false)
-// const token = sessionStorage.getItem("token");
 
 useEffect(() => {
     // Fetch isAdmin state from localStorage or sessionStorage, or wherever it is stored

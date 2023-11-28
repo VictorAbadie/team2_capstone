@@ -56,7 +56,7 @@ const CreateWine = () => {
         setPrice("");
         setVarietal("");
         setDescription("");
-        setImg("");
+        setImg("")
         setSuccess(true);
 
     } catch (error) {
