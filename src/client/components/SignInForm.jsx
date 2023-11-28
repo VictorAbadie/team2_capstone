@@ -55,9 +55,6 @@ function LogIn({token, setToken}) {
         Password: <input className='input' type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         </label>
         <button className='button' type="submit"
-        onClick={(e) => { 
-          e.preventDefault();
-          navigate(`/`)}}
         >Log In</button>
 
         <p className='href'>Don't have an account?<a href="./register"> Sign Up</a> </p>
