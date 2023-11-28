@@ -7,9 +7,9 @@
 }
 
 
-* {
-  font-family: fantasy;
-}
+/* * {
+  font-family: ;
+} */
 
 body {
   background-color: black;
@@ -26,26 +26,27 @@ body {
 }
 
 .wineCard {
-  z-index: 100;
   display: flex;
   box-sizing: border-box;
   border: 2px white solid;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   text-align: center;
   color: white;
   font-size: 16pt;
   width: 20%;
-  height: 600px;
-  padding: 80px;
+  height: 400px;
   margin: 15px;
+  line-height: 0;
 }
 
 #homeImg {
   z-index: -1;
-  height: 1500px;
+  display: flex;
+  justify-content: center;
+  height: 150px;
   width: 100px;
-  margin-top: 30px;
+  margin: 30px;
 }
 
 .detailsCard {
@@ -131,14 +132,15 @@ nav {
   padding: 5px;
 }
 
-.cartButton {
+/* .cartButton {
   background-color:black;
   color: rgb(55, 130, 94);
   font-size: medium;
   text-align: center;
   margin-right: 140px;
   margin-left: 70px;
-}
+} */
+
 .button:hover {
   background-color: rgb(55, 130, 94);
   color: black;
@@ -180,4 +182,17 @@ a {
 
 a:hover {
   color: white;
+}
+
+/* cart styling */
+
+.cart {
+  color: white;
+  margin-top: 200px;
+  z-index: 100;
+}
+.btn-close {
+  height: 30px;
+  width: 30px;
+  color: black;
 }

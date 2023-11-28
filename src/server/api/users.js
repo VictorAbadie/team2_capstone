@@ -37,11 +37,11 @@ usersRouter.post("/login", async (req, res, next) => {
   if (!email || !password) {
     next({
       name: "MissingCredentialsError",
-      message: "Please supply an email, password and birthday",
+      message: "Please supply an email and password",
     });
   }
   try {
-    const user = await getUser({ email, password, /*birthday*/ });
+    const user = await getUser({ email, password});
     if (user) {
       const token = jwt.sign(
         {
@@ -71,7 +71,7 @@ usersRouter.post("/login", async (req, res, next) => {
 });
 
 usersRouter.post("/register", async (req, res, next) => {
-  const { name, email, password, birthday } = req.body;
+  const { name, email, password} = req.body;
 
   try {
     const _user = await getUserByEmail(email);
@@ -87,7 +87,6 @@ usersRouter.post("/register", async (req, res, next) => {
       name,
       email,
       password,
-      birthday,
     });
 
     const token = jwt.sign(

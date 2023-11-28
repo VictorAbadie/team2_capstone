@@ -1,3 +1,4 @@
+fiterationvic1
 import { useState, useEffect, useContext } from 'react';
 import { Card, Button, Form, Row, Col} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
@@ -7,32 +8,48 @@ import Logout from './logout';
 
 
 const Home = (props) => {  
+import { useState, useEffect, useContext } from "react";
+import { Card, Button, Form, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../CartContext";
+import AdminFooter from "./AdminFooter";
+import Logout from "./logout";
+
+const Home = (props) => {
+ main
   const [wines, setWines] = useState([]);
   const [error, setError] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
   const product = props.products;
-  const cart = useContext(CartContext)
-  const productQuantity = cart.getProductQuantity(wines.id)
-  console.log(cart.items)
+  const cart = useContext(CartContext);
+  const productQuantity = cart.getProductQuantity(wines.id);
+  // console.log(cart.items)
 
-  const token = localStorage.getItem('token');
-  console.log(token)
-
-  if (isAdmin) {< AdminFooter />
-} else if (token) { < Logout />}
+  const token = localStorage.getItem("token");
+  // console.log(token)
 
   useEffect(() => {
+    // Fetch isAdmin state from localStorage or sessionStorage, or wherever it is stored
+    const token = parseInt(localStorage.getItem("token"));
+    setIsAdmin(token);
+    if (!isNaN(token) && token === 6) {
+      // Set the user as admin
+      setIsAdmin(true);
+    } else {
+      // Set the user as non-admin
+      setIsAdmin(false);
+    }
+  }, []);
 
+  useEffect(() => {
     async function fetchAllWines() {
       try {
-        const response = await fetch(
-          `http://localhost:3000/api/wines`
-        );
-      const result = await response.json();
+        const response = await fetch(`http://localhost:3000/api/wines`);
+        const result = await response.json();
         setWines(result);
       } catch (error) {
-          setError(error);
+        setError(error);
       }
     }
     fetchAllWines();
@@ -40,85 +57,106 @@ const Home = (props) => {
 
   return (
     <>
+      {isAdmin ? (
+        <div id="allWinesCard" key={wines.id}>
+          <AdminFooter/>
+          {!error &&
+            wines.map((wine) => {
+              console.log("logged in as admin");
+
+              return (
+                <>
+                  <div className="wineCard">
+                    <img id="homeImg" src={wine.img}></img>
+                    <p className="wineFacts">{wine.varietal}</p>
+                    <p className="wineFacts">${wine.price}</p>
+
+                    <button
+                      className="button"
+                      onClick={() => {
+                        navigate(`/${wine.id}`);
+                      }}
+                    >
+                      {" "}
+                      See Details
+                    </button>
+                    
+                  </div>
+
+                </>
+                
+              );
+            })}
+        </div>
+      ) : (
+        // If the user is an admin everything above will render
         <div id="allWinesCard" key={wines.id}>
           {!error &&
-              wines.map((wine) => {
-                return <>
+            wines.map((wine) => {
+              console.log("logged in as user");
+              return (
+                <>
                   <div className="wineCard">
-                  <img id="homeImg" src={wine.img}></img>
+                    <img id="homeImg" src={wine.img}></img>
                     <p className="wineFacts">{wine.varietal}</p>
+                    <p className="wineFacts">${wine.price}</p>
+
+                    <button
+                      className="button"
+                      onClick={() => {
+                        navigate(`/${wine.id}`);
+                      }}
+                    >
+                      {" "}
+                      See Details
+                    </button>
                     
-                    <button
-                      className="wineButton"
-                      onClick={() => { navigate(`/${wine.id}`); }}> See Details 
-                    </button>
-
-                    <button
-                      className="wineButton"
-                      onClick={() => cart.addOneToCart(wine.id)}> ( + ) In Cart: {productQuantity}
-                    </button>
-
-                    <button
-                      className="wineButton"
-                      onClick={() => cart.removeOneFromCart(wine.id)}> Remove from Cart 
-                    </button>
-                      
-                      
                   </div>
-                  
+                  {/* if the user is not an admin everything above will render */}
                 </>
-  })}
+              );
+            })}
         </div>
-  </>
+      )}
+    </>
+  );
 
-  )
+  //   return (
+  //     // Everything lives within this card
+  //     <Card>
+  //         {/* And this card */}
+  //         <Card.Body>
+  //             {/* Gives us nicely styled card for our title */}
+  //             <Card.Title> {wines.varietal} </Card.Title>
+  //             <Card.Text>${wines.price}</Card.Text>
+  //             {productQuantity > 0 ?
+  //             <>
+  //             <Form as={Row}>
+  //             <Form.Label column="true" sm="6">In Cart: {productQuantity}</Form.Label>
+  //             <Col sm="6">
+  //                 <Button sm="6" onClick={() => cart.removeOneFromCart(wine.id)} className="mx-2">-</Button>
+  //                 <Button sm="6" onClick={() => cart.addOneToCart(wine.id)} className="mx-2">+</Button>
+  //             </Col>
+  //             </Form>
+  //             <Button variant="danger" onClick={() => cart.deleteFromCart(wines.id)}  className="my-2">Remove from Cart</Button>
+  //             </>
+  //             :
+  //             <Button variant="primary" onClick={() => cart.addOneToCart(wines.id)}>Add to Cart</Button>
 
+  //             }
 
-//   return (
-//     // Everything lives within this card
-//     <Card>
-//         {/* And this card */}
-//         <Card.Body>
-//             {/* Gives us nicely styled card for our title */}
-//             <Card.Title> {wines.varietal} </Card.Title>
-//             <Card.Text>${wines.price}</Card.Text>
-//             {productQuantity > 0 ?
-//             <>
-//             <Form as={Row}>
-//             <Form.Label column="true" sm="6">In Cart: {productQuantity}</Form.Label>
-//             <Col sm="6">
-//                 <Button sm="6" onClick={() => cart.removeOneFromCart(wine.id)} className="mx-2">-</Button>
-//                 <Button sm="6" onClick={() => cart.addOneToCart(wine.id)} className="mx-2">+</Button>
-//             </Col>
-//             </Form>
-//             <Button variant="danger" onClick={() => cart.deleteFromCart(wines.id)}  className="my-2">Remove from Cart</Button>
-//             </>
-//             :
-//             <Button variant="primary" onClick={() => cart.addOneToCart(wines.id)}>Add to Cart</Button>
+  //         </Card.Body>
 
-//             }
+  //     </Card>
+  // )
+};
 
-            
-//         </Card.Body>
-
-//     </Card>
-// )
-}
-
-
-
-
-
-export default Home
-
+export default Home;
 
 // import {Row, Col} from 'react-bootstrap';
 // // This gives us access to the productsArray in our productsStore.js
-// import { productsArray } from '../../ productsStore'; 
+// import { productsArray } from '../../ productsStore';
 // import ProductCard from './ProductCard';
-
-
-
 
 // function Home() {
 //     return (
@@ -135,9 +173,6 @@ export default Home
 //                             <ProductCard product={product}/>
 //                         </Col>
 //             ))}
-
-
-
 
 //         </Row>
 //         </>
