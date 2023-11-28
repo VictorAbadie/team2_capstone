@@ -1,19 +1,20 @@
 import React, {useState} from "react";
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 
 function LogIn({token, setToken}) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
 
   
   async function handleSubmit(e) {
     e.preventDefault();
+    const id = user.id;
     try {
-      console.log(name, password, email)
+      console.log(name, password, email, token, id)
       const response = await fetch('http://localhost:3000/api/users/login', {
       method: "POST",
       headers: {
@@ -23,7 +24,8 @@ function LogIn({token, setToken}) {
           name,
           email,
           password,
-          
+          token,
+          id
       })
     });
     const result = await response.json();
