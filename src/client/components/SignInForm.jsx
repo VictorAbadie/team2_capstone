@@ -1,15 +1,19 @@
 import React, {useState} from "react";
+import { useNavigate } from 'react-router-dom';
 
 
 function LogIn({token, setToken}) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
 
   
   async function handleSubmit(e) {
     e.preventDefault();
     try {
+      console.log(name, password, email)
       const response = await fetch('http://localhost:3000/api/users/login', {
       method: "POST",
       headers: {
@@ -50,7 +54,12 @@ function LogIn({token, setToken}) {
           <label>
         Password: <input className='input' type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         </label>
-        <button className='button' type="submit">Log In</button>
+        <button className='button' type="submit"
+        onClick={(e) => { 
+          e.preventDefault();
+          navigate(`/`)}}
+        >Log In</button>
+
         <p className='href'>Don't have an account?<a href="./register"> Sign Up</a> </p>
     </form>
     </>

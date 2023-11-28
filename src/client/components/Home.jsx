@@ -2,16 +2,25 @@ import { useState, useEffect, useContext } from 'react';
 import { Card, Button, Form, Row, Col} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../CartContext';
+import AdminFooter from './adminFooter';
+import Logout from './logout';
 
 
 const Home = (props) => {  
   const [wines, setWines] = useState([]);
   const [error, setError] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
   const product = props.products;
   const cart = useContext(CartContext)
   const productQuantity = cart.getProductQuantity(wines.id)
   console.log(cart.items)
+
+  const token = localStorage.getItem('token');
+  console.log(token)
+
+  if (isAdmin) {< AdminFooter />
+} else if (token) { < Logout />}
 
   useEffect(() => {
 
@@ -36,9 +45,8 @@ const Home = (props) => {
               wines.map((wine) => {
                 return <>
                   <div className="wineCard">
-                  <img id="img" src='src/client/photos/cluster_photoBW.jpeg'></img>
+                  <img id="homeImg" src={wine.img}></img>
                     <p className="wineFacts">{wine.varietal}</p>
-                    <p className="wineFacts">${wine.price}</p>
                     
                     <button
                       className="wineButton"

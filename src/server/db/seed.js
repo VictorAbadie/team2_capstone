@@ -47,7 +47,7 @@ const users = [
     password: 'adminadmin',
     role: true,
     birthday: '01/01/2000'
-  },
+  }
 // Add more user objects as needed
 ];
 
