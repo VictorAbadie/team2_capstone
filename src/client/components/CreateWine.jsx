@@ -73,9 +73,10 @@ const CreateWine = () => {
                 {success && (
                     <p> Wine Created! </p>
                     )}
-                        <form classname="styleForm">
+                        <form >
                             <label htmlFor="wineType">
-                                <input 
+                                <input  
+                                className="styleForm"
                                     id="type"
                                     type="text"
                                     name="type"
@@ -87,6 +88,7 @@ const CreateWine = () => {
             
                             <label htmlFor="winePrice">
                                 <input 
+                                className="styleForm"
                                     id="price"
                                     type="text"
                                     name="price"
@@ -98,6 +100,7 @@ const CreateWine = () => {
             
                             <label htmlFor="wineVarietal">
                                 <input 
+                                className="styleForm"
                                     id="varietal"
                                     type="text"
                                     name="varietal"
@@ -109,6 +112,7 @@ const CreateWine = () => {
             
                             <label htmlFor="wineDescription">
                                 <input 
+                                className="styleForm"
                                     id="description"
                                     type="text"
                                     name="description"
@@ -120,6 +124,7 @@ const CreateWine = () => {
             
                             <label htmlFor="wineImg">
                                 <input 
+                                className="styleForm"
                                     id="img"
                                     type="jpg"
                                     name="img"
@@ -129,7 +134,7 @@ const CreateWine = () => {
                                     />
                             </label>
                             
-                            <button classname="button"
+                            <button className="button"
                                     id="create-button"
                                     onClick={CreateWine}>
                                     Create New Wine!

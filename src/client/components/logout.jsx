@@ -1,6 +1,5 @@
 const Logout = () => {
-  sessionStorage.removeItem("token");
-  console.log("Logged Out")
+  localStorage.removeItem("token");
 };
 
 export default Logout;
