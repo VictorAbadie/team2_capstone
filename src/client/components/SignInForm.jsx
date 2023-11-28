@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { useNavigate } from 'react-router-dom';
 
+
 function LogIn({token, setToken}) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -8,6 +9,7 @@ function LogIn({token, setToken}) {
   const navigate = useNavigate();
 
 
+  
   async function handleSubmit(e) {
     e.preventDefault();
     try {

@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 // const jwt = require('jsonwebtoken')
 // const {JWT_SECRET = "whateveriwant"} = process.env;
 
+
+
 const SignUpForm = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");

@@ -16,6 +16,7 @@ throw err;
 }
 }
 
+
 // UPDATE a wine in the DB
 async function updateWine(id, fields = {}) {
   const setString = Object.keys(fields).map((key, index) => `"${key}"=$${index + 1}`).join(', ');

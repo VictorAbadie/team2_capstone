@@ -5,6 +5,7 @@ import { CartContext } from '../../CartContext';
 import AdminFooter from './adminFooter';
 import Logout from './logout';
 
+
 const Home = (props) => {  
   const [wines, setWines] = useState([]);
   const [error, setError] = useState(null);

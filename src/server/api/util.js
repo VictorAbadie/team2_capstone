@@ -10,6 +10,7 @@ function requireUser(req, res, next) {
     next();
   }
   
+  
   // takes required parameters as an array, returns a middleware function that sends back a message if they're not present
   const requiredNotSent = ({ requiredParams, atLeastOne = false }) => {
     return (req, res, next) => {

@@ -15,6 +15,7 @@ function dbFields(fields) {
   }
   
   
+  
   module.exports = {
     dbFields,
   }
