@@ -32,6 +32,7 @@ function NavbarComponent() {
       } else {
         // Set the user as non-admin
         setIsAdmin(false);
+        < Logout />
       }
   }, []);
 
@@ -79,13 +80,8 @@ function NavbarComponent() {
     </>
 
     </Navbar>
-fiterationvic1
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton >
-    <button className="button" navigate='/' onClick={Logout}>logout</button>
-    <Modal className="cart" show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
-main
           <Modal.Title>Shopping Cart</Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -102,11 +98,9 @@ main
           <Button className='button' onClick={checkout}>
             Purchase Items!
           </Button>
-fiterationvic1
           <Button className='button' onClick={handleClose}>
             Close Cart!
           </Button>
-main
           
         </>
       :
