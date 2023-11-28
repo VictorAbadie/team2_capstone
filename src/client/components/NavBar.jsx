@@ -78,7 +78,7 @@ function NavbarComponent() {
     </>
 
     </Navbar>
-    <Modal show={show} onHide={handleClose}>
+    <Modal className="cart" show={show} onHide={handleClose}>
       <Modal.Header closeButton>
           <Modal.Title>Shopping Cart</Modal.Title>
       </Modal.Header>

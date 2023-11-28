@@ -47,23 +47,12 @@ const Home = (props) => {
                   <div className="wineCard">
                   <img id="homeImg" src={wine.img}></img>
                     <p className="wineFacts">{wine.varietal}</p>
+                    <p className="wineFacts">${wine.price}</p>
                     
                     <button
-                      className="wineButton"
+                      className="button"
                       onClick={() => { navigate(`/${wine.id}`); }}> See Details 
                     </button>
-
-                    <button
-                      className="wineButton"
-                      onClick={() => cart.addOneToCart(wine.id)}> ( + ) In Cart: {productQuantity}
-                    </button>
-
-                    <button
-                      className="wineButton"
-                      onClick={() => cart.removeOneFromCart(wine.id)}> Remove from Cart 
-                    </button>
-                      
-                      
                   </div>
                   
                 </>

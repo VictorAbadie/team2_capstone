@@ -1,13 +1,16 @@
 
-import {useState, useEffect } from "react";
+import {useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { CartContext } from '../../CartContext';
 
-
-
-const DetailedWine = () => {
+const DetailedWine = (props) => {
     const {id} = useParams();
+    const cart = useContext(CartContext);
     const [singleWine, setSingleWine] = useState([]);
     const [error, setError] = useState(null);
+    const productQuantity = cart.getProductQuantity(singleWine.id);
+    const product = props.products;
+    
 
     useEffect(() => {
         
@@ -35,6 +38,15 @@ return (
             </h2>
             <p className="wineDesc">{singleWine.description}</p>
             
+            <button
+                      className="button"
+                      onClick={() => cart.addOneToCart(singleWine.id)}> Add to Cart
+                    </button>
+
+                    <button
+                      className="button"
+                      onClick={() => cart.removeOneFromCart(singleWine.id)}> Remove from Cart 
+                    </button>
         </div>
     </>
 )
