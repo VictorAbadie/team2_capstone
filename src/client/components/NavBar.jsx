@@ -94,7 +94,7 @@ function NavbarComponent() {
 
     </Modal>
     </>
-};
+)};
         
         
 
