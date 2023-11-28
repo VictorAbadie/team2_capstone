@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import {Button, Container, Navbar, Modal } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, Navbar, Modal } from 'react-bootstrap';
+// import Logout from './logout';
 import { CartContext } from "../../CartContext";
 import CartProduct from "./CartProduct";
 
+// deleted Button and Container from react-bootstrap import line
 
 // import Login from './components/SignInForm';
 // import SignUpForm from './components/SignUpForm';
@@ -41,26 +42,29 @@ function NavbarComponent() {
 
   return (
     <>
-            <header>
+    <header>
           <h1 className='GLW'>Good Luck Wines</h1>
-          <h3 className='subtitle'>if one glass of wine is good for you, imagine what a whole bottle can do!</h3>
+          <h3 className='subtitle'>If one glass of wine is good for you, imagine what a whole bottle can do!</h3>
         </header>
-        <nav>
-          <Link to="/" className="nav-item"> Home </Link>
-          <Link to="/login" className="nav-item"> Sign In </Link>
-          <Link to="/register" className="nav-item"> Register </Link>
-          <Link to="/Cart" className="nav-item"> Cart </Link>
-
-          
-      {/* <button className="button" onClick={Logout}>Logout</button> */}
-      </nav>
 
     <Navbar expand="sm">
-        <Navbar.Brand href="/">Home</Navbar.Brand>
+    <nav>
+          <Link to="/" className="nav-item">Home</Link>
+          <Link to="/login" className="nav-item">Sign In</Link>
+          <Link to="/register" className="nav-item">Register</Link>
+          <br/>
+//         
+          {/* if (sessionStorage.token) {
+            return (
+            <button className="button" onClick={Logout}>Logout</button>)} */}
+//         
+        {/* <Navbar.Brand href="/">Home</Navbar.Brand> */}
         {/* <Navbar.Toggle/> */}
-        <Navbar.Collapse className="justify-content-end">
-          <Button onClick={handleShow}>Cart: ({productsCount} Items)</Button>
+        <Navbar.Collapse>
+          <Button className='cartButton' onClick={handleShow}>Cart: ({productsCount} Items)</Button>
         </Navbar.Collapse>
+    </nav>
+
     </Navbar>
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -77,7 +81,7 @@ function NavbarComponent() {
 
           <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
 
-          <Button variant="success" onClick={checkout}>
+          <Button className='button' onClick={checkout}>
             Purchase Items!
           </Button>
         </>
@@ -90,47 +94,7 @@ function NavbarComponent() {
 
     </Modal>
     </>
-
-  )
-}
-
-
-// const NavBar = () => {
-//   const [signedIn, setSignedIn] = useState(false)
-   
-//   useEffect(() => {  
-//     async function renderNavBar() {
-//       const token = sessionStorage.getItem("token")
-//       if (token) { 
-//         console.log("signed in")
-//         setSignedIn(true);
-//   }}
-//   renderNavBar()
-//     },[signedIn]);
-
-//   return (
-//     <>
-//         <nav>
-//           <Link to="/" className="nav-item"> Home </Link>
-//           <Link to="/login" className="nav-item"> Sign In </Link>
-//           <Link to="/register" className="nav-item"> Register </Link>
-//           <Link to="/Cart" className="nav-item"> Cart </Link>
-          <>
-        <header>
-          <h1 className='GLW'>Good Luck Wines</h1>
-          <h3 className='subtitle'>if one glass of wine is good for you, imagine what a whole bottle can do!</h3>
-        </header>
-        <nav>
-          <Link to="/" className="nav-item"> Home </Link>
-          <Link to="/login" className="nav-item"> Sign In </Link>
-          <Link to="/register" className="nav-item"> Register </Link>
-          <Link to="/Cart" className="nav-item"> Cart </Link>
-
-          
-//         {/* <button className="button" onClick={Logout}>Logout</button> */}
-//         </nav>
-//         </>
-//         };
+};
         
         
 

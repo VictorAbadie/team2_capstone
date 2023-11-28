@@ -28,10 +28,11 @@ return (
         <div className="detailsCard">   
                 <img id="imgDetails" src={singleWine.img}></img>
             <h2>
-                {singleWine.price}<br></br>
                 {singleWine.varietal}<br></br>
-                {singleWine.description}<br></br>
+                ${singleWine.price}<br></br>
             </h2>
+            <p className="wineDesc">{singleWine.description}</p>
+            
         </div>
     </>
 )
