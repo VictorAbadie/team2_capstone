@@ -131,14 +131,12 @@ const CreateWine = () => {
                             
                             <button classname="button"
                                     id="create-button"
-                                    onClick={CreateWine}>
+                                    onClick={newWine}>
                                     Create New Wine!
                             </button>
-                        </form> 
+                        </form>
                         </>
         ) : (<p>you must be an admin to create a wine.</p>)}
-        
-          </>
-          )}
-
-    export default CreateWine;
+    </>)
+}
+    export default CreateWine
