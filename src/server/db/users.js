@@ -8,7 +8,7 @@ const createUser = async({ name='first last', email, password, role }) => {
     try {
         const { rows: [user ] } = await db.query(`
         INSERT INTO users(name, email, password, role)
-        VALUES($1, $2, $3, $4, $5)
+        VALUES($1, $2, $3, $4)
         ON CONFLICT (email) DO NOTHING
         RETURNING *`, [name, email, hashedPassword, role]);
 

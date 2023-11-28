@@ -10,43 +10,37 @@ const users = [
   name: 'Emily Johnson',
   email: 'emily@example.com',
   password: 'securepass',
-  role: false,
-  birthday: '03/21/1976'
+  role: false
   },
   {
   name: 'Liu Wei',
   email: 'liu@example.com',
   password: 'strongpass',
-  role: false,
-  birthday: '12/24/1994'
+  role: false
   },
   {
   name: 'Isabella García',
   email: 'bella@example.com',
   password: 'pass1234',
-  role: false,
-  birthday: '06/11/1985'
+  role: false
   },
   {
   name: 'Mohammed Ahmed',
   email: 'mohammed@example.com',
   password: 'mysecretpassword',
-  role: false,
-  birthday: '10/08/2001'
+  role: false
   },
   {
   name: 'John Smith',
   email: 'john@example.com',
   password: 'password123',
-  role: false,
-  birthday: '05/19/1999'
+  role: false
   },
   {
     name: 'Admin',
     email: 'admin@admin.com',
     password: 'adminadmin',
-    role: true,
-    birthday: '01/01/2000'
+    role: true
   }
 // Add more user objects as needed
 ];
@@ -221,8 +215,7 @@ const createTables = async () => {
   name VARCHAR(255) DEFAULT 'name',
   email VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(255) NOT NULL,
-  role BOOLEAN,
-  birthday VARCHAR(255) 
+  role BOOLEAN 
   );
 
 CREATE TABLE wines(
@@ -246,8 +239,7 @@ const insertUsers = async () => {
   await createUser({name: user.name,
                     email: user.email,
                     password: user.password,
-                    role: user.role,
-                    birthday: user.birthday
+                    role: user.role
                   });
   }
   console.log('Users data inserted successfully.');
