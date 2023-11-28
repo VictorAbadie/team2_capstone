@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { Card, Button, Form, Row, Col} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../CartContext';
-import AdminFooter from './adminFooter';
+// import AdminFooter from './adminFooter';
 import Logout from './logout';
 
 
@@ -19,8 +19,23 @@ const Home = (props) => {
   const token = localStorage.getItem('token');
   console.log(token)
 
-  if (isAdmin) {< AdminFooter />
-} else if (token) { < Logout />}
+//   if (isAdmin) {< AdminFooter />
+// } else if (token) { < Logout />}
+
+
+useEffect(() => {
+  // Fetch isAdmin state from localStorage or sessionStorage, or wherever it is stored
+  const token = parseInt(localStorage.getItem('token'));
+  setIsAdmin(token);
+  if (!isNaN(token) && token === 6) {
+      // Set the user as admin
+      setIsAdmin(true);
+    } else {
+      // Set the user as non-admin
+      setIsAdmin(false);
+    }
+}, []);
+
 
   useEffect(() => {
 
@@ -40,24 +55,47 @@ const Home = (props) => {
 
   return (
     <>
-        <div id="allWinesCard" key={wines.id}>
-          {!error &&
-              wines.map((wine) => {
-                return <>
-                  <div className="wineCard">
-                  <img id="homeImg" src={wine.img}></img>
-                    <p className="wineFacts">{wine.varietal}</p>
-                    <p className="wineFacts">${wine.price}</p>
-                    
-                    <button
-                      className="button"
-                      onClick={() => { navigate(`/${wine.id}`); }}> See Details 
-                    </button>
-                  </div>
-                  
-                </>
-  })}
-        </div>
+    {isAdmin ? (
+      <div id="allWinesCard" key={wines.id}>
+      {!error &&
+          wines.map((wine) => {
+            return <>
+              <div className="wineCard">
+              <img id="homeImg" src={wine.img}></img>
+                <p className="wineFacts">{wine.varietal}</p>
+                <p className="wineFacts">${wine.price}</p>
+                
+                <button
+                  className="button"
+                  onClick={() => { navigate(`/${wine.id}`); }}> See Details 
+                </button>
+              </div>
+              
+            </>
+})}
+    </div>
+    )
+    // If the user is an admin everything above will render
+    : 
+    (<div id="allWinesCard" key={wines.id}>
+    {!error &&
+        wines.map((wine) => {
+          return <>
+            <div className="wineCard">
+            <img id="homeImg" src={wine.img}></img>
+              <p className="wineFacts">{wine.varietal}</p>
+              <p className="wineFacts">${wine.price}</p>
+              
+              <button
+                className="button"
+                onClick={() => { navigate(`/${wine.id}`); }}> See Details 
+              </button>
+            </div>
+            {/* if the user is not an admin everything above will render */}
+          </>
+})}
+  </div>)}
+        
   </>
 
   )

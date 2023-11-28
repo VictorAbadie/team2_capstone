@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button, Navbar, Modal } from 'react-bootstrap';
 import Logout from './logout';
-import AdminFooter from "./adminFooter";
+// import AdminFooter from "./adminFooter";
 import { CartContext } from "../../CartContext";
 import CartProduct from "./CartProduct";
 
@@ -30,7 +30,7 @@ function NavbarComponent() {
       } else {
         // Set the user as non-admin
         setIsAdmin(false);
-        < Logout />
+        // < Logout />
       }
   }, []);
 
