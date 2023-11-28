@@ -94,35 +94,7 @@ function NavbarComponent() {
 
     </Modal>
     </>
-
-  )
-}
-
-
-// const NavBar = () => {
-//   const [signedIn, setSignedIn] = useState(false)
-   
-//   useEffect(() => {  
-//     async function renderNavBar() {
-//       const token = sessionStorage.getItem("token")
-//       if (token) { 
-//         console.log("signed in")
-//         setSignedIn(true);
-//   }}
-//   renderNavBar()
-//     },[signedIn]);
-
-//   return (
-//     <>
-//         <nav>
-//           <Link to="/" className="nav-item"> Home </Link>
-//           <Link to="/login" className="nav-item"> Sign In </Link>
-//           <Link to="/register" className="nav-item"> Register </Link>
-//           <Link to="/Cart" className="nav-item"> Cart </Link>
-
-        
-//         </>)
-//         };
+};
         
         
 
