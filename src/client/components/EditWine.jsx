@@ -1,17 +1,15 @@
 // NOT TESTED YET//
 
 import { useState, useEffect } from "react";
-// import { updateWine } from "../";
 
 //uses the token to verify admin
 const EditWine = async() => {
-    e.preventDefault();
 //these track the input for each field
 const [type, setType] = useState("");
 const [price, setPrice] = useState("");
 const [varietal, setVarietal] = useState("");
 const [description, setDescription] = useState("");
-const [img, setImg] = useState(null);
+// const [img, setImg] = useState(null);
 const [success, setSuccess] = useState(false);
 const [isAdmin, setIsAdmin] = useState(false)
 
@@ -40,7 +38,6 @@ useEffect(() => {
             price,
             varietal,
             description,
-            img
         })
     });
     const result = await response.json();
@@ -50,7 +47,6 @@ useEffect(() => {
         setPrice("");
         setVarietal("");
         setDescription("");
-        setImg("");
         setSuccess(true);
 
     } catch (error) {
@@ -106,17 +102,6 @@ return (
                             placeholder="description"
                             required
                             onChange={(e) => setDescription(e.target.value)}
-                            />
-                    </label>
-    
-                    <label htmlFor="wineImg">
-                        <input 
-                            id="img"
-                            type="jpg"
-                            name="img"
-                            placeholder="img"
-                            required
-                            onChange={(e) => setImg(e.target.value)}
                             />
                     </label>
     

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button, Navbar, Modal } from 'react-bootstrap';
-// import Logout from './logout';
+import Logout from './logout';
+import AdminFooter from "./adminFooter";
 import { CartContext } from "../../CartContext";
 import CartProduct from "./CartProduct";
 
@@ -13,10 +14,25 @@ import CartProduct from "./CartProduct";
 import { useState, useEffect, useContext } from 'react';
 
 function NavbarComponent() {
-  const cart = useContext(CartContext)
+  const cart = useContext(CartContext);
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    // Fetch isAdmin state from localStorage or sessionStorage, or wherever it is stored
+    const token = parseInt(localStorage.getItem('token'));
+    setIsAdmin(token);
+    if (!isNaN(token) && token === 6) {
+        // Set the user as admin
+        setIsAdmin(true);
+      } else {
+        // Set the user as non-admin
+        setIsAdmin(false);
+        < Logout />
+      }
+  }, []);
 
   const checkout = async () => {
     await fetch("http://localhost:4000/checkout", {
@@ -48,22 +64,18 @@ function NavbarComponent() {
         </header>
 
     <Navbar expand="sm">
+      <>
     <nav>
           <Link to="/" className="nav-item">Home</Link>
           <Link to="/login" className="nav-item">Sign In</Link>
-          <Link to="/register" className="nav-item">Register</Link>
-          <br/>
-//         
-          {/* if (sessionStorage.token) {
-            return (
-            <button className="button" onClick={Logout}>Logout</button>)} */}
-//         
+          <Link to="/register" className="nav-item">Register</Link>              
         {/* <Navbar.Brand href="/">Home</Navbar.Brand> */}
         {/* <Navbar.Toggle/> */}
         <Navbar.Collapse>
           <Button className='cartButton' onClick={handleShow}>Cart: ({productsCount} Items)</Button>
         </Navbar.Collapse>
     </nav>
+    </>
 
     </Navbar>
     <Modal show={show} onHide={handleClose}>
