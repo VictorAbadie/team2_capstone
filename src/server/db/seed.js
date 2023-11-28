@@ -66,7 +66,7 @@ id: "2",
 type: 'red',
 price: 60,
 varietal: 'Syrah',
-description: 'Dry, full-bodied, opaque wine, with brisk acidity and notes of bacon, red fruits and violets.',
+description: 'Dry, full-bodied, opaque wine with notes of bacon, red fruits and violets.',
 img: 'src/client/photos/red_syrah.jpg'
 },
 

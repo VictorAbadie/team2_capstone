@@ -35,22 +35,22 @@ const Home = (props) => {
               wines.map((wine) => {
                 return <>
                   <div className="wineCard">
+                  <img id="img" src='src/client/photos/cluster_photoBW.jpeg'></img>
                     <p className="wineFacts">{wine.varietal}</p>
-                    <p className="wineFacts">{wine.price}</p>
-                    <img id="img" src={wine.img}></img>
+                    <p className="wineFacts">${wine.price}</p>
                     
                     <button
-                      className="button"
+                      className="wineButton"
                       onClick={() => { navigate(`/${wine.id}`); }}> See Details 
                     </button>
 
                     <button
-                      className="button"
+                      className="wineButton"
                       onClick={() => cart.addOneToCart(wine.id)}> ( + ) In Cart: {productQuantity}
                     </button>
 
                     <button
-                      className="button"
+                      className="wineButton"
                       onClick={() => cart.removeOneFromCart(wine.id)}> Remove from Cart 
                     </button>
                       
