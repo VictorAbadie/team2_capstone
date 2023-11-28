@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { Card, Button, Form, Row, Col} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../CartContext';
-import AdminFooter from './adminFooter';
+// import AdminFooter from './adminFooter';
 import Logout from './logout';
 
 
