@@ -48,7 +48,7 @@ export function CartProvider({children}) {
             return 0; 
         }
 
-        // localStorage.setItem("cart", JSON.stringify(cartProducts))
+        localStorage.setItem("cart", JSON.stringify(cartProducts))
 
         return quantity;
     }
