@@ -3,7 +3,6 @@ import { Card, Button, Form, Row, Col} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../CartContext';
 import AdminFooter from './AdminFooter';
-import Logout from './logout';
 
 
 const Home = (props) => {
@@ -69,6 +68,13 @@ const Home = (props) => {
                       See Details
                     </button>
                   
+                    <button
+                      className="button"
+                      id="homeCartButton"
+                      onClick={() =>
+                        cart.addOneToCart(wine.id)}>
+                        Add to Cart
+                    </button>
                     
                   </div>
 

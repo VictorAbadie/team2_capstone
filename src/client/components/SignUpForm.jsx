@@ -8,21 +8,11 @@ const SignUpForm = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  // const [role, setRole] = useState(false);
-  // const [birthday, setBirthday] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // const ageCheck = () => {}
-    //   const currentYear = new Date().getFullYear();
-    //   console.log(currentYear)
-    //   const year = e.target.value;
-    //   const age = (currentYear - year);
-    // ageCheck(currentYear, year, age);
-   
-
-    const fetchToken = async (name, email, password /*birthday*/) => {
+    const fetchToken = async (name, email, password ) => {
     try {
       const response = await fetch('http://localhost:3000/api/users/register', {
         method: "POST",
@@ -33,7 +23,6 @@ const SignUpForm = () => {
               name,
               email,
               password,
-              // birthday
         })
         
       });
@@ -43,18 +32,12 @@ const SignUpForm = () => {
         setName("");
         setEmail("");
         setPassword("");
-        // setBirthday("");
-        // sessionStorage.setItem("token", result.data.token)
-        // console.log(result);
         return result
       } 
-      // console.log(result);
-      // sessionStorage.setItem("token", result.data.token)
-      // return result
     } catch (error) {
       console.log(error);
     }}
-    fetchToken(name, email, password, /*birthday*/);
+    fetchToken(name, email, password);
   }
   return (
     <>
@@ -93,15 +76,6 @@ const SignUpForm = () => {
                   required/>
         </label>
           <br/>
-          {/* <label>
-        Birthday: <input
-                  className='input'
-                  type='date'
-                  value={birthday}
-                  placeholder='mm/dd/yyyy'
-                  onChange={(e) => setBirthday(e.target.value)}
-                  required/>
-          </label> */}
         <button className='button' type="submit">Sign Up</button>
         <p>Already have an account?<br/>
         <a href="./login">Sign In</a> </p>

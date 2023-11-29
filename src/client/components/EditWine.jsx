@@ -12,6 +12,8 @@ const [description, setDescription] = useState("");
 const [success, setSuccess] = useState(false);
 const [isAdmin, setIsAdmin] = useState(true)
 
+
+
 useEffect(() => {
     // Fetch isAdmin state from localStorage or sessionStorage, or wherever it is stored
     const token = parseInt(localStorage.getItem('token'));
@@ -27,7 +29,7 @@ useEffect(() => {
 
 
     try {
-        const response = await fetch('http://localhost:3000/api/wines', {
+        const response = await fetch(`http://localhost:3000/api/wines/${id}`, {
          method:'PATCH',
          headers: {
             'Content-Type' : 'application/json'

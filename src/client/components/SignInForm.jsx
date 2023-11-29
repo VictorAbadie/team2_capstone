@@ -6,7 +6,6 @@ function LogIn({token, setToken}) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  // const navigate = useNavigate();
   
   async function handleSubmit(e) {
     e.preventDefault();
