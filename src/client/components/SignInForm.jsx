@@ -11,7 +11,7 @@ function LogIn({token, setToken}) {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      console.log(name, password, email, token, id)
+      console.log(name, password, email, )
       const response = await fetch('http://localhost:3000/api/users/login', {
       method: "POST",
       headers: {
@@ -21,8 +21,7 @@ function LogIn({token, setToken}) {
           name,
           email,
           password,
-          token,
-          id
+          
       })
     });
     const result = await response.json();
