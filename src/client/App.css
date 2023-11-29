@@ -7,9 +7,9 @@
 }
 
 
-* {
-  font-family: fantasy;
-}
+/* * {
+  font-family: ;
+} */
 
 body {
   background-color: black;
@@ -190,4 +190,9 @@ a:hover {
   color: white;
   margin-top: 200px;
   z-index: 100;
+}
+.btn-close {
+  height: 30px;
+  width: 30px;
+  color: black;
 }
