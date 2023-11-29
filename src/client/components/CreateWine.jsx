@@ -2,10 +2,8 @@ import { useState, useEffect } from "react";
 // import { useNavigate, useParams } from "react-router-dom";
 
 const CreateWine = () => {
-    //if CreateWine functionality is only available to admin, so I set its initial state
-    //to true - I think this eliminates the necessity for the useEffect function
-    //as the user is already an admin in order to get to this screen
-    const [isAdmin, setIsAdmin] = useState(false);
+   
+    // const [isAdmin, setIsAdmin] = useState(false);
     const [type, setType] = useState("");
     const [price, setPrice] = useState("");
     const [varietal, setVarietal] = useState("");
@@ -13,19 +11,21 @@ const CreateWine = () => {
     const [success, setSuccess] = useState(false);
     //also removed the img here and below - getting an image added will be a t2 goal
 
-    useEffect(() => {
-        // Fetch isAdmin state from localStorage
-        const token = parseInt(localStorage.getItem('token'));
-        setIsAdmin(token);
-        if (!isNaN(token) && token === 6) {
-            // Set the user as admin
-            setIsAdmin(true);
-          } else {
-            // Set the user as non-admin
-            setIsAdmin(false);
-          }
-      }, []);
+    
+    // useEffect(() => {
+    //     // Fetch isAdmin state from localStorage
+    //     const token = parseInt(localStorage.getItem('token'));
+    //     setIsAdmin(token);
+    //     if (!isNaN(token) && token === 6) {
+    //         // Set the user as admin
+    //         setIsAdmin(true);
+    //       } else {
+    //         // Set the user as non-admin
+    //         setIsAdmin(false);
+    //       }
+    //   }, []);
       
+
     const newWine = async() => {
         e.preventDefault();
         if (!isAdmin) {
@@ -63,7 +63,7 @@ const CreateWine = () => {
     
     return (
         <>
-        { isAdmin ? (
+        {/* { isAdmin ? ( */}
             <>
     {/* //if success, return the form */}
              <p> Wine Created! </p>
@@ -123,8 +123,8 @@ const CreateWine = () => {
                     </form>
                 </>
 
-        ) : (<p>you must be an admin to create a wine.</p>)}
+        {/* ) : (<p>you must be an admin to create a wine.</p>)} */}
     </>)
 }
 
-    export default CreateWine
+    export default CreateWine;

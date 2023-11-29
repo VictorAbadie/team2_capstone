@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 
 // const jwt = require('jsonwebtoken')
 // const {JWT_SECRET = "whateveriwant"} = process.env;
 
 
-const SignUpForm = () => {
+const SignUpForm = (/*{setToken}*/) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  // const navigate = useNavigate("")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +34,10 @@ const SignUpForm = () => {
         setName("");
         setEmail("");
         setPassword("");
+
+        // setToken(result);
+        // localStorage.setItem("token", result.user.id);
+        // navigate("/")
         return result
       } 
     } catch (error) {
@@ -44,9 +50,6 @@ const SignUpForm = () => {
       <h2 className="Sign-In">
         Register below!<br/>
       You must be at least 21 to create an account.</h2>
-      {/* {successMessage && <p>{successMessage}</p>} */}
-      {/* {error && <p> {error }</p>} */}
-
       <form className='styleForm' onSubmit={handleSubmit}>
         <label>
         Name: <input

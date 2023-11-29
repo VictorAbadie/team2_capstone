@@ -49,7 +49,7 @@ const Home = (props) => {
           <AdminFooter/>
           {!error &&
             wines.map((wine) => {
-              console.log("logged in as admin");
+              // console.log("logged in as admin");
 
               return (
                 <>
@@ -88,7 +88,7 @@ const Home = (props) => {
         <div id="allWinesCard" key={wines.id}>
           {!error &&
             wines.map((wine) => {
-              console.log("logged in as user");
+              // console.log("logged in as user");
               return (
                 <>
                   <div className="wineCard">

@@ -38,7 +38,7 @@ winesRouter.get('/:id', async (req, res, next) => {
 
 
 // POST route for new wine in DB
-winesRouter.post('/', requireUser, async (req, res, next) => {
+winesRouter.post('/', async (req, res, next) => {
   const { type, varietal, price, description, img = "" } = req.body;
 
   const postWine = {};
@@ -66,7 +66,7 @@ winesRouter.post('/', requireUser, async (req, res, next) => {
 });
 
 // PATCH route for exisiting wine in DB
-winesRouter.patch('/:id', requireUser, async (req, res, next) => {
+winesRouter.patch('/:id', async (req, res, next) => {
   const { id } = req.params;
   const { type, price, varietal, description, img } = req.body;
 
