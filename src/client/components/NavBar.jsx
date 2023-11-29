@@ -57,35 +57,33 @@ function NavbarComponent() {
 
   return (
     <>
-    <header>
-          <h1 className='GLW'>Good Luck Wines</h1>
-          <h3 className='subtitle'>If one glass of wine is good for you, imagine what a whole bottle can do!</h3>
-        </header>
+      <header>
+            <h1 className='GLW'>Good Luck Wines</h1>
+            <h3 className='subtitle'>If one glass of wine is good for you, imagine what a whole bottle can do!</h3>
+          </header>
 
-    <Navbar expand="sm">
-      <>
-    <nav>
-          <Link to="/" className="nav-item">Home</Link>
-          <Link to="/login" className="nav-item">Sign In</Link>
-          <Link to="/register" className="nav-item">Register</Link>              
-        {/* <Navbar.Brand href="/">Home</Navbar.Brand> */}
-        {/* <Navbar.Toggle/> */}
-        <Navbar.Collapse>
-          <Button className="button" onClick={handleShow}>Cart: ({productsCount} Items)</Button>
-        </Navbar.Collapse>
-    </nav>
-    </>
+      <Navbar expand="sm">
+        <>
+      <nav>
+            <Link to="/" className="nav-item">Home</Link>
+            <Link to="/login" className="nav-item">Sign In</Link>
+            <Link to="/register" className="nav-item">Register</Link>              
+          {/* <Navbar.Brand href="/">Home</Navbar.Brand> */}
+          {/* <Navbar.Toggle/> */}
+          <Navbar.Collapse>
+            <Button className="button" onClick={handleShow}>Cart: ({productsCount} Items)</Button>
+          </Navbar.Collapse>
+      </nav>
+      </>
 
-    </Navbar>
-    
-  <Modal className="cart"show={show} onHide={handleClose}>
+      </Navbar>
+      
+    <button className="button" navigate='/' onClick={Logout}>logout</button>
+    <Modal className="cart"show={show} onHide={handleClose}>
       <Modal.Header>
           <Modal.Title className="cartTitle" >Shopping Cart</Modal.Title>
 
-    <button className="button" navigate='/' onClick={Logout}>logout</button>
-    <Modal className="cart" show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
-          <Modal.Title>Shopping Cart</Modal.Title>
+   
       </Modal.Header>
       <Modal.Body>
       <Button className='button' onClick={handleClose}>
@@ -114,7 +112,7 @@ function NavbarComponent() {
       </Modal.Body>
 
     </Modal>
-    </>
+  </>
 )};
 
         
