@@ -2,8 +2,9 @@ import { useState, useEffect, useContext } from 'react';
 import { Card, Button, Form, Row, Col} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../CartContext';
-// import AdminFooter from './adminFooter';
+import AdminFooter from './AdminFooter';
 import Logout from './logout';
+
 
 const Home = (props) => {
   const [wines, setWines] = useState([]);
@@ -15,8 +16,6 @@ const Home = (props) => {
   const productQuantity = cart.getProductQuantity(wines.id);
   // console.log(cart.items)
 
-  const token = localStorage.getItem("token");
-  // console.log(token)
 
   useEffect(() => {
     // Fetch isAdmin state from localStorage or sessionStorage, or wherever it is stored

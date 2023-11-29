@@ -5,7 +5,7 @@ const CreateWine = () => {
     //if CreateWine functionality is only available to admin, so I set its initial state
     //to true - I think this eliminates the necessity for the useEffect function
     //as the user is already an admin in order to get to this screen
-    const [isAdmin, setIsAdmin] = useState(true);
+    const [isAdmin, setIsAdmin] = useState(false);
     const [type, setType] = useState("");
     const [price, setPrice] = useState("");
     const [varietal, setVarietal] = useState("");
@@ -13,18 +13,18 @@ const CreateWine = () => {
     const [success, setSuccess] = useState(false);
     //also removed the img here and below - getting an image added will be a t2 goal
 
-    // useEffect(() => {
-    //     // Fetch isAdmin state from localStorage
-    //     const token = parseInt(localStorage.getItem('token'));
-    //     setIsAdmin(token);
-    //     if (!isNaN(token) && token === 6) {
-    //         // Set the user as admin
-    //         setIsAdmin(true);
-    //       } else {
-    //         // Set the user as non-admin
-    //         setIsAdmin(false);
-    //       }
-    //   }, []);
+    useEffect(() => {
+        // Fetch isAdmin state from localStorage
+        const token = parseInt(localStorage.getItem('token'));
+        setIsAdmin(token);
+        if (!isNaN(token) && token === 6) {
+            // Set the user as admin
+            setIsAdmin(true);
+          } else {
+            // Set the user as non-admin
+            setIsAdmin(false);
+          }
+      }, []);
       
     const newWine = async() => {
         e.preventDefault();
@@ -63,12 +63,12 @@ const CreateWine = () => {
     
     return (
         <>
-        { success ? (
+        { isAdmin ? (
             <>
     {/* //if success, return the form */}
              <p> Wine Created! </p>
                 
-                    <form classname="styleForm">
+                    <form className="styleForm">
                         <label htmlFor="wineType">
                             <input 
                                 id="type"
@@ -115,14 +115,13 @@ const CreateWine = () => {
 
         {/* //removed the img label and input */}
 
-                        <button classname="button"
+                        <button className="button"
                                 id="create-button"
                                 onClick={newWine}>
                                 Create New Wine!
                         </button>
                     </form>
                 </>
-        
 
         ) : (<p>you must be an admin to create a wine.</p>)}
     </>)
