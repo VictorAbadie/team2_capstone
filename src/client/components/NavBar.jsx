@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button, Navbar, Modal } from 'react-bootstrap';
-
 import Logout from './logout';
 // import AdminFooter from "./adminFooter";
 import { CartContext } from "../../CartContext";
 import CartProduct from "./CartProduct";
-
 
 // deleted Button and Container from react-bootstrap import line
 
@@ -13,7 +11,7 @@ import CartProduct from "./CartProduct";
 // import SignUpForm from './components/SignUpForm';
 // I was getting error codes for having these so i commented them out, i fixed the relative path for them as well so you can use the function if you need it now 
 // import Cart from './components/Cart';
-import { useState, useEffect, useContext, } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 function NavbarComponent() {
   const cart = useContext(CartContext);
@@ -79,13 +77,9 @@ function NavbarComponent() {
     </>
 
     </Navbar>
-fiterationvic1
-    <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton >
     <button className="button" navigate='/' onClick={Logout}>logout</button>
     <Modal className="cart" show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-main
           <Modal.Title>Shopping Cart</Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -102,19 +96,13 @@ main
           <Button className='button' onClick={checkout}>
             Purchase Items!
           </Button>
-fiterationvic1
-          <Button className='button' onClick={handleClose}>
-            Close Cart!
-          </Button>
-main
           
         </>
       :
-            
+      
+      
         <h1>There are no items in the cart!</h1>
         }
-
-        
       </Modal.Body>
 
     </Modal>

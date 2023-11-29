@@ -1,13 +1,3 @@
-fiterationvic1
-import { useState, useEffect, useContext } from 'react';
-import { Card, Button, Form, Row, Col} from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom';
-import { CartContext } from '../../CartContext';
-// import AdminFooter from './adminFooter';
-import Logout from './logout';
-
-
-const Home = (props) => {  
 import { useState, useEffect, useContext } from "react";
 import { Card, Button, Form, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +6,6 @@ import AdminFooter from "./AdminFooter";
 import Logout from "./logout";
 
 const Home = (props) => {
- main
   const [wines, setWines] = useState([]);
   const [error, setError] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
