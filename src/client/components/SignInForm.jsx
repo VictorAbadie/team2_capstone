@@ -7,12 +7,9 @@ function LogIn({token, setToken}) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   // const navigate = useNavigate();
-
-
   
   async function handleSubmit(e) {
     e.preventDefault();
-    const id = user.id;
     try {
       console.log(name, password, email, token, id)
       const response = await fetch('http://localhost:3000/api/users/login', {
