@@ -6,11 +6,6 @@
   height: 100vh; 
 }
 
-
-/* * {
-  font-family: ;
-} */
-
 body {
   background-color: black;
 }
@@ -28,11 +23,11 @@ body {
 .wineCard {
   display: flex;
   box-sizing: border-box;
-  border: 2px white solid;
+  border: 1px rgb(152, 151, 151) solid;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  color: white;
+  color: rgb(152, 151, 151);
   font-size: 16pt;
   width: 20%;
   height: 400px;
@@ -54,7 +49,7 @@ body {
   box-sizing: border-box;
   flex-direction: row;
   justify-content: center;
-  color: white;
+  color: rgb(152, 151, 151);
   line-height: 400%;
   text-decoration: none;
   margin-bottom: 100px;
@@ -118,10 +113,19 @@ nav {
   text-align: center;
   padding-top: 6px;
   height: 40px;
-  margin: 25px;
   border-radius: 10%;
 }
 
+#homeCartButton {
+  background-color:black;
+  color: rgb(55, 130, 94);
+  font-size: medium;
+  text-align: center;
+  padding-top: 6px;
+  height: 40px;
+  border-radius: 10%;
+  margin-top: 10px;
+}
 .wineButton {
   background-color:black;
   color: rgb(55, 130, 94);
@@ -131,15 +135,6 @@ nav {
   width: 100px;
   padding: 5px;
 }
-
-/* .cartButton {
-  background-color:black;
-  color: rgb(55, 130, 94);
-  font-size: medium;
-  text-align: center;
-  margin-right: 140px;
-  margin-left: 70px;
-} */
 
 .button:hover {
   background-color: rgb(55, 130, 94);
@@ -151,10 +146,11 @@ nav {
   width: 350px;
   margin: 10px;
 }
+
 /* form styling */
 
 .Sign-In {
-  color: white;
+  color: rgb(152, 151, 151);
   text-align: center;
   padding: 25px;
 }
@@ -174,6 +170,10 @@ nav {
   margin: 25px;
 }
 
+h3 {
+  font-style: italic;
+}
+
 a {
   display: flex;
   color: rgb(55, 130, 94);
@@ -181,18 +181,23 @@ a {
 }
 
 a:hover {
-  color: white;
+  color: rgb(152, 151, 151);
 }
 
 /* cart styling */
 
 .cart {
-  color: white;
-  margin-top: 200px;
-  z-index: 100;
+  text-align: center;
+  color: rgb(152, 151, 151);
+  margin-top: 100px;
 }
-.btn-close {
-  height: 30px;
-  width: 30px;
-  color: black;
+
+.cartTitle {
+  font-size: 40pt;
+  border: 1px solid white;
+  margin-left: 170px;
+  margin-right: 170px;
+  margin-bottom: 50px;
+  padding: 20px;
+  color: rgb(55, 130, 94); 
 }
