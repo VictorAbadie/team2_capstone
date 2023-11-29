@@ -68,6 +68,7 @@ const Home = (props) => {
                       {" "}
                       See Details
                     </button>
+                  
                     
                   </div>
 
@@ -99,6 +100,14 @@ const Home = (props) => {
                       See Details
                     </button>
                     
+                    <button
+                      className="button"
+                      id="homeCartButton"
+                      onClick={() =>
+                        cart.addOneToCart(wine.id)}>
+                        Add to Cart
+                    </button>
+
                   </div>
                   {/* if the user is not an admin everything above will render */}
                 </>

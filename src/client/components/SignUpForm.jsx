@@ -60,7 +60,7 @@ const SignUpForm = () => {
     <>
       <h2 className="Sign-In">
         Register below!<br/>
-        You must be at least 21 to register.</h2>
+      You must be at least 21 to create an account.</h2>
       {/* {successMessage && <p>{successMessage}</p>} */}
       {/* {error && <p> {error }</p>} */}
 
