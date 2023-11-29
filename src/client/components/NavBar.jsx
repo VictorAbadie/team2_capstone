@@ -71,32 +71,40 @@ function NavbarComponent() {
         {/* <Navbar.Brand href="/">Home</Navbar.Brand> */}
         {/* <Navbar.Toggle/> */}
         <Navbar.Collapse>
-          <Button className='cartButton' onClick={handleShow}>Cart: ({productsCount} Items)</Button>
+          <Button className="button" onClick={handleShow}>Cart: ({productsCount} Items)</Button>
         </Navbar.Collapse>
     </nav>
     </>
 
     </Navbar>
+    
+  <Modal className="cart"show={show} onHide={handleClose}>
+      <Modal.Header>
+          <Modal.Title className="cartTitle" >Shopping Cart</Modal.Title>
+
     <button className="button" navigate='/' onClick={Logout}>logout</button>
     <Modal className="cart" show={show} onHide={handleClose}>
       <Modal.Header closeButton>
           <Modal.Title>Shopping Cart</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+      <Button className='button' onClick={handleClose}>
+            Exit Cart
+          </Button>
         {productsCount > 0 ?
         <>
-          <p>Items in your cart:</p>
+          <h1>Items in your cart:</h1>
           {cart.items.map((currentProduct, idx) => (
             
             <CartProduct key={idx} id={currentProduct.id} quantity = {currentProduct.quantity}></CartProduct>
           ))}
 
-          <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
+          <h1>Total: ${cart.getTotalCost().toFixed(2)}</h1>
 
           <Button className='button' onClick={checkout}>
-            Purchase Items!
+            Purchase Wine!
           </Button>
-          
+
         </>
       :
       

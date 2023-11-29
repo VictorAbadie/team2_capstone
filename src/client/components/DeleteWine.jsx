@@ -49,4 +49,4 @@ const DeleteWine = async() => {
     )
 }
 
-export default DeleteWine;
+export default DeleteWine
