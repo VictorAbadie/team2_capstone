@@ -10,7 +10,7 @@ import Login from './components/SignInForm';
 import SignUpForm from './components/SignUpForm';
 import CreateWine from './components/CreateWine';
 import EditWine from './components/EditWine';
-import DeleteWine from './components/DeleteWine';
+// import DeleteWine from './components/DeleteWine';
 import DetailedWine from './components/DetailedWine';
 import SetAdminFunction from './components/isAdmin';
 
@@ -60,7 +60,7 @@ function App() {
 
           <Route path='/admin' element={<SetAdminFunction isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} />
           <Route path="/CreateWine" element={<CreateWine isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} />
-          <Route path="/DeleteWine" element={<DeleteWine isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} />
+          {/* <Route path="/DeleteWine" element={<DeleteWine isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} /> */}
           <Route path="/EditWine" element={<EditWine isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} />
         </Routes>
       </BrowserRouter>

@@ -110,7 +110,7 @@ console.log(originalWine.id, id)
 });
 
 // DELETE route for existing wine in the DB
-winesRouter.delete('/:id', requireUser, async (req, res, next) => {
+winesRouter.delete('/:id', async (req, res, next) => {
   try {
       const wine = await deleteWine(req.params.id);
       res.send(wine);
