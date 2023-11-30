@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import { makeWine } from '../fetches';
 // import { useNavigate, useParams } from "react-router-dom";
 
-const CreateWine = () => {
-   
-    // const [isAdmin, setIsAdmin] = useState(false);
+//once admin privileges exist pass {token} to CreateWine
+    const CreateWine = () => {
+        // const [isAdmin, setIsAdmin] = useState(false);
     const [type, setType] = useState("");
     const [price, setPrice] = useState("");
     const [varietal, setVarietal] = useState("");
@@ -26,105 +27,85 @@ const CreateWine = () => {
     //   }, []);
       
 
-    const newWine = async() => {
+    const handleWine = async(e) => {
         e.preventDefault();
-        if (!isAdmin) {
-            console.log("User is not an admin. Cannot create wine.");
-            return;
-          }
-    try {
-        const response = await fetch('http://localhost:3000/api/wines', {
-         method:'POST',
-         headers: {
-            'Content-Type' : 'application/json'
-        },
-        body: JSON.stringify({
-            type,
-            price,
-            varietal,
-            description
-    //removed img here
-        })
-    });
-    const result = await response.json();
-    setSuccess(result.success);
+        // const token = localStorage.getItem("token");
+            try {
+                const wineObject = {
+                    type: type,
+                    price: price,
+                    varietal: varietal,
+                    description: description,
+                };
+        // once admin privileges are established also pass token to newWine w wineObject
+        const newWine = await makeWine (wineObject);
         console.log(newWine);
-        setType("");
-        setPrice("");
-        setVarietal("");
-        setDescription("");
-        //removed img here
-        setSuccess(true);
-
-    } catch (error) {
-        console.error(error, error.message);
-      }
-    };
+            if(newWine.success) {
+                setType(" ");
+                setPrice(null);
+                setVarietal(" ");
+                setDescription(" ");
+                setSuccess(true);
+            } else {
+                alert("Error creating wine!");
+            }
+            return newWine;
+        } catch (error) {
+            console.error(error, error.message);
+        }
     
     return (
         <>
-        {/* { isAdmin ? ( */}
+        { success && (
             <>
-    {/* //if success, return the form */}
-             <p> Wine Created! </p>
-                
-                    <form className="styleForm">
-                        <label htmlFor="wineType">
-                            <input 
-                                id="type"
-                                type="text"
-                                name="type"
-                                placeholder="type"
-                                required
-                                onChange={(e) => setType(e.target.value)}
-                                />
-                        </label>
+        <form className="styleForm"
+        onSubmit={handleWine}>
+            <label htmlFor="wineType">Wine Type:
+                <input 
+                    id="type"
+                    type="text"
+                    name="type"
+                    required
+                    onChange={(e) => setType(e.target.value)}
+            /></label>
+                        
+            <label htmlFor="winePrice">Wine Price:
+                <input 
+                    id="price"
+                    type="text"
+                    name="price"
+                    required
+                    onChange={(e) => setPrice(e.target.value)}
+            /></label>
             
-                        <label htmlFor="winePrice">
-                            <input 
-                                id="price"
-                                type="text"
-                                name="price"
-                                placeholder="price"
-                                required
-                                onChange={(e) => setPrice(e.target.value)}
-                                />
-                        </label>
+            <label htmlFor="wineVarietal">Wine Varietal:
+                <input 
+                    id="varietal"
+                    type="text"
+                    name="varietal"
+                    required
+                    onChange={(e) => setVarietal(e.target.value)}
+            /></label>
             
-                        <label htmlFor="wineVarietal">
-                            <input 
-                                id="varietal"
-                                type="text"
-                                name="varietal"
-                                placeholder="varietal"
-                                required
-                                onChange={(e) => setVarietal(e.target.value)}
-                                />
-                        </label>
-            
-                        <label htmlFor="wineDescription">
-                            <input 
-                                id="description"
-                                type="text"
-                                name="description"
-                                placeholder="description"
-                                required
-                                onChange={(e) => setDescription(e.target.value)}
-                                />
-                        </label>
+            <label htmlFor="wineDescription">Wine Description:
+                <input 
+                    id="description"
+                    type="text"
+                    name="description"
+                    required
+                    onChange={(e) => setDescription(e.target.value)}
+            /></label>
 
-        {/* //removed the img label and input */}
-
-                        <button className="button"
-                                id="create-button"
-                                onClick={newWine}>
-                                Create New Wine!
-                        </button>
-                    </form>
-                </>
-
-        {/* ) : (<p>you must be an admin to create a wine.</p>)} */}
-    </>)
+            <button className="button"
+                id="create-button"
+                onClick={handleWine}>
+                Create New Wine!
+            </button>
+        </form>
+            </>
+        )};
+    </>
+)};
 }
 
-    export default CreateWine;
+export default CreateWine;

@@ -11,18 +11,18 @@ const DetailedWine = (props) => {
   const product = props.products;
   const [isAdmin, setIsAdmin] = useState(false);
 
-  useEffect(() => {
-    // Fetch isAdmin state from localStorage or sessionStorage, or wherever it is stored
-    const token = parseInt(localStorage.getItem("token"));
-    setIsAdmin(token);
-    if (!isNaN(token) && token === 6) {
-      // Set the user as admin
-      setIsAdmin(true);
-    } else {
-      // Set the user as non-admin
-      setIsAdmin(false);
-    }
-  }, []);
+  // useEffect(() => {
+  //   // Fetch isAdmin state from localStorage or sessionStorage, or wherever it is stored
+  //   const token = parseInt(localStorage.getItem("token"));
+  //   setIsAdmin(token);
+  //   if (!isNaN(token) && token === 6) {
+  //     // Set the user as admin
+  //     setIsAdmin(true);
+  //   } else {
+  //     // Set the user as non-admin
+  //     setIsAdmin(false);
+  //   }
+  // }, []);
 
   useEffect(() => {
     async function getSingleWineById() {
@@ -38,12 +38,16 @@ const DetailedWine = (props) => {
   }, []);
 
   
-
-  async function handleDelete() {
+//also needs token passed once admin privileges are back
+  const handleDelete = async (id) => {
     try {
         const response = await fetch (`http://localhost:3000/api/wines/${id}`, {
             method: "DELETE",
-        });
+            headers: {
+              'Content-Type': 'application/json',
+              // 'Authorization': `Bearer ${token}`
+        }
+      });
         console.log(response);
         const result = await response.json();
         console.log(result);
