@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-
-
+import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-
+  const navigate = useNavigate();
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -71,7 +71,7 @@ const SignUpForm = () => {
                   required/>
         </label>
           <br/>
-        <button className='button' type="submit">Sign Up</button>
+        <button className='button' type="submit" onClick={() => navigate('/')}>Sign Up</button>
         <p>Already have an account?<br/>
         <a href="./login">Sign In</a> </p>
       </form>
