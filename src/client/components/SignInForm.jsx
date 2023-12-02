@@ -1,22 +1,22 @@
 import React, {useState} from "react";
-
+import { useNavigate } from 'react-router-dom';
 
 function LogIn({token, setToken}) {
   // const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  
+  const navigate = useNavigate();
+
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      console.log(name, password, email, )
+      console.log(password, email, )
       const response = await fetch('http://localhost:3000/api/users/login', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-          name,
           email,
           password,
           
@@ -46,7 +46,7 @@ function LogIn({token, setToken}) {
           <label>
         Password: <input className='input' type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
         </label>
-        <button className='button' type="submit"
+        <button className='button' type="submit" onClick={() => navigate('/')}
         >Log In</button>
 
         <p className='href'>Don't have an account?<a href="./register"> Sign Up</a> </p>
