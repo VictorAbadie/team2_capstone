@@ -3,9 +3,12 @@ import { Card, Button, Form, Row, Col} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../CartContext';
 import AdminFooter from './AdminFooter';
+import { Link } from "react-router-dom";
+import Logout from './logout';
 
 
 const Home = (props) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [wines, setWines] = useState([]);
   const [error, setError] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -42,11 +45,31 @@ const Home = (props) => {
     fetchAllWines();
   }, []);
 
+  useEffect(() => {
+    // Check if there is a token with a number in local storage
+    const token = localStorage.getItem('token');
+
+    if (token && !isNaN(parseInt(token))) {
+      // If there is a token with a number, set isLoggedIn to true
+      setIsLoggedIn(true);
+    } else {
+      // If there is no token or it doesn't have a number, set isLoggedIn to false
+      setIsLoggedIn(false);
+    }
+  }, []);
+
+
+
   return (
     <>
-      {isAdmin ? (
+      {isLoggedIn ? <>(
+            <button className="button" navigate='/' onClick={Logout}>logout</button>)</> 
+            :
+             <>(<div></div>)</>}
+
+      {isAdmin ? (<>
+      <AdminFooter/>
         <div id="allWinesCard" key={wines.id}>
-          <AdminFooter/>
           {!error &&
             wines.map((wine) => {
               // console.log("logged in as admin");
@@ -83,7 +106,7 @@ const Home = (props) => {
               );
             })}
         </div>
-      ) : (
+      </>) : (
         // If the user is an admin everything above will render
         <div id="allWinesCard" key={wines.id}>
           {!error &&
@@ -124,62 +147,6 @@ const Home = (props) => {
     </>
   );
 
-  //   return (
-  //     // Everything lives within this card
-  //     <Card>
-  //         {/* And this card */}
-  //         <Card.Body>
-  //             {/* Gives us nicely styled card for our title */}
-  //             <Card.Title> {wines.varietal} </Card.Title>
-  //             <Card.Text>${wines.price}</Card.Text>
-  //             {productQuantity > 0 ?
-  //             <>
-  //             <Form as={Row}>
-  //             <Form.Label column="true" sm="6">In Cart: {productQuantity}</Form.Label>
-  //             <Col sm="6">
-  //                 <Button sm="6" onClick={() => cart.removeOneFromCart(wine.id)} className="mx-2">-</Button>
-  //                 <Button sm="6" onClick={() => cart.addOneToCart(wine.id)} className="mx-2">+</Button>
-  //             </Col>
-  //             </Form>
-  //             <Button variant="danger" onClick={() => cart.deleteFromCart(wines.id)}  className="my-2">Remove from Cart</Button>
-  //             </>
-  //             :
-  //             <Button variant="primary" onClick={() => cart.addOneToCart(wines.id)}>Add to Cart</Button>
-
-  //             }
-
-  //         </Card.Body>
-
-  //     </Card>
-  // )
 };
 
 export default Home;
-
-// import {Row, Col} from 'react-bootstrap';
-// // This gives us access to the productsArray in our productsStore.js
-// import { productsArray } from '../../ productsStore';
-// import ProductCard from './ProductCard';
-
-// function Home() {
-//     return (
-//         <>
-//         {/* align="center is adjusting the header of the store to the center of the page and the className="p-3" is responsible for the padding between the header and the items */}
-//         <h1 align="center" className="p-3">Good Luck Wines</h1>
-//         {/* We're using rows and colums to align the products on our site. on xs screens, it'll show one column / row and on larger screens, 3 */}
-//         <Row xs={1} md={3} className="g-4">
-//             {/*Allows us to go through every element in the array and then allows us to specific logic based of the element that we're at but most importantly, allows us to return react.jsx for a certain element  */}
-//             {productsArray.map((product, idx) => (
-//                 // key={idx} gives specific keys to our columns and is best react practice
-//                             <Col align="center" key={idx}>
-//                                 {/* The first "product" defines the property and the second "product" looks at the product that we're mapping over //// we are able to access the product= because in our ProductCard.js, we have the variable product = props.product  */}
-//                             <ProductCard product={product}/>
-//                         </Col>
-//             ))}
-
-//         </Row>
-//         </>
-//     )
-// }
-
-// export default Home;

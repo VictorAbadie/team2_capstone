@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-
-// const jwt = require('jsonwebtoken')
-// const {JWT_SECRET = "whateveriwant"} = process.env;
 
 
-const SignUpForm = (/*{setToken}*/) => {
+
+const SignUpForm = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  // const navigate = useNavigate("")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,10 +30,6 @@ const SignUpForm = (/*{setToken}*/) => {
         setName("");
         setEmail("");
         setPassword("");
-
-        // setToken(result);
-        // localStorage.setItem("token", result.user.id);
-        // navigate("/")
         return result
       } 
     } catch (error) {

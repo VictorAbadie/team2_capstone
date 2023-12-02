@@ -1,9 +1,8 @@
 import React, {useState} from "react";
-// import { useNavigate } from 'react-router-dom';
 
 
 function LogIn({token, setToken}) {
-  const [name, setName] = useState("");
+  // const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   
@@ -40,16 +39,12 @@ function LogIn({token, setToken}) {
     <>
     <h2 className="Sign-In">Please log in!</h2>
     <form className='styleForm' onSubmit={handleSubmit}>
-    <label>
-        Name: <input className='input' value={name} type="text" onChange={(e) => setName(e.target.value)}/>  
-        </label>
-          <br/> 
           <label>
-        Email: <input className='input' value={email} type="text" onChange={(e) => setEmail(e.target.value)}/>  
+        Email: <input className='input' value={email} type="text" onChange={(e) => setEmail(e.target.value)} required/>  
         </label>
           <br/>
           <label>
-        Password: <input className='input' type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        Password: <input className='input' type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
         </label>
         <button className='button' type="submit"
         >Log In</button>
