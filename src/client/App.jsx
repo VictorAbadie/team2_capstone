@@ -12,7 +12,7 @@ import CreateWine from './components/CreateWine';
 import EditWine from './components/EditWine';
 // import DeleteWine from './components/DeleteWine';
 import DetailedWine from './components/DetailedWine';
-import SetAdminFunction from './components/isAdmin';
+import SetAdminFunction from './components/IsAdmin';
 
 
 

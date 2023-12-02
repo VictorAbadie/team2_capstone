@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { makeWine } from '../fetches';
 // import { useNavigate, useParams } from "react-router-dom";
 
 //once admin privileges exist pass {token} to CreateWine
     const CreateWine = () => {
-        // const [isAdmin, setIsAdmin] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
     const [type, setType] = useState("");
     const [price, setPrice] = useState("");
     const [varietal, setVarietal] = useState("");
@@ -13,18 +12,18 @@ import { makeWine } from '../fetches';
     //also removed the img here and below - getting an image added will be a t2 goal
 
     
-    // useEffect(() => {
-    //     // Fetch isAdmin state from localStorage
-    //     const token = parseInt(localStorage.getItem('token'));
-    //     setIsAdmin(token);
-    //     if (!isNaN(token) && token === 6) {
-    //         // Set the user as admin
-    //         setIsAdmin(true);
-    //       } else {
-    //         // Set the user as non-admin
-    //         setIsAdmin(false);
-    //       }
-    //   }, []);
+    useEffect(() => {
+        // Fetch isAdmin state from localStorage
+        const token = parseInt(localStorage.getItem('token'));
+        setIsAdmin(token);
+        if (!isNaN(token) && token === 6) {
+            // Set the user as admin
+            setIsAdmin(true);
+          } else {
+            // Set the user as non-admin
+            setIsAdmin(false);
+          }
+      }, []);
       
 
     const handleWine = async(e) => {

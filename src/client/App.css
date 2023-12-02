@@ -100,10 +100,10 @@ nav {
 
 .nav-item {
   color: rgb(55, 130, 94);
-  font-size: 30px;
+  font-size: 25px;
   text-decoration: none;
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .button {

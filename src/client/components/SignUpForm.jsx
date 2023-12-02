@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // const jwt = require('jsonwebtoken')
 // const {JWT_SECRET = "whateveriwant"} = process.env;
 
 
-const SignUpForm = (/*{setToken}*/) => {
-  const [name, setName] = useState("");
+const SignUpForm = ({setToken}) => {
+  // const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  // const navigate = useNavigate("")
+  const navigate = useNavigate("")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const fetchToken = async (name, email, password ) => {
+    const fetchToken = async (email, password ) => {
     try {
       const response = await fetch('http://localhost:3000/api/users/register', {
         method: "POST",
@@ -22,7 +22,6 @@ const SignUpForm = (/*{setToken}*/) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-              name,
               email,
               password,
         })
@@ -31,19 +30,17 @@ const SignUpForm = (/*{setToken}*/) => {
       const result = await response.json();
       console.log(result);
       if (result.success) {
-        setName("");
-        setEmail("");
-        setPassword("");
-
-        // setToken(result);
-        // localStorage.setItem("token", result.user.id);
-        // navigate("/")
+        setEmail(" ");
+        setPassword(" ");
+        navigate('/');
+        setToken(result);
+        localStorage.setItem("token", result.user.id);
         return result
       } 
     } catch (error) {
       console.log(error);
     }}
-    fetchToken(name, email, password);
+    fetchToken(email, password);
   }
   return (
     <>
@@ -51,15 +48,6 @@ const SignUpForm = (/*{setToken}*/) => {
         Register below!<br/>
       You must be at least 21 to create an account.</h2>
       <form className='styleForm' onSubmit={handleSubmit}>
-        <label>
-        Name: <input
-              className='input'
-              value={name} type="text"
-              onChange={(e) => setName(e.target.value)}
-              minLength={3}
-              required/> 
-        </label>
-          <br/>
           <label>
         Email: <input
                 className='input'
@@ -79,7 +67,10 @@ const SignUpForm = (/*{setToken}*/) => {
                   required/>
         </label>
           <br/>
-        <button className='button' type="submit">Sign Up</button>
+        <button className='button'
+        type="submit"
+        >Sign Up</button>
+
         <p>Already have an account?<br/>
         <a href="./login">Sign In</a> </p>
       </form>

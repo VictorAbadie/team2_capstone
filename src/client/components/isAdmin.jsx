@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-
-
 const SetAdminFunction = ({isAdmin, setIsAdmin}) => {
   // State to store the user role
   // const [isAdmin, setIsAdmin] = useState(false);
@@ -44,4 +42,4 @@ const SetAdminFunction = ({isAdmin, setIsAdmin}) => {
   );
 };
 
-export default SetAdminFunction;
+export default SetAdminFunction
