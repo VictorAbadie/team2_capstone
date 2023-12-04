@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = ({ setToken }) => {
+  // Define state variables for name, password, email, and navigation
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -10,9 +11,9 @@ const SignUpForm = ({ setToken }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
     const fetchToken = async (name, email, password) => {
       try {
+        // Send a POST request to the registration API endpoint
         const response = await fetch('http://localhost:3000/api/users/register', {
           method: "POST",
           headers: {
@@ -24,10 +25,14 @@ const SignUpForm = ({ setToken }) => {
             password,
           })
         });
+
+        // Parse the response as JSON
         const result = await response.json();
         console.log(result);
 
+        // Check if the registration was successful
         if (response.ok) {
+          // Clear the input fields
           setName("");
           setEmail("");
           setPassword("");
@@ -44,6 +49,7 @@ const SignUpForm = ({ setToken }) => {
             })
           });
 
+          // Check if the sign-in was successful
           if (!signInResponse.ok) {
             // Handle sign-in error
             const signInError = await signInResponse.json();
@@ -51,9 +57,11 @@ const SignUpForm = ({ setToken }) => {
             return;
           }
 
+          // Parse the sign-in response as JSON
           const signInResult = await signInResponse.json();
           console.log(signInResult);
 
+          // Store the user's ID in localStorage and update the token state
           localStorage.setItem("token", signInResult.user.id);
           setToken(signInResult);
 
@@ -64,15 +72,16 @@ const SignUpForm = ({ setToken }) => {
           console.error('Registration failed:', result);
         }
       } catch (error) {
+        // Handle unexpected errors
         console.error('An unexpected error occurred:', error);
       }
     }
 
+    // Call the nested function to fetch the token
     fetchToken(name, email, password);
   }
 
-  
-
+  // Render the registration form
   return (
     <>
       <h2 className="Sign-In">
@@ -119,4 +128,5 @@ const SignUpForm = ({ setToken }) => {
   )
 }
 
+// Export the SignUpForm component as the default export
 export default SignUpForm;
