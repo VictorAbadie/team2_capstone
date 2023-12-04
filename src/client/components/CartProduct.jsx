@@ -8,16 +8,16 @@ import { getProductData } from "../../ productsStore";
 
 function CartProduct(props) {
     const cart = useContext(CartContext);
-    const id = props.id;
+    const stripe_id = props.stripe_id;
     const quantity = props.quantity;
-    const productData = getProductData(id);
+    const productData = getProductData(stripe_id);
 
     return (
         <>
         <h3>{productData.varietal}</h3>
         <p>{quantity} total</p>
         <p>${ (quantity * productData.price).toFixed(2) }</p>
-        <Button size="sm" onClick={() => cart.deleteFromCart(id)}>Remove</Button>
+        <Button size="sm" onClick={() => cart.deleteFromCart(stripe_id)}>Remove</Button>
         <hr></hr>
         </>
     )

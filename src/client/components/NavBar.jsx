@@ -94,7 +94,7 @@ function NavbarComponent() {
           <h1>Items in your cart:</h1>
           {cart.items.map((currentProduct, idx) => (
             
-            <CartProduct key={idx} id={currentProduct.id} quantity = {currentProduct.quantity}></CartProduct>
+            <CartProduct key={idx} stripe_id={currentProduct.stripe_id} quantity = {currentProduct.quantity}></CartProduct>
           ))}
 
           <h1>Total: ${cart.getTotalCost().toFixed(2)}</h1>

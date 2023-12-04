@@ -72,7 +72,7 @@ const Home = (props) => {
                       className="button"
                       id="homeCartButton"
                       onClick={() =>
-                        cart.addOneToCart(wine.id)}>
+                        cart.addOneToCart(wine.stripe_id)}>
                         Add to Cart
                     </button>
                     
@@ -85,7 +85,7 @@ const Home = (props) => {
         </div>
       ) : (
         // If the user is an admin everything above will render
-        <div id="allWinesCard" key={wines.id}>
+        <div id="allWinesCard" key={wines.stripe_id}>
           {!error &&
             wines.map((wine) => {
               // console.log("logged in as user");
@@ -110,7 +110,7 @@ const Home = (props) => {
                       className="button"
                       id="homeCartButton"
                       onClick={() =>
-                        cart.addOneToCart(wine.id)}>
+                        cart.addOneToCart(wine.stripe_id)}>
                         Add to Cart
                     </button>
 
