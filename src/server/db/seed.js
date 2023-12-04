@@ -48,7 +48,8 @@ const users = [
 
 const wines = [
 {
-id: "1",
+id: 1,
+stripe_id:"price_1ODJyLCR2R1tfU0Oy5RhzSlG",
 type: 'red',
 price: 45,
 varietal: 'Cabernet Franc',
@@ -57,7 +58,8 @@ img: 'src/client/photos/red_cabfranc.jpg'
 },
 
 {
-id: "2",
+id: 2,
+stripe_id:"price_1OEmKQCR2R1tfU0OiLZa7Q5i",
 type: 'red',
 price: 60,
 varietal: 'Syrah',
@@ -66,7 +68,8 @@ img: 'src/client/photos/red_syrah.jpg'
 },
 
 {
-id: "3",
+id: 3, 
+stripe_id:"price_1OEmKpCR2R1tfU0O3ES2PrRX",
 type: 'red',
 price: 45,
 varietal: 'Malbec',
@@ -75,7 +78,8 @@ img: 'src/client/photos/red_malbec.jpg'
 },
 
 {
-id: "4",
+id: 4,
+stripe_id:"price_1OEmIWCR2R1tfU0OpXWZDhYR",
 type: 'red',
 price: 75,
 varietal: 'Cabernet Sauvignon',
@@ -84,7 +88,8 @@ img: 'src/client/photos/red_cabsauv.jpeg'
 },
 
 {
-id: "5",
+id: 5, 
+stripe_id:"price_1OEmLQCR2R1tfU0OG8xFYJf4",
 type: 'red',
 price: 30,
 varietal: 'Gamay Noir',
@@ -93,7 +98,8 @@ img: 'src/client/photos/red_gamay.jpeg'
 },
 
 {
-id: "6",
+id: 6,
+stripe_id:"price_1OEmLpCR2R1tfU0Oq9icSz2D",
 type: 'rose',
 price: 25,
 varietal: 'Pinot Noir Rosé',
@@ -102,7 +108,8 @@ img: 'src/client/photos/rose_pinotnoir.jpeg'
 },
 
 {
-id: "7",
+id: 7,
+stripe_id:"price_1OEmNiCR2R1tfU0OOsJDxB8e",
 type: 'rose',
 price: 25,
 varietal: 'Cabernet Franc Rosé',
@@ -111,7 +118,8 @@ img: 'src/client/photos/rose_cabfranc.jpg'
 },
 
 {
-id: "8",
+id: 8, 
+stripe_id:"price_1OEmMOCR2R1tfU0OaARk1GtB",
 type: 'rose',
 price: 20,
 varietal: 'Pinot Gris Rosé',
@@ -120,7 +128,8 @@ img: 'src/client/photos/rose_pinotgris.jpg'
 },
 
 {
-id: "9",
+id: 9,
+stripe_id:"price_1OEmMsCR2R1tfU0OKFf2u024",
 type: 'white',
 price: 25,
 varietal: 'Chardonnay',
@@ -129,7 +138,8 @@ img: 'src/client/photos/white_chardonnay.jpeg'
 },
 
 {
-id: "10",
+id: 10,
+stripe_id:"price_1OEmOGCR2R1tfU0OlKnkSuug",
 type: 'white',
 price: 25,
 varietal: 'Gewürztraminer',
@@ -138,7 +148,8 @@ img: 'src/client/photos/white_gewurz.jpeg'
 },
 
 {
-id: "11",
+id: 11,
+stripe_id:"price_1OEmOYCR2R1tfU0OI2U5NZ9f",
 type: 'white',
 price: 25,
 varietal: 'Pinot Blanc',
@@ -147,7 +158,8 @@ img: 'src/client/photos/white_pinotblanc.jpg'
 },
 
 {
-id: "12",
+id: 12,
+stripe_id:"price_1OEmOzCR2R1tfU0Ovwio2D6d",
 type: 'white',
 price: 15,
 varietal: 'Pinot Gris',
@@ -156,7 +168,8 @@ img: 'src/client/photos/white_pinotgris.jpg'
 },
 
 {
-id: "13",
+id: 13,
+stripe_id:"price_1OEmPeCR2R1tfU0OADnlRV0n",
 type: 'white',
 price: 25,
 varietal: 'Grüner Veltliner',
@@ -165,7 +178,8 @@ img: 'src/client/photos/white_gruner.jpeg'
 },
 
 {
-id: "14",
+id: 14,
+stripe_id:"price_1OEmQ2CR2R1tfU0OIMBgvApf",
 type: 'white',
 price: 15,
 varietal: 'Dry Riesling',
@@ -174,7 +188,8 @@ img: 'src/client/photos/white_dryriesling.jpg'
 },
 
 {
-id: "15",
+id: 15,
+stripe_id:"price_1OEmQQCR2R1tfU0OPUpRyGSn",
 type: 'sparkling',
 price: 55,
 varietal: 'Blanc de Blanc',
@@ -183,7 +198,8 @@ img: 'src/client/photos/spk_chardonnay.jpeg'
 },
 
 {
-id: "1",
+id: 16,
+stripe_id:"price_1OEmQlCR2R1tfU0OCgHmYn3P",
 type: 'sparkling',
 price: 55,
 varietal: 'Blanc de Noir',
@@ -220,6 +236,7 @@ const createTables = async () => {
 
 CREATE TABLE wines(
   id SERIAL PRIMARY KEY,
+  stripe_id VARCHAR(255) NOT NULL,
   type VARCHAR(255) DEFAULT 'type',
   price VARCHAR(255) DEFAULT 'price',
   varietal VARCHAR(255) DEFAULT 'varietal',
@@ -251,7 +268,8 @@ const insertUsers = async () => {
 const insertWines = async () => {
   try {
   for (const wine of wines) {
-  await createWine({type: wine.type,
+  await createWine({stripe_id: wine.stripe_id,
+                    type: wine.type,
                     price: wine.price,
                     varietal: wine.varietal,
                     description: wine.description,

@@ -37,9 +37,9 @@ export function CartProvider({children}) {
 
     // All we want to store in our cart is the id of and item and the quantity of them added / deleted {id: 1 , quantity: 2} ///// cart products array would look like [ { id: 1 , quantity: 2 }, {id: 2, quantity: 3} ]
 
-    function getProductQuantity(id) {
+    function getProductQuantity(stripe_id) {
         // This allows us to loop through our products by id and find their quantity, but if we ask for an ID and we do NOT get an object of data, it will not ask for the quantity. This is in an effort to prevent errors.
-       const quantity = cartProducts.find(product => product.id === id)?.quantity;
+       const quantity = cartProducts.find(product => product.stripe_id === stripe_id)?.quantity;
 
        localStorage.setItem("cart", JSON.stringify(cartProducts))
 
@@ -53,8 +53,8 @@ export function CartProvider({children}) {
         return quantity;
     }
 
-    function addOneToCart(id) {
-        const quantity = getProductQuantity(id);
+    function addOneToCart(stripe_id) {
+        const quantity = getProductQuantity(stripe_id);
         
         if (quantity === 0) { //product is in the cart}
                 setCartProducts(
@@ -62,7 +62,7 @@ export function CartProvider({children}) {
                         // Spread operator that takes all of the objects that are already in the cart, move them to the front of this array and then on top of all those products we want to add another one
                         ...cartProducts,
                         {
-                            id: id,
+                            stripe_id : stripe_id,
                             quantity: 1,
                         }
                     ]
@@ -74,7 +74,7 @@ export function CartProvider({children}) {
         setCartProducts(
             cartProducts.map(
                 product =>
-                product.id === id                              //if condition
+                product.stripe_id === stripe_id                              //if condition
                 ? {...product, quantity: product.quantity + 1} //if statement is true
                 : product                                      // if statement is false
 
@@ -87,19 +87,19 @@ export function CartProvider({children}) {
 
     }
 
-    function removeOneFromCart(id) {
+    function removeOneFromCart(stripe_id) {
         // Get product quantity
-        const quantity = getProductQuantity(id);
+        const quantity = getProductQuantity(stripe_id);
 
         // If product = 1, delete all from cart
         if (quantity === 1) {
-            deleteFromCart(id);
+            deleteFromCart(stripe_id);
         } else {
                 setCartProducts(
                     // Literally just the reverse logic of adding one to cart from above
                     cartProducts.map(
                         product =>
-                        product.id === id                               //if condition
+                        product.stripe_id = stripe_id                               //if condition
                         ? {...product, quantity: product.quantity - 1 } //if statement is true
                         : product                                       // if statement is false
         
@@ -111,13 +111,13 @@ export function CartProvider({children}) {
     }
 
 
-    function deleteFromCart(id) {
+    function deleteFromCart(stripe_id) {
         //if an object meet a condition, add the object to the array
         // Filter works as so: If I have an array [product1, product2, product3] and I filter product 2, my new array is [product1, product3]
         setCartProducts(
             cartProducts =>
             cartProducts.filter(currentProduct => {
-                return currentProduct.id != id;
+                return currentProduct.stripe_id != stripe_id;
             })
         )
     }
@@ -127,7 +127,7 @@ export function CartProvider({children}) {
         // Mapping over Cart Product Array
         cartProducts.map((cartItem) => {
             // Get product data of the cart item by id
-            const productData = getProductData(cartItem.id);
+            const productData = getProductData(cartItem.stripe_id);
             // productData variable gives us access to the item in the cart by id and we then multiply by the quantity of said items and add it to our totalCost variable
             totalCost += (productData.price * cartItem.quantity);
         });

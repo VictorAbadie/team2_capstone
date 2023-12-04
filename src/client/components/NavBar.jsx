@@ -81,30 +81,31 @@ function NavbarComponent() {
           <Button className="button" onClick={handleClose}>
             Exit Cart
           </Button>
-          {productsCount > 0 ? (
-            <>
-              <h1>Items in your cart:</h1>
-              {cart.items.map((currentProduct, idx) => (
-                <CartProduct
-                  key={idx}
-                  id={currentProduct.id}
-                  quantity={currentProduct.quantity}
-                ></CartProduct>
-              ))}
 
-              <h1>Total: ${cart.getTotalCost().toFixed(2)}</h1>
+        {productsCount > 0 ?
+        <>
+          <h1>Items in your cart:</h1>
+          {cart.items.map((currentProduct, idx) => (
+            
+            <CartProduct key={idx} stripe_id={currentProduct.stripe_id} quantity = {currentProduct.quantity}></CartProduct>
+          ))}
 
-              <Button className="button" onClick={checkout}>
-                Purchase Wine!
-              </Button>
-            </>
-          ) : (
-            <h1>There are no items in the cart!</h1>
-          )}
-        </Modal.Body>
-      </Modal>
-    </>
-  );
-}
+          <h1>Total: ${cart.getTotalCost().toFixed(2)}</h1>
+
+          <Button className='button' onClick={checkout}>
+            Purchase Wine!
+          </Button>
+
+        </>
+      :
+      
+      
+        <h1>There are no items in the cart!</h1>
+        }
+      </Modal.Body>
+
+    </Modal>
+  </>
+)};
 
 export default NavbarComponent;

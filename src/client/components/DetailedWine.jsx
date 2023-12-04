@@ -101,7 +101,7 @@ const DetailedWine = (props) => {
 
           <button
             className="button"
-            onClick={() => cart.addOneToCart(singleWine.id)}
+            onClick={() => cart.addOneToCart(singleWine.stripe_id)}
           >
             {" "}
             Add to Cart
@@ -109,7 +109,7 @@ const DetailedWine = (props) => {
 
           <button
             className="button"
-            onClick={() => cart.removeOneFromCart(singleWine.id)}
+            onClick={() => cart.removeOneFromCart(singleWine.stripe_id)}
           >
             {" "}
             Remove from Cart

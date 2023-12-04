@@ -3,12 +3,12 @@ const db = require('./client')
 
 
 // Create a new wine in the DB
-const createWine = async({ type, price, varietal, description, img }) => {
+const createWine = async({stripe_id, type, price, varietal, description, img }) => {
 try {
 const { rows } = await db.query(`
-INSERT INTO wines(type, price, varietal, description, img)
-VALUES($1, $2, $3, $4, $5)
-RETURNING *`, [type, price, varietal, description, img]);
+INSERT INTO wines(stripe_id, type, price, varietal, description, img)
+VALUES($1, $2, $3, $4, $5, $6)
+RETURNING *`, [stripe_id, type, price, varietal, description, img]);
 
 return rows;
 } catch (err) {
@@ -69,6 +69,29 @@ async function getWineById(id) {
     }
   }
 
+  // Get wine by stripe_ID from the DB
+
+  async function getWineByStripeId(id) {
+    try {
+      const { rows: [ wines ]  } = await db.query(`
+        SELECT *
+        FROM wines
+        WHERE stripe_id=$1;
+      `, [id]);
+  
+      if (!wines) {
+        throw {
+          name: "WineNotFoundError",
+          message: "Could not find a wine with that wineId"
+        };
+      }
+  
+      return wines;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   // DELETE a wine by ID from the DB
   async function deleteWine(id) {
     try {
@@ -90,6 +113,7 @@ module.exports = {
 createWine,
 getAllWines,
 getWineById,
+getWineByStripeId,
 updateWine,
 deleteWine,
 };
