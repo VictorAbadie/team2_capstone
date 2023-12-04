@@ -58,7 +58,7 @@ winesRouter.post('/', async (req, res, next) => {
       next({
         name: 'WineCreationError',
         message: 'There was an error creating your wine post. Please try again.'
-      })
+      });
     }
   } catch ({ name, message }) {
     next({ name, message });

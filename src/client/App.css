@@ -201,3 +201,8 @@ a:hover {
   padding: 20px;
   color: rgb(55, 130, 94); 
 }
+
+.mustBeAdmin {
+  color: white;
+}
+

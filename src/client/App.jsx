@@ -10,7 +10,7 @@ import Login from './components/SignInForm';
 import SignUpForm from './components/SignUpForm';
 import CreateWine from './components/CreateWine';
 import EditWine from './components/EditWine';
-// import DeleteWine from './components/DeleteWine';
+import DeleteWine from './components/DeleteWine';
 import DetailedWine from './components/DetailedWine';
 import SetAdminFunction from './components/isAdmin';
 
@@ -27,8 +27,6 @@ function App() {
 
 
   const [isAdmin, setIsAdmin] = useState(false) 
-  // const [token, setToken] = useState(null)
-  // console.log(isAdmin);
   const storageToken = localStorage.getItem("token");
   useEffect(() => {
     async function getToken(storageToken) {
@@ -50,17 +48,17 @@ function App() {
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={ <Login token={token} setToken={setToken} />} />
-          <Route path='/register' element={<SignUpForm/> } />
+          <Route path='/register' element={<SignUpForm token={token} setToken={setToken}/> } />
           {/* <Route path="/profile" element={<Profile token={token}/>} /> */}
-
-          {/* Protected Routes */}
+          
           <Route path="/:id" element={<DetailedWine />} />
           <Route path="/success" element={<Success/>} /> 
           <Route path="/cancel" element={<Cancel/>} /> 
 
+          {/* Protected Routes */}
           <Route path='/admin' element={<SetAdminFunction isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} />
           <Route path="/CreateWine" element={<CreateWine isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} />
-          {/* <Route path="/DeleteWine" element={<DeleteWine isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} /> */}
+          <Route path="/DeleteWine" element={<DeleteWine isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} />
           <Route path="/EditWine" element={<EditWine isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} />
         </Routes>
       </BrowserRouter>

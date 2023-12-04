@@ -1,111 +1,160 @@
-import { useState, useEffect } from "react";
-import { makeWine } from '../fetches';
-// import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
-//once admin privileges exist pass {token} to CreateWine
-    const CreateWine = () => {
-        // const [isAdmin, setIsAdmin] = useState(false);
-    const [type, setType] = useState("");
-    const [price, setPrice] = useState("");
-    const [varietal, setVarietal] = useState("");
-    const [description, setDescription] = useState("");
-    const [success, setSuccess] = useState(false);
-    //also removed the img here and below - getting an image added will be a t2 goal
+const CreateWine = () => {
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [type, setType] = useState("");
+  const [price, setPrice] = useState("");
+  const [varietal, setVarietal] = useState("");
+  const [description, setDescription] = useState("");
+  const [img, setImg] = useState(""); // New state for image URL
+  const [success, setSuccess] = useState(false);
 
-    
-    // useEffect(() => {
-    //     // Fetch isAdmin state from localStorage
-    //     const token = parseInt(localStorage.getItem('token'));
-    //     setIsAdmin(token);
-    //     if (!isNaN(token) && token === 6) {
-    //         // Set the user as admin
-    //         setIsAdmin(true);
-    //       } else {
-    //         // Set the user as non-admin
-    //         setIsAdmin(false);
-    //       }
-    //   }, []);
-      
+  useEffect(() => {
+    // Fetch isAdmin state from localStorage
+    const token = parseInt(localStorage.getItem("token"));
+    setIsAdmin(token);
+    if (!isNaN(token) && token === 6) {
+      // Set the user as admin
+      setIsAdmin(true);
+    } else {
+      // Set the user as non-admin
+      setIsAdmin(false);
+    }
+  }, []);
 
-    const handleWine = async(e) => {
-        e.preventDefault();
-        // const token = localStorage.getItem("token");
-            try {
-                const wineObject = {
-                    type: type,
-                    price: price,
-                    varietal: varietal,
-                    description: description,
-                };
-        // once admin privileges are established also pass token to newWine w wineObject
-        const newWine = await makeWine (wineObject);
-        console.log(newWine);
-            if(newWine.success) {
-                setType(" ");
-                setPrice(null);
-                setVarietal(" ");
-                setDescription(" ");
-                setSuccess(true);
-            } else {
-                alert("Error creating wine!");
-            }
-            return newWine;
-        } catch (error) {
-            console.error(error, error.message);
-        }
-    
-    return (
+  const newWine = async (e) => {
+    e.preventDefault();
+    if (!isAdmin) {
+      console.log("User is not an admin. Cannot create wine.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/api/wines", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        // .trim just removes whitespace from both ends of a string
+        body: JSON.stringify({
+          type: type.trim(),
+          price: parseInt(price),
+          varietal: varietal.trim(),
+          description: description.trim(),
+          img: img.trim(), // Include image URL in the request
+        }),
+      });
+
+      if (!response.ok) {
+        // Log error to console
+        console.error("Error creating wine:", response.status, response.statusText);
+
+        // Reset form state
+        setSuccess(false);
+        return;
+      }
+
+      const result = await response.json();
+      setSuccess(true);
+
+      // Log success to console
+      console.log("Wine Created:", result);
+
+      // Reset form fields after successful creation
+      setType("");
+      setPrice("");
+      setVarietal("");
+      setDescription("");
+      setImg("");
+    } catch (error) {
+      // Log unexpected error to console
+      console.error("Unexpected error creating wine:", error.message);
+
+      // Reset form state
+      setSuccess(false);
+    }
+  };
+
+  return (
+    <>
+      {isAdmin ? (
         <>
-        { success && (
-            <>
-        <form className="styleForm"
-        onSubmit={handleWine}>
-            <label htmlFor="wineType">Wine Type:
-                <input 
-                    id="type"
-                    type="text"
-                    name="type"
-                    required
-                    onChange={(e) => setType(e.target.value)}
-            /></label>
-                        
-            <label htmlFor="winePrice">Wine Price:
-                <input 
-                    id="price"
-                    type="text"
-                    name="price"
-                    required
-                    onChange={(e) => setPrice(e.target.value)}
-            /></label>
-            
-            <label htmlFor="wineVarietal">Wine Varietal:
-                <input 
-                    id="varietal"
-                    type="text"
-                    name="varietal"
-                    required
-                    onChange={(e) => setVarietal(e.target.value)}
-            /></label>
-            
-            <label htmlFor="wineDescription">Wine Description:
-                <input 
-                    id="description"
-                    type="text"
-                    name="description"
-                    required
-                    onChange={(e) => setDescription(e.target.value)}
-            /></label>
+          <p>{success && "Wine Created!"}</p>
 
-            <button className="button"
-                id="create-button"
-                onClick={handleWine}>
-                Create New Wine!
+          <form className="styleForm">
+            <label htmlFor="wineType">
+              <input
+                id="type"
+                type="text"
+                name="type"
+                placeholder="Type"
+                required
+                value={type ?? ""}
+                onChange={(e) => setType(e.target.value)}
+              />
+            </label>
+
+            <label htmlFor="winePrice">
+              <input
+                id="price"
+                type="number"
+                name="price"
+                placeholder="Price"
+                required
+                value={price ?? ""}
+                onChange={(e) => setPrice(e.target.value)}
+              />
+            </label>
+
+            <label htmlFor="wineVarietal">
+              <input
+                id="varietal"
+                type="text"
+                name="varietal"
+                placeholder="Varietal"
+                required
+                value={varietal ?? ""}
+                onChange={(e) => setVarietal(e.target.value)}
+              />
+            </label>
+
+            <label htmlFor="wineDescription">
+              <input
+                id="description"
+                type="text"
+                name="description"
+                placeholder="Description"
+                required
+                value={description ?? ""}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </label>
+
+            <label htmlFor="wineImg">
+              <input
+                id="img"
+                type="text"
+                name="img"
+                placeholder="Image URL"
+                value={img ?? ""}
+                onChange={(e) => setImg(e.target.value)}
+              />
+            </label>
+
+            <button
+              className="button"
+              id="create-button"
+              onClick={newWine}
+            >
+              Create New Wine!
             </button>
-        </form>
-            </>
-        )};
+          </form>
+        </>
+      ) : (
+        <p className="mustBeAdmin">You must be an admin to create a wine.  <a href="/login">Login</a></p>
+      )}
     </>
-)};
-}
+  );
+};
 
 export default CreateWine;

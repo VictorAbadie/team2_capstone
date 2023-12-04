@@ -1,29 +1,64 @@
 import React, { useState, useEffect } from "react";
 
-const EditWine = ({ id }) => {
-  // State to track input for each field
+const EditWine = () => {
+  const [wineId, setWineId] = useState("");
   const [type, setType] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
   const [varietal, setVarietal] = useState("");
   const [description, setDescription] = useState("");
   const [success, setSuccess] = useState(false);
-//   const [isAdmin, setIsAdmin] = useState(true);
-  const [error, setError] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(true);
 
-//   useEffect(() => {
-//     // Fetch isAdmin state from localStorage or sessionStorage, or wherever it is stored
-//     const token = parseInt(localStorage.getItem("token"));
-//     setIsAdmin(token);
-//     if (!isNaN(token) && token === 6) {
-//       // Set the user as admin
-//       setIsAdmin(true);
-//     } else {
-//       // Set the user as non-admin
-//       setIsAdmin(false);
-//     }
-//   }, []);
+  useEffect(() => {
+    const token = parseInt(localStorage.getItem("token"));
+    setIsAdmin(token);
+    if (!isNaN(token) && token === 6) {
+      setIsAdmin(true);
+    } else {
+      setIsAdmin(false);
+    }
+  }, []);
+
+  const fetchWineDetails = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/api/wines/${id}`);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      const wineDetails = result; // Adjust this based on the actual structure of your response
+
+      setType(wineDetails.type);
+      setPrice(wineDetails.price);
+      setVarietal(wineDetails.varietal);
+      setDescription(wineDetails.description);
+    } catch (error) {
+      console.error("Error fetching wine details:", error.message);
+    }
+  };
 
   const handleEditWine = async () => {
+    if (!wineId) {
+      console.error("Please enter a valid wine ID.");
+      return;
+    }
+
+    const id = parseInt(wineId);
+
+    if (isNaN(id) || id < 1 || id > 16) {
+      console.error("Please enter a valid wine ID between 1 and 16.");
+      return;
+    }
+
+    try {
+      await fetchWineDetails(id);
+    } catch (error) {
+      console.error("Error fetching wine details:", error.message);
+      return;
+    }
+
     try {
       const response = await fetch(`http://localhost:3000/api/wines/${id}`, {
         method: "PATCH",
@@ -38,93 +73,88 @@ const EditWine = ({ id }) => {
         }),
       });
 
-      // Check if the response status is in the range of 200 to 299
       if (!response.ok) {
-        // If not, throw an error with the response status text
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
       const result = await response.json();
-      setSuccess(result.success);
-      setError(null); // Clear any previous error
-      console.log(result);
-
-      // Reset form fields and set success state
-      setType("");
-      setPrice("");
-      setVarietal("");
-      setDescription("");
       setSuccess(true);
-
+      console.log(result);
     } catch (error) {
-      console.error(error.message);
-      setError("An error occurred. Please try again."); // Set a user-friendly error message
+      console.error("Error updating wine:", error.message);
     }
   };
 
   return (
     <>
-      {/* {isAdmin ? ( */}
+      {isAdmin ? (
         <>
-          {error && <p style={{ color: "red" }}>{error}</p>}
-          <p>Wine Updated!</p>
+          <p>{success && "Wine Updated!"}</p>
           <form className="styleForm">
+            <label htmlFor="wineId">
+              Wine ID:
+              <input
+                id="wineId"
+                type="text"
+                name="wineId"
+                placeholder="Enter Wine ID"
+                required
+                value={wineId}
+                onChange={(e) => setWineId(e.target.value)}
+              />
+            </label>
             <label htmlFor="wineType">
               <input
                 id="type"
                 type="text"
                 name="type"
-                placeholder="type"
+                placeholder="Type"
                 required
                 value={type}
                 onChange={(e) => setType(e.target.value)}
               />
             </label>
-
             <label htmlFor="winePrice">
               <input
                 id="price"
-                type="text"
+                type="number"
                 name="price"
-                placeholder="price"
+                placeholder="Price"
                 required
                 value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                onChange={(e) => setPrice(parseInt(e.target.value))}
               />
             </label>
-
             <label htmlFor="wineVarietal">
               <input
                 id="varietal"
                 type="text"
                 name="varietal"
-                placeholder="varietal"
+                placeholder="Varietal"
                 required
                 value={varietal}
                 onChange={(e) => setVarietal(e.target.value)}
               />
             </label>
-
             <label htmlFor="wineDescription">
               <input
                 id="description"
                 type="text"
                 name="description"
-                placeholder="description"
+                placeholder="Description"
                 required
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
             </label>
-
             <button className="button" onClick={handleEditWine}>
               Update Wine!
             </button>
           </form>
         </>
-      {/* ) : (
-        <p>You must be an admin to edit Wines.</p>
-      )} */}
+      ) : (
+        <p className="mustBeAdmin">You must be an admin to edit Wines. <a href="/login">Login</a></p>
+      )}
     </>
   );
 };
