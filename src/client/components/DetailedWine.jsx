@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { CartContext } from "../../CartContext";
 
 const DetailedWine = (props) => {
@@ -10,6 +10,7 @@ const DetailedWine = (props) => {
   const productQuantity = cart.getProductQuantity(singleWine.id);
   const product = props.products;
   const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate();
 
   // useEffect(() => {
   //   // Fetch isAdmin state from localStorage or sessionStorage, or wherever it is stored
