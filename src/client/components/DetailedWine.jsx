@@ -85,7 +85,7 @@ const DetailedWine = (props) => {
               {" "}
               Remove from Cart
             </button>
-            <button className="button" onClick={handleDelete}>Delete this bitch</button>
+            <button className="button" onClick={handleDelete}>Delete Wine</button>
           </div>
         </>
       ) : (
@@ -114,6 +114,11 @@ const DetailedWine = (props) => {
             {" "}
             Remove from Cart
           </button>
+
+          <button
+            className="button"
+            onClick={() => navigate('/')}
+            >Back to All Wines</button>
         </div>
       )}
       {/* USER ABOVE */}

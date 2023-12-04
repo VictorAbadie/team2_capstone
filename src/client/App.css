@@ -30,7 +30,7 @@ body {
   color: rgb(152, 151, 151);
   font-size: 16pt;
   width: 20%;
-  height: 400px;
+  height: 430px;
   margin: 15px;
   line-height: 0;
 }
@@ -111,7 +111,8 @@ nav {
   color: rgb(55, 130, 94);
   font-size: medium;
   text-align: center;
-  padding-top: 6px;
+  padding: 10px;
+  margin: 10px;
   height: 40px;
   border-radius: 10%;
 }
