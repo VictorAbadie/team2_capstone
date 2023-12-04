@@ -207,3 +207,8 @@ a:hover {
   color: white;
 }
 
+.success {
+  color: rgb(55, 130, 94);
+  font-size: 40pt;
+  text-align: center;
+}
