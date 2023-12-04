@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { useNavigate } from 'react-router-dom';
 
 function LogIn({token, setToken}) {
-  // const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
@@ -10,7 +9,6 @@ function LogIn({token, setToken}) {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      console.log(password, email, )
       const response = await fetch('http://localhost:3000/api/users/login', {
       method: "POST",
       headers: {
@@ -28,6 +26,7 @@ function LogIn({token, setToken}) {
     localStorage.setItem("token", result.user.id)
     console.log(token);
     console.log(result);
+    navigate('/')
     return result
     } catch (error) {
       console.log(error);
@@ -46,7 +45,7 @@ function LogIn({token, setToken}) {
           <label>
         Password: <input className='input' type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
         </label>
-        <button className='button' type="submit" onClick={() => navigate('/')}
+        <button className='button' type="submit" 
         >Log In</button>
 
         <p className='href'>Don't have an account?<a href="./register"> Sign Up</a> </p>
