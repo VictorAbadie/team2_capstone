@@ -27,6 +27,8 @@ function App() {
 
 
   const [isAdmin, setIsAdmin] = useState(false) 
+
+
   const storageToken = localStorage.getItem("token");
   useEffect(() => {
     async function getToken(storageToken) {
@@ -49,11 +51,12 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={ <Login token={token} setToken={setToken} />} />
           <Route path='/register' element={<SignUpForm token={token} setToken={setToken}/> } />
-          {/* <Route path="/profile" element={<Profile token={token}/>} /> */}
+          
           
           <Route path="/:id" element={<DetailedWine />} />
           <Route path="/success" element={<Success/>} /> 
           <Route path="/cancel" element={<Cancel/>} /> 
+
 
           {/* Protected Routes */}
           <Route path='/admin' element={<SetAdminFunction isAdmin={isAdmin} setIsAdmin={setIsAdmin}/>} />
